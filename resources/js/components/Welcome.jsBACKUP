@@ -1,0 +1,26 @@
+import React from 'react';
+import { AuthContext, useAuth } from '../context/auth';
+// import { RestDataSource } from '..\\webservice\\RestDataSource';
+
+
+function Welcome(props) {
+    // const user = useAuth();
+    // console.log(user);
+        
+        return (
+           
+           <AuthContext.Provider>
+                <div className="welcome">
+                    <div>                   
+                        <p className="message">This is the welcome message</p>
+                        <p className="welcomeupdate">Last Updated: 2020-06-13</p> 
+                        <p></p>              
+                    </div> 
+                </div>
+            </AuthContext.Provider>      
+            
+           
+        );
+
+}
+export default Welcome;
