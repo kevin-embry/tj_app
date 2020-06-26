@@ -24,20 +24,24 @@ Route::get('/images', 'HomeController@index');
 Route::get('/newspapers', 'HomeController@index');
 Route::get('/references', 'HomeController@index');
 Route::get('/about', 'HomeController@index');
+Route::get('/editusers', 'HomeController@index');
 
 
 // REST ROUTES
+
+//USER ROUTES
 Route::get('/authenticate', 'UserController@login');
 Route::post('/register', 'UserController@store');
+Route::get('/getNewUsers', 'UserController@getNewUsers');
+Route::get('/getAllUsers', 'UserController@getAllUsers');
+Route::post('/updateUser', 'UserController@updateUser');
+Route::post('/deleteUser', 'UserController@deleteUser');
 
+//WELCOME PAGE ROUTES
 Route::get('/getWelcome', 'HomeController@getWelcomeMessage');
 Route::post('/updateWelcome', 'HomeController@updateWelcomeMessage');
 
+//LAST UPDATE ROUTE
 Route::get('/getLastUpdate', 'HomeController@getLastUpdate');
 
 
-
-
-
-// Auth::routes();
-// Route::get('/home', 'HomeController@index')->name('home');

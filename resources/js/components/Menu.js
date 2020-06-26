@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default class Menu extends React.Component {
     constructor(props) {
@@ -9,7 +9,8 @@ export default class Menu extends React.Component {
         return (
             <div className="menu">
                 <ul>
-                    <li><Link to="/">Home</Link></li>                    
+                    <li><Link to="/">Home</Link></li>
+
                     <li className="dropdown">
                         <a className="dropbtn">History</a>
                         <div className="dropdown-content">
@@ -19,6 +20,7 @@ export default class Menu extends React.Component {
                             <Link to="/history/panama">Panama Canal</Link>
                         </div>
                     </li>
+                    
                     <li><Link to="/decklogs">Deck Logs</Link></li>                    
                     <li><Link to="/crew">Crew</Link></li>
                     <li><Link to="/comments">Comments</Link></li>

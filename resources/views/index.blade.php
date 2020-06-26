@@ -11,7 +11,7 @@
         
     </head>
     <body>
-        <div id="application">
+        <div id="application" style="background-color: #f8f3ed">
         </div>
         <script src="{{ asset('js/app.js') }}"></script>
     </body>

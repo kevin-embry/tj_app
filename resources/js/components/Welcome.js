@@ -76,8 +76,8 @@ export default class Welcome extends React.Component {
     render(){
         return (
             <div>
-                <div className="welcome">
-                    {(this.state.user !== null && this.state.user.role === "admin" && this.state.editMode === false) ?
+                <div className="welcome">                   
+                    {(this.props.adminMode === true && this.state.editMode === false) ?
                         <button 
                         className="editMessage"
                         onClick={this.handleEditClick}
@@ -85,7 +85,7 @@ export default class Welcome extends React.Component {
                         </button> :
                         ""
                     }
-                    {this.state.editMode === true ? <h1 key={this.state.user.role}>Admin Mode</h1> : ""}
+                    {this.state.editMode === true ? <h1 key={this.state.user.role}>Admin Mode - Welcome Message</h1> : ""}
                     <div> 
                         {this.state.editMode === true ?
                             <textarea                             
