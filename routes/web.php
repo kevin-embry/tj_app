@@ -25,6 +25,8 @@ Route::get('/newspapers', 'HomeController@index');
 Route::get('/references', 'HomeController@index');
 Route::get('/about', 'HomeController@index');
 Route::get('/editusers', 'HomeController@index');
+Route::get('/history/timeline', 'HomeController@index');
+
 
 
 // REST ROUTES
@@ -44,4 +46,7 @@ Route::post('/updateWelcome', 'HomeController@updateWelcomeMessage');
 //LAST UPDATE ROUTE
 Route::get('/getLastUpdate', 'HomeController@getLastUpdate');
 
+//TIMELINE
+Route::post('/storeTimeline', 'HistoryController@storeTimelineEvent');
+Route::get('/getTimelineEvents', 'HistoryController@getTimelineEvents');
 

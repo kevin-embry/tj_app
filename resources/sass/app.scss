@@ -97,6 +97,16 @@ h1 {
     margin: 0;
 }
 
+.borderModule {
+    position: relative;
+    margin: 20px auto auto auto;
+    width: 65%;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-radius: 15px;
+    border: 8px double #3A3F3B;
+}
+
 
 
 // ****************************HEADER*********************************
@@ -111,8 +121,8 @@ h1 {
 }
 
 #dolphins {
-    width: 270px;
-    height: 80px;
+    width: 250px;
+    height: 70px;
     position: absolute;
     left: 90px;
     top: 35px;
@@ -667,6 +677,114 @@ input[type=text], input[type=password] {
 .editButtonContainer .deletebutton {
     float: right;
     background-color: red;
+}
+
+//******************************HISTORY***********************
+
+.addevent {
+    width: 100%;  
+    height: 30px;
+    padding: 25px 0;
+
+    span {
+        float: left;
+        padding: 5px;
+        margin-right: 5px;
+        font-size: 1.1em;
+    }
+
+    .historyDate {
+        width: 125px;
+        height: 25px;
+        font-size: .9em;
+        margin-right: 20px;
+        float: left;
+    }
+
+    .historyEvent {
+        width: 250px;
+        height: 25px;
+        font-size: .9em;
+        margin-right: 20px;
+        float: left;
+    }
+
+    .historyNotes {
+        width: 330px;
+        height: 25px;
+        font-size: .9em;
+        margin-right: 20px;
+        float: left;
+    }
+
+}
+
+#addEventError {
+    margin: 0 0 15px 0;
+}
+
+.historyAdminButtons {
+    clear: both;
+
+    button {
+        height: 25px;
+        font-size: 1.1em;
+    }
+
+    .historyAdminSubmit {
+        margin-right: 25px;
+        background-color: #b3ffb3;
+    }
+
+    .historyAdminCancel {
+        margin-right: 25px;
+        background-color: #ffb3b3;
+    }
+
+    .historyAdminClear {
+        background-color: #4db8ff;
+    }
+}
+
+
+.eventsModule {
+
+    .renderedEvents {
+        .event {
+            list-style: none;
+        }
+    }
+
+    .eventPagination {
+        margin-top: 25px;
+
+        .pageNumbers {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .paginationButton {
+                width: 32px;
+                height: 32px;
+                text-align: center;
+                padding: 0;
+                float: left;
+                img {
+                    width: 30px;
+                    height: 30px;
+                }
+               
+            }
+
+            li {
+                margin-right: .3em;
+                color: blue;
+                user-select: none;
+                cursor: pointer;
+            }
+        }
+    }
 }
 
 //****************************404***************************

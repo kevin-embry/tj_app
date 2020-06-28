@@ -11,6 +11,7 @@ import Menu from './Menu';
 import AdminMenu from './AdminMenu';
 import NewAppMessage from './NewAppMessage';
 import Welcome from './Welcome';
+import Timeline from './history/Timeline'
 import DeckLogs from './DeckLogs';
 import Crew from './Crew';
 import AboutUs from './AboutUs';
@@ -76,6 +77,8 @@ function App(props) {
                             <Route path="/about" component={AboutUs} />
 
                             <Route exact path="/editusers" render={(props) => <EditUsers {...props} adminMode={adminMode} newUserCallback={getNewApplicants}/>} />
+                           
+                            <Route path="/history/timeline" render={(props) => <Timeline {...props} referer="/timeline"/> } />
                             
                             <PrivateRoute path="/decklogs" referer="/decklogs" component={DeckLogs} />
                             <PrivateRoute path="/crew" referer="/crew" component={Crew} />

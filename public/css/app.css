@@ -74,6 +74,16 @@ h1 {
   margin: 0;
 }
 
+.borderModule {
+  position: relative;
+  margin: 20px auto auto auto;
+  width: 65%;
+  padding: 10px;
+  background-color: #f2f2f2;
+  border-radius: 15px;
+  border: 8px double #3A3F3B;
+}
+
 .header {
   background: url(/images/ocean_crop.png?46a792dbf45122ead18b17274c8c0a62);
   background-repeat: no-repeat;
@@ -84,8 +94,8 @@ h1 {
 }
 
 #dolphins {
-  width: 270px;
-  height: 80px;
+  width: 250px;
+  height: 70px;
   position: absolute;
   left: 90px;
   top: 35px;
@@ -620,6 +630,108 @@ tr:nth-child(even) {
 .editButtonContainer .deletebutton {
   float: right;
   background-color: red;
+}
+
+.addevent {
+  width: 100%;
+  height: 30px;
+  padding: 25px 0;
+}
+
+.addevent span {
+  float: left;
+  padding: 5px;
+  margin-right: 5px;
+  font-size: 1.1em;
+}
+
+.addevent .historyDate {
+  width: 125px;
+  height: 25px;
+  font-size: 0.9em;
+  margin-right: 20px;
+  float: left;
+}
+
+.addevent .historyEvent {
+  width: 250px;
+  height: 25px;
+  font-size: 0.9em;
+  margin-right: 20px;
+  float: left;
+}
+
+.addevent .historyNotes {
+  width: 330px;
+  height: 25px;
+  font-size: 0.9em;
+  margin-right: 20px;
+  float: left;
+}
+
+#addEventError {
+  margin: 0 0 15px 0;
+}
+
+.historyAdminButtons {
+  clear: both;
+}
+
+.historyAdminButtons button {
+  height: 25px;
+  font-size: 1.1em;
+}
+
+.historyAdminButtons .historyAdminSubmit {
+  margin-right: 25px;
+  background-color: #b3ffb3;
+}
+
+.historyAdminButtons .historyAdminCancel {
+  margin-right: 25px;
+  background-color: #ffb3b3;
+}
+
+.historyAdminButtons .historyAdminClear {
+  background-color: #4db8ff;
+}
+
+.eventsModule .renderedEvents .event {
+  list-style: none;
+}
+
+.eventsModule .eventPagination {
+  margin-top: 25px;
+}
+
+.eventsModule .eventPagination .pageNumbers {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eventsModule .eventPagination .pageNumbers .paginationButton {
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  padding: 0;
+  float: left;
+}
+
+.eventsModule .eventPagination .pageNumbers .paginationButton img {
+  width: 30px;
+  height: 30px;
+}
+
+.eventsModule .eventPagination .pageNumbers li {
+  margin-right: 0.3em;
+  color: blue;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
 }
 
 .underconstruction {

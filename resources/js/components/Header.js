@@ -1,7 +1,5 @@
 import React from 'react';
-
 import { useAuth } from '../context/auth';
-
 import LoginContainer from './LoginContainer';
 import LogoutContainer from './LogoutContainer';
 
