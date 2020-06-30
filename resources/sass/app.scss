@@ -88,7 +88,7 @@ button {
     color: black;
     position: absolute;
     top: 0;
-    right: 5px;
+    right: 0;
     padding-top: 0;
 
 }
@@ -205,9 +205,11 @@ h1 {
     display: inline-block;
     color: white;
     text-align: center;
-    padding: 12px 20px;
+    padding: 8px 15px;
     text-decoration: none;
     font-size: 1.25em;
+    white-space: normal;
+    word-wrap: break-word;
   }
 
  .menu li a:hover, .dropdown:hover .dropbtn {
@@ -676,7 +678,7 @@ input[type=text], input[type=password] {
 
 .editButtonContainer .deletebutton {
     float: right;
-    background-color: red;
+    background-color: #ff4d4d;
 }
 
 //******************************HISTORY***********************
@@ -792,7 +794,7 @@ input[type=text], input[type=password] {
     }
 
     .deleteButton {
-        background-color: red;
+        background-color: #ff4d4d;
     }
 }
 

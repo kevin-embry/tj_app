@@ -35,8 +35,6 @@ class HomeController extends Controller
                 var_dump($e);
             }
 
-
-            // printf("Connected successfully to: " . DB::connection()->getDatabaseName());        
        } catch (\Exception $e) {
             die("Could not connect to the database. Please check your configuration. error:" . $e );
        } 
@@ -76,11 +74,9 @@ class HomeController extends Controller
             } else {
                 return response(json_encode($query1), 400);
             }  
-        } catch (\Exception $e) {
+        } catch (\Illuminate\Database\QueryException $e) {
             return response(json_encode($e), 500);
         }
-
-        
         
     }
 
@@ -91,8 +87,6 @@ class HomeController extends Controller
         } catch(\Exception $e) {
             var_dump($e);
         }
-      
-    
         return $data;     
     }
 }

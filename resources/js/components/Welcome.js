@@ -40,11 +40,12 @@ export default class Welcome extends React.Component {
     }
 
     handleSubmit(e) {
-        if (this.state.originalMessage !== this.state.welcomemessage) {
+        if (this.state.originalMessage.trim() !== this.state.welcomemessage.trim()) {
             Axios.post('/updateWelcome', {
                 message: this.state.welcomemessage
             })
             .then( (response) => {
+                console.log(response);
                 this.setState({               
                     lastUpdate: response.data.date,
                     showUpdateMessage: "visible"

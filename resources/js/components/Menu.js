@@ -10,15 +10,6 @@ export default class Menu extends React.Component {
             <div className="menu">
                 <ul>
                     <li><Link to="/">Home</Link></li>
-                    {this.props.adminMode === true? 
-                        <li className="buttonWithIndicator">
-                            <Link to="/editusers">Edit Users
-                            {this.props.newUsers > 0 ? <span className="numberIndicator">{this.props.newUsers}</span> : null}
-                            </Link>
-                        </li> 
-                        : null
-                    }                                        
-
                     <li className="dropdown">
                         <a className="dropbtn">History</a>
                         <div className="dropdown-content">
@@ -50,6 +41,15 @@ export default class Menu extends React.Component {
                             <a href="#">Link4</a>
                         </div>
                     </li>
+                    {this.props.adminMode === true? 
+                        <li className="buttonWithIndicator">
+                            <Link to="/editusers">Edit Users
+                            {this.props.newUsers > 0 ? <span className="numberIndicator">{this.props.newUsers}</span> : null}
+                            </Link>
+                        </li> 
+                        : null
+                    }    
+                    {this.props.adminMode === true? <li><Link to="/editannouncements">Announcements</Link></li> : null}    
                 </ul>
             </div>
         );
