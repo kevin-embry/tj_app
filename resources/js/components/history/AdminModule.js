@@ -1,5 +1,6 @@
 import React from 'react';
 import Axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 class AdminModule extends React.Component {
     constructor(props) {
@@ -11,8 +12,8 @@ class AdminModule extends React.Component {
             showErrorMessage: false,
             showSuccessMessage: false
         }
-
         this.handleChange = this.handleChange.bind(this);
+        this.handleCancel = this.handleCancel.bind(this);
         this.clearFields = this.clearFields.bind(this);
         this.checkFields = this.checkFields.bind(this);
         this.handleNewEvent = this.handleNewEvent.bind(this);
@@ -27,17 +28,19 @@ class AdminModule extends React.Component {
     handleNewEvent(e) {
         const validSumbit = this.checkFields();
         if(validSumbit) {
-            Axios.post("/storeTimeline", {
+            Axios.post(this.props.storeURL, {
                 date: this.state.historyDate,
                 eventName: this.state.historyEvent,
                 eventNotes: this.state.historyNotes
             }).then((response) => {
+
+                this.props.refreshEvents();
+
                 this.setState({showSuccessMessage: true});
                 setTimeout(() => {
                     this.setState({ showSuccessMessage: false });
                     this.clearFields();
                 }, 2500);
-                console.log(response);
             }).catch((error) => {
                 console.log(error);
             })
@@ -47,9 +50,7 @@ class AdminModule extends React.Component {
             setTimeout(() => {
                 this.setState({ showErrorMessage: false });
             }, 2500);
-           
         }
-
     }
 
     checkFields() {
@@ -66,10 +67,16 @@ class AdminModule extends React.Component {
             historyEvent: "",
             historyNotes: ""
         })
+    }
 
+    // DOESNT WORK!!!!!!!
+    handleCancel(e){
+        this.clearFields();
+        this.props.goHome();
     }
 
     render() {
+        // console.log(this.props);
         return (
             <div className="historyAdmin borderModule">
                 <h1>Admin Mode - {this.props.moduleName}</h1>
@@ -97,9 +104,11 @@ class AdminModule extends React.Component {
                 {this.state.showErrorMessage === true ? <p id="addEventError" className="error">Error. Please fill in required fields</p> : ""}
                 {this.state.showSuccessMessage === true ? <p  className="valid">Record Successfully Inserted</p> : ""}
                
+               {/* TODO: ADD ICONS IN BUTTONS BELOW. CHANGE SUBMIT TO ADD */}
                 <div className="historyAdminButtons">
                     <button className="historyAdminSubmit" onClick={this.handleNewEvent}>Submit</button>
-                    <button className="historyAdminCancel">Cancel</button>
+                    {/* NEED TO HANDLE CANCEL STILL!!!! */}
+                    <button className="historyAdminCancel" onClick={this.handleCancel}>Cancel</button>
                     <button type="button" className="historyAdminClear" onClick={this.clearFields}>Clear Fields</button>
                 </div>
             </div>

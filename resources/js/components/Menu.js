@@ -10,12 +10,20 @@ export default class Menu extends React.Component {
             <div className="menu">
                 <ul>
                     <li><Link to="/">Home</Link></li>
+                    {this.props.adminMode === true? 
+                        <li className="buttonWithIndicator">
+                            <Link to="/editusers">Edit Users
+                            {this.props.newUsers > 0 ? <span className="numberIndicator">{this.props.newUsers}</span> : null}
+                            </Link>
+                        </li> 
+                        : null
+                    }                                        
 
                     <li className="dropdown">
                         <a className="dropbtn">History</a>
                         <div className="dropdown-content">
                             <Link to="/history/timeline">Timeline</Link>
-                            <Link to="/history/timeline">Awards</Link>
+                            <Link to="/history/awards">Awards</Link>
                             <Link to="/history/launches">Missle Launches</Link>
                             <Link to="/history/panama">Panama Canal</Link>
                         </div>

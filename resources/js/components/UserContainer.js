@@ -6,7 +6,7 @@ export default class UserContainer extends React.Component {
         this.state = {
             firstName: "Guest",
             isAdmin: false,
-            adminMode: false
+            adminMode: JSON.parse(localStorage.getItem("TJEditMode"))
         }
     }
 

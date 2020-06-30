@@ -8,9 +8,9 @@ function Header(props) {
    
         return (
             <div className="header">
-                <img id="dolphins" src="..\..\images\subdolphins.png" alt="Navy Dolphins"/>                
-                <img id="titlepatch" src="..\..\images\titlepatch.png" alt="SSN/SSBN 618"/>               
-                <img id="tjpatch" src="..\..\images\tjpatch.png" alt="Hostility against Tyranny"/>    
+                <img id="dolphins" src="..\..\images\subdolphins.png" title="Dolphins"/>                
+                <img id="titlepatch" src="..\..\images\titlepatch.png" title="SSN/SSBN 618"/>               
+                <img id="tjpatch" src="..\..\images\tjpatch.png" title="Hostility against Tyranny"/>    
                 {user.authTokens !== null ? <LogoutContainer/>:<LoginContainer/>}
             </div>
         );

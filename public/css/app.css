@@ -324,7 +324,7 @@ h1 {
   color: black;
   overflow-x: hidden;
   white-space: pre-wrap;
-  min-height: 400px;
+  min-height: 600px;
   resize: none;
   background-color: white !important;
 }
@@ -696,8 +696,67 @@ tr:nth-child(even) {
   background-color: #4db8ff;
 }
 
+.editLineEvent {
+  height: 70px;
+}
+
+.editLineEvent h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.editLineEvent .editDate {
+  width: 115px;
+  height: 25px;
+  font-size: 0.9em;
+  margin-right: 15px;
+  float: left;
+}
+
+.editLineEvent .editEvent {
+  width: 240px;
+  height: 25px;
+  font-size: 0.9em;
+  margin-right: 15px;
+  float: left;
+}
+
+.editLineEvent .editNote {
+  width: 310px;
+  height: 25px;
+  font-size: 0.9em;
+  margin-right: 15px;
+  float: left;
+}
+
+.editLineEvent button {
+  height: 32px;
+  float: left;
+  margin-right: 10px;
+}
+
+.editLineEvent .updateButton {
+  background-color: #b3ffb3;
+}
+
+.editLineEvent .cancelButton {
+  background-color: #ffb3b3;
+}
+
+.editLineEvent .deleteButton {
+  background-color: red;
+}
+
 .eventsModule .renderedEvents .event {
   list-style: none;
+}
+
+.eventsModule .renderedEvents .eventsEditButton {
+  padding: 8px 0;
+}
+
+.eventsModule .renderedEvents table {
+  margin-top: 20px;
 }
 
 .eventsModule .eventPagination {
@@ -709,6 +768,7 @@ tr:nth-child(even) {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-left: 0;
 }
 
 .eventsModule .eventPagination .pageNumbers .paginationButton {

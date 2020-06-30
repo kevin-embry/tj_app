@@ -26,7 +26,6 @@ function Authenticate(props) {
             .then((response) => {  
                 var date = new Date();               
                 response.data.expire = date.setHours(date.getHours() + 4);
-                      
                 setAuthTokens(response.data);
                 setIsError(false);
                 setLoggedIn(true);

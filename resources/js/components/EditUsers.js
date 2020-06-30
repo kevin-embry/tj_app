@@ -181,9 +181,28 @@ export default class EditUsers extends React.Component {
                           <option>true</option>
                       </select>
                       <div className="editButtonContainer">
-                        <button className="cancelbutton" onClick={this.closeEdit}>Cancel</button>
-                        <button className="updatebutton" onClick={this.handleUpdate}>Update</button>
-                        <button className="deletebutton" onClick={this.handleDelete}>Delete</button>
+                          
+                        <button 
+                            className="updatebutton"
+                            title="Update User" 
+                            onClick={this.handleUpdate}
+                        >Update
+                        </button>
+
+                        <button 
+                            className="cancelbutton" 
+                            title="Cancel Edit"
+                            onClick={this.closeEdit}
+                        >Cancel
+                        </button>
+
+                        <button 
+                            className="deletebutton"
+                            title="Delete User" 
+                            onClick={(e) => { if (window.confirm('This action can not be reverted. Are You sure you wish to delete this user?')) this.handleDelete(e)}}
+                        >Delete
+                        </button>
+
                       </div>
                     <p className={"error text_center " + this.state.userUpdateFailed}>User Update Failed</p> 
                     <p className={"valid text_center " + this.state.userUpdateSuccess}>User Updated</p>  
@@ -203,7 +222,7 @@ export default class EditUsers extends React.Component {
 
     componentDidUpdate(prevProps) {
         if(this.props !== prevProps) {
-            this.props.adminMode === false ? this.props.history.push("/") : "";
+            this.props.adminMode === false ? this.props.history.push("/") : null;
         }
     }
 }

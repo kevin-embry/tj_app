@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+// THIS COMPONENT TO BE REMOVED!!!!
 
 function NewAppMessage() {
 

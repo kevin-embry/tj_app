@@ -2,16 +2,18 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import Axios from 'axios';
 import { useHistory, BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { RestDataSource } from '../webservice/RestDataSource';
+// import { RestDataSource } from '../webservice/RestDataSource';
 import PrivateRoute from '../PrivateRoute';
 import { AuthContext, useAuth } from '../context/auth';
 import Authenticate from './Authenticate';
 import Header from './Header';
 import Menu from './Menu';
 import AdminMenu from './AdminMenu';
-import NewAppMessage from './NewAppMessage';
+// import NewAppMessage from './NewAppMessage';
 import Welcome from './Welcome';
 import Timeline from './history/Timeline'
+import Awards from './history/Awards'
+import MissleLaunches from './history/MissleLaunches'
 import DeckLogs from './DeckLogs';
 import Crew from './Crew';
 import AboutUs from './AboutUs';
@@ -28,21 +30,25 @@ function App(props) {
     var existingTokens = JSON.parse(localStorage.getItem("TJUser"));
     existingTokens = (existingTokens !== null) && (existingTokens.expire > new Date() ) ? existingTokens : disableToken(); 
     const [authTokens, setAuthTokens] = useState(existingTokens);
-    const [adminMode, setAdminMode] = useState(false);
+    // const [adminMode, setAdminMode] = useState(false);
+    const [adminMode, setAdminMode] = useState(JSON.parse(localStorage.getItem("TJEditMode")));
     const [newApplicants, setNewApplicants] = useState(getNewApplicants());
     const [newUserNumber, setNewUserNumber] = useState(0);
 
+    //Auth token gets set in promise in authenticate component
     const setTokens = (data) => {
         localStorage.setItem("TJUser", JSON.stringify(data)); 
         setAuthTokens(data);
     }
 
     function disableToken() {
-        localStorage.setItem("TJUser", null); 
+        localStorage.setItem("TJUser", null);
+        localStorage.setItem("TJEditMode", false);  
         return null;
     }
 
     function toggleAdminMode() {
+        localStorage.setItem("TJEditMode", !adminMode);
         setAdminMode(!adminMode);
     }
 
@@ -64,11 +70,13 @@ function App(props) {
             <Router history={history}>
                 <div className="mainapp">
                     <Header {...props} />
-                    {(adminMode === true) ? <AdminMenu newUsers={newUserNumber}/> : ""}
-                    <Menu />
+                    {/* {(adminMode === true) ? <AdminMenu newUsers={newUserNumber}/> : ""} */}
+                    <Menu {...props} adminMode={adminMode} newUsers={newUserNumber}/>
                     <div className="body">
                         <UserContainer user={authTokens} adminMode={adminMode} adminModeCallback={toggleAdminMode}/>
-                        {(adminMode === true && newUserNumber > 0) ? <NewAppMessage /> : "" }
+
+                        {/* I DONT WANT TO USE BELOW COMPONENT ANY MORE!!!! */}
+                        {/* {(adminMode === true && newUserNumber > 0) ? <NewAppMessage /> : "" } */}   
                         
                         <Switch>
                             <Route exact path="/" render={(props) => <Welcome {...props} adminMode={adminMode} user={authTokens} />} />
@@ -78,7 +86,10 @@ function App(props) {
 
                             <Route exact path="/editusers" render={(props) => <EditUsers {...props} adminMode={adminMode} newUserCallback={getNewApplicants}/>} />
                            
-                            <Route path="/history/timeline" render={(props) => <Timeline {...props} referer="/timeline"/> } />
+                            <Route path="/history/timeline" render={(props) => <Timeline {...props} adminMode={adminMode} referer="/history/timeline"/> } />
+                            <Route path="/history/awards" render={(props) => <Awards {...props} adminMode={adminMode} referer="/history/awards"/> } />
+                            <Route path="/history/launches" render={(props) => <MissleLaunches {...props} adminMode={adminMode} referer="/history/misslelaunches"/> } />
+                            {/* <PrivateRoute path="/history/timeline" referer="/history/timeline" adminMode={adminMode} component={Timeline} /> */}
                             
                             <PrivateRoute path="/decklogs" referer="/decklogs" component={DeckLogs} />
                             <PrivateRoute path="/crew" referer="/crew" component={Crew} />

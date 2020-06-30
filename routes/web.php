@@ -26,6 +26,8 @@ Route::get('/references', 'HomeController@index');
 Route::get('/about', 'HomeController@index');
 Route::get('/editusers', 'HomeController@index');
 Route::get('/history/timeline', 'HomeController@index');
+Route::get('/history/awards', 'HomeController@index');
+Route::get('/history/launches', 'HomeController@index');
 
 
 
@@ -46,7 +48,22 @@ Route::post('/updateWelcome', 'HomeController@updateWelcomeMessage');
 //LAST UPDATE ROUTE
 Route::get('/getLastUpdate', 'HomeController@getLastUpdate');
 
-//TIMELINE
+//HISTORY
 Route::post('/storeTimeline', 'HistoryController@storeTimelineEvent');
 Route::get('/getTimelineEvents', 'HistoryController@getTimelineEvents');
+Route::post('/deleteTimelineEvent', 'HistoryController@deleteTimelineEvent');
+Route::post('/updateTimelineEvent', 'HistoryController@updateTimelineEvent');
+
+Route::post('/storeAward', 'HistoryController@storeAwardEvent');
+Route::get('/getAwardEvents', 'HistoryController@getAwardEvents');
+Route::post('/deleteAwardEvent', 'HistoryController@deleteAwardEvent');
+Route::post('/updateAwardEvent', 'HistoryController@updateAwardEvent');
+
+Route::post('/storeMissleLaunch', 'HistoryController@storeMissleLaunchEvent');
+Route::get('/getMissleLaunchEvents', 'HistoryController@getMissleLaunchEvents');
+Route::post('/deleteMissleLaunchEvent', 'HistoryController@deleteMissleLaunchEvent');
+Route::post('/updateMissleLaunchEvent', 'HistoryController@updateMissleLaunchEvent');
+
+// Route::post('/storePanamaCanal', 'HistoryController@storeTimelineEvent');
+// Route::get('/getPanamaCanalEvents', 'HistoryController@getTimelineEvents');
 
