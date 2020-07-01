@@ -2,12 +2,14 @@ import React from 'react';
 import { AuthContext, useAuth } from '../context/auth';
 import { RestDataSource } from '../webservice/RestDataSource';
 import Axios from 'axios';
+import Announcement from './announcements/Announcement';
 
 
 export default class Welcome extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            announcements: "",
             welcomemessage: "",
             lastUpdate: "",
             user: {},
@@ -15,13 +17,13 @@ export default class Welcome extends React.Component {
             originalMessage: "",
             showUpdateMessage: "hide"
         }               
-        this.dataSource = new RestDataSource("/getWelcome");  
+        this.dataSource = new RestDataSource("/getWelcome"); 
+        // this.retrieveAnnouncements(); 
         this.handleEditClick = this.handleEditClick.bind(this);
         this.handleUpdateMessage = this.handleUpdateMessage.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
-    
-        
+        this.retrieveAnnouncements = this.retrieveAnnouncements.bind(this);
     }
 
     handleEditClick(e) {
@@ -74,6 +76,18 @@ export default class Welcome extends React.Component {
         e.target.value = temp_value
     }
 
+    retrieveAnnouncements() {
+        Axios.get('/getAnnouncements')
+            .then((response) => {               
+                this.setState({
+                    announcements: response.data
+                })
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
     render(){
         return (
             <div>
@@ -106,7 +120,9 @@ export default class Welcome extends React.Component {
                         {this.state.editMode === true ? <button className="cancelChange" onClick={this.handleCancel}>Cancel</button> : "" }
                         {this.state.editMode === true ? <button className="submitChange" onClick={this.handleSubmit}>Submit</button>  : "" }  
                     </div>
-                </div>
+                </div>             
+                {this.state.announcements !== "" ? this.state.announcements.map(value => <Announcement key={"announcement"+value.id} data={value} />) : null}
+               
             </div>
         );
     } 
@@ -119,6 +135,7 @@ export default class Welcome extends React.Component {
                 user: this.props.user
             });
         });
+        this.retrieveAnnouncements();
     }
 
     componentDidUpdate(prevProps) {

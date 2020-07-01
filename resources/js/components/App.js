@@ -22,6 +22,7 @@ import SignUp from './SignUp';
 import UserContainer from './UserContainer';
 import EditUsers from './EditUsers';
 import UnderConstruction from './UnderConstruction';
+import EditAnnouncements from './announcements/EditAnnouncements';
 
 function App(props) {  
   
@@ -90,6 +91,8 @@ function App(props) {
                             <Route path="/history/awards" render={(props) => <Awards {...props} adminMode={adminMode} referer="/history/awards"/> } />
                             <Route path="/history/launches" render={(props) => <MissleLaunches {...props} adminMode={adminMode} referer="/history/misslelaunches"/> } />
                             {/* <PrivateRoute path="/history/timeline" referer="/history/timeline" adminMode={adminMode} component={Timeline} /> */}
+
+                            <Route path="/editannouncements" render={(props) => <EditAnnouncements {...props} adminMode={adminMode} />} />
                             
                             <PrivateRoute path="/decklogs" referer="/decklogs" component={DeckLogs} />
                             <PrivateRoute path="/crew" referer="/crew" component={Crew} />

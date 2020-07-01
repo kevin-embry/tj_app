@@ -337,6 +337,88 @@ h1 {
   text-align: right;
 }
 
+.announcement {
+  position: relative;
+  margin: 35px auto auto auto;
+  overflow: hidden;
+  width: 65%;
+  background-color: #e6f7ff;
+  border-radius: 25px;
+  opacity: 85%;
+}
+
+.announcement img {
+  width: 75px;
+  height: 75px;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.announcement p {
+  font-size: 1.2em;
+  text-align: left !important;
+  vertical-align: middle;
+  line-height: normal;
+}
+
+.announcement .expires {
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+}
+
+.editAnnouncement .addAnnouncement {
+  overflow: hidden;
+  clear: both;
+}
+
+.editAnnouncement .addAnnouncement p {
+  text-align: left !important;
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+
+.editAnnouncement .addAnnouncement .expireDate {
+  width: 140px;
+  height: 30px;
+  float: left;
+  clear: both;
+  font-size: 1.1em;
+}
+
+.editAnnouncement .addAnnouncement textarea {
+  width: 650px;
+  height: 60px;
+  float: left;
+  clear: both;
+  margin-bottom: 15px;
+  font-size: 1.3em;
+}
+
+.editAnnouncement .addAnnouncement div {
+  width: 100%;
+  float: left;
+  clear: both;
+}
+
+.editAnnouncement .addAnnouncement div .submitAnnouncement {
+  width: 100px;
+  height: 30px;
+  float: left;
+  background-color: #b3ffb3;
+  margin: 10px 25px 10px 10px;
+}
+
+.editAnnouncement .addAnnouncement div .cancelAnnouncement {
+  width: 100px;
+  height: 30px;
+  float: left;
+  background-color: #ffb3b3;
+  margin: 10px 5px 10px 10px;
+}
+
 .authenticate {
   position: relative;
   margin: auto;
@@ -619,14 +701,14 @@ tr:nth-child(even) {
   height: 30px;
 }
 
-.editButtonContainer .cancelbutton {
+.editButtonContainer .updatebutton {
   float: left;
-  background-color: #ffb3b3;
+  background-color: #b3ffb3;
 }
 
-.editButtonContainer .updatebutton {
+.editButtonContainer .cancelbutton {
   clear: both;
-  background-color: #b3ffb3;
+  background-color: #ffb3b3;
 }
 
 .editButtonContainer .deletebutton {
