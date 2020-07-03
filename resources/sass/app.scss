@@ -385,11 +385,12 @@ h1 {
     opacity: 85%;
 
     img {
-        width: 75px;
-        height: 75px;
+        width: 65px;
+        height: 65px;
         float: left;
         margin-left: 10px;
         margin-right: 10px;
+        padding: 10px;
     }
 
     p {
@@ -407,12 +408,16 @@ h1 {
     }
 }
 
-.editAnnouncement {
-  
- 
+.announcementModule {
+    h2{
+        margin: 0;
+        text-decoration: underline;
+    }
     .addAnnouncement {
         overflow: hidden;
         clear: both;
+
+        
 
         p {
             text-align: left !important;
@@ -459,6 +464,66 @@ h1 {
                 margin: 10px 5px 10px 10px;
             }
         }
+    }
+
+    .editAnnouncements {
+        overflow: hidden;
+        clear: both;
+
+        h2{
+            margin: 0;
+            text-decoration: underline;
+        }
+
+        p{
+            text-align: left !important;
+            margin-left: 5px;
+            font-size: 1.1em;
+        }
+
+        .singleAnnouncment {
+            height: 90px;
+            
+            .announceDate {
+                width: 125px;
+                height: 30px;
+                float: left;
+                margin-right: 10px;
+                font-size: 1em;
+            }
+            .announceMessage {
+                width: 575px;
+                height: 60px;
+                float: left;
+                // clear: both;
+                font-size: 1em;
+            }
+            .updateButton {
+                background-color: #b3ffb3;
+                width: 75px;
+                height: 35px;
+                float: left;
+                padding: 5px;
+                margin-left: 10px;
+            }
+            // .cancelButton {
+            //     background-color: #ffb3b3;
+            //     height: 35px;
+            //     width: 75px;
+            //     padding: 5px;
+            //     float: left;
+            //     margin-left: 10px;
+            // }
+            .deleteButton {
+                background-color: red;
+                height: 35px;
+                padding: 5px;
+                margin-left: 10px;
+                float: left;
+                // clear: both;
+            }
+        }
+        
     }
 
 }
@@ -846,7 +911,7 @@ input[type=text], input[type=password] {
         margin-bottom: 10px;
     }
     .editDate {
-        width: 115px;
+        width: 113px;
         height: 25px;
         font-size: .9em;
         margin-right: 15px;
@@ -854,7 +919,7 @@ input[type=text], input[type=password] {
     }
 
     .editEvent {
-        width: 240px;
+        width: 232px;
         height: 25px;
         font-size: .9em;
         margin-right: 15px;
@@ -862,7 +927,7 @@ input[type=text], input[type=password] {
     }
 
     .editNote {
-        width: 310px;
+        width: 280px;
         height: 25px;
         font-size: .9em;
         margin-right: 15px;
@@ -872,7 +937,7 @@ input[type=text], input[type=password] {
     button {
         height: 32px;
         float: left;
-        margin-right: 10px;
+        margin-right: 9px;
     }
 
     .updateButton {

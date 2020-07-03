@@ -71,4 +71,6 @@ Route::post('/updateMissleLaunchEvent', 'HistoryController@updateMissleLaunchEve
 //ANNOUNCEMENTS
 Route::post('/storeAnnouncement', 'AnnouncementController@storeAnnouncement');
 Route::get('/getAnnouncements', 'AnnouncementController@getAnnouncements');
+Route::post('/updateAnnouncement', 'AnnouncementController@updateAnnouncement');
+Route::post('/deleteAnnouncement', 'AnnouncementController@deleteAnnouncement');
 

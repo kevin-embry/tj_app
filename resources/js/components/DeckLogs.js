@@ -6,6 +6,7 @@ function DeckLogs(props) {
         <div className="decklogs">
             <div>                   
                 <h1>DECK LOGS</h1> 
+                <h1>DECK LOGS</h1> 
             </div> 
         </div>
     );  

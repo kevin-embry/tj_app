@@ -1,13 +1,16 @@
 import React from 'react';
 import Axios from 'axios';
+import EditSingleAnnouncement from './EditSingleAnnouncement';
 
 class EditAnnouncements extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            announcements: "",
             expireDate: "",
             message: ""
         }
+        this.retrieveAnnouncements = this.retrieveAnnouncements.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
@@ -34,7 +37,9 @@ class EditAnnouncements extends React.Component {
                 message: this.state.message
             })
             .then((response) => {
-                console.log(response);
+                this.retrieveAnnouncements();
+                this.clearFields();
+                // this.redirectToHome();
             })
             .catch((error) => {
                 console.log(error);
@@ -49,18 +54,36 @@ class EditAnnouncements extends React.Component {
         this.redirectToHome();
     }
 
+    retrieveAnnouncements() {
+        Axios.get('/getAnnouncements')
+            .then((response) => {               
+                this.setState({
+                    announcements: response.data
+                })
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
     redirectToHome() {
         this.props.history.push("/");
     }
 
 
     render() {
-        console.log(this.state);
+        // console.log(this.state);
         return(
-            <div className="editAnnouncement borderModule">
-                <h1>Admin Mode - Announcements</h1>
-                <h2>Add and Edit announcements below</h2>
+            <div className="announcementModule borderModule">
+                <span 
+                    onClick={this.handleCancel}
+                    className="close" 
+                    title="Close Edit Announcements"
+                    >&times;
+                </span>
+                <h1>Admin Mode - Announcements</h1>                
                 <hr/>
+                <h2>Add new announcements</h2>
                 <div className="addAnnouncement">
                    
                     <p>When should this announcement expire:</p>
@@ -88,7 +111,7 @@ class EditAnnouncements extends React.Component {
                             className="submitAnnouncement"
                             title="Submit New Announcement"
                             onClick={this.handleSubmit}
-                        >Update
+                        >Submit
                         </button>
 
                         <button 
@@ -97,11 +120,30 @@ class EditAnnouncements extends React.Component {
                             onClick={this.handleCancel}
                         >Cancel
                         </button>
-  
                     </div>
+                </div>
+
+                <hr/>
+
+                <div className="editAnnouncements">
+                    <h2>Edit Announcements</h2>
+                    <p>Expire Date:</p>
+                    {this.state.announcements !== "" ? 
+                        this.state.announcements.map(value => 
+                            <EditSingleAnnouncement 
+                                key={"singleAnnouncment" + value.id} 
+                                announcement={value}
+                                retrieveAnnouncements={this.retrieveAnnouncements}
+                            />) : null}
+                   
                 </div>
             </div>
         )
+    }
+
+    componentDidMount() {        
+        
+        this.retrieveAnnouncements();
     }
 }
 

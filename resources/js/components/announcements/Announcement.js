@@ -12,7 +12,6 @@ class Announcement extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <div className="announcement">
                 <img src="../../images/icons/horn_icon.png"></img>

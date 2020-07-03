@@ -348,11 +348,12 @@ h1 {
 }
 
 .announcement img {
-  width: 75px;
-  height: 75px;
+  width: 65px;
+  height: 65px;
   float: left;
   margin-left: 10px;
   margin-right: 10px;
+  padding: 10px;
 }
 
 .announcement p {
@@ -368,19 +369,24 @@ h1 {
   bottom: 0;
 }
 
-.editAnnouncement .addAnnouncement {
+.announcementModule h2 {
+  margin: 0;
+  text-decoration: underline;
+}
+
+.announcementModule .addAnnouncement {
   overflow: hidden;
   clear: both;
 }
 
-.editAnnouncement .addAnnouncement p {
+.announcementModule .addAnnouncement p {
   text-align: left !important;
   width: 100%;
   margin-bottom: 10px;
   font-size: 1.2em;
 }
 
-.editAnnouncement .addAnnouncement .expireDate {
+.announcementModule .addAnnouncement .expireDate {
   width: 140px;
   height: 30px;
   float: left;
@@ -388,7 +394,7 @@ h1 {
   font-size: 1.1em;
 }
 
-.editAnnouncement .addAnnouncement textarea {
+.announcementModule .addAnnouncement textarea {
   width: 650px;
   height: 60px;
   float: left;
@@ -397,13 +403,13 @@ h1 {
   font-size: 1.3em;
 }
 
-.editAnnouncement .addAnnouncement div {
+.announcementModule .addAnnouncement div {
   width: 100%;
   float: left;
   clear: both;
 }
 
-.editAnnouncement .addAnnouncement div .submitAnnouncement {
+.announcementModule .addAnnouncement div .submitAnnouncement {
   width: 100px;
   height: 30px;
   float: left;
@@ -411,12 +417,64 @@ h1 {
   margin: 10px 25px 10px 10px;
 }
 
-.editAnnouncement .addAnnouncement div .cancelAnnouncement {
+.announcementModule .addAnnouncement div .cancelAnnouncement {
   width: 100px;
   height: 30px;
   float: left;
   background-color: #ffb3b3;
   margin: 10px 5px 10px 10px;
+}
+
+.announcementModule .editAnnouncements {
+  overflow: hidden;
+  clear: both;
+}
+
+.announcementModule .editAnnouncements h2 {
+  margin: 0;
+  text-decoration: underline;
+}
+
+.announcementModule .editAnnouncements p {
+  text-align: left !important;
+  margin-left: 5px;
+  font-size: 1.1em;
+}
+
+.announcementModule .editAnnouncements .singleAnnouncment {
+  height: 90px;
+}
+
+.announcementModule .editAnnouncements .singleAnnouncment .announceDate {
+  width: 125px;
+  height: 30px;
+  float: left;
+  margin-right: 10px;
+  font-size: 1em;
+}
+
+.announcementModule .editAnnouncements .singleAnnouncment .announceMessage {
+  width: 575px;
+  height: 60px;
+  float: left;
+  font-size: 1em;
+}
+
+.announcementModule .editAnnouncements .singleAnnouncment .updateButton {
+  background-color: #b3ffb3;
+  width: 75px;
+  height: 35px;
+  float: left;
+  padding: 5px;
+  margin-left: 10px;
+}
+
+.announcementModule .editAnnouncements .singleAnnouncment .deleteButton {
+  background-color: red;
+  height: 35px;
+  padding: 5px;
+  margin-left: 10px;
+  float: left;
 }
 
 .authenticate {
@@ -790,7 +848,7 @@ tr:nth-child(even) {
 }
 
 .editLineEvent .editDate {
-  width: 115px;
+  width: 113px;
   height: 25px;
   font-size: 0.9em;
   margin-right: 15px;
@@ -798,7 +856,7 @@ tr:nth-child(even) {
 }
 
 .editLineEvent .editEvent {
-  width: 240px;
+  width: 232px;
   height: 25px;
   font-size: 0.9em;
   margin-right: 15px;
@@ -806,7 +864,7 @@ tr:nth-child(even) {
 }
 
 .editLineEvent .editNote {
-  width: 310px;
+  width: 280px;
   height: 25px;
   font-size: 0.9em;
   margin-right: 15px;
@@ -816,7 +874,7 @@ tr:nth-child(even) {
 .editLineEvent button {
   height: 32px;
   float: left;
-  margin-right: 10px;
+  margin-right: 9px;
 }
 
 .editLineEvent .updateButton {

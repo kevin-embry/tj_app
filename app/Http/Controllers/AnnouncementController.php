@@ -38,11 +38,13 @@ class AnnouncementController extends Controller
        
     }
 
+    //MEED TO ADD EXPIREDATE AS BELOW!!!!!!!!!!!!!!!!!!!
     public function getAnnouncements(Request $request)
     {
-       
+        $now = date("Y-m-d H:i");
         try {
             $query = DB::table('announcements')
+                // ->where('expiredate', ">=" , $now)
                 ->orderBy('expiredate', 'asc')  
                 ->get();
             return response(json_encode($query), 200);
@@ -50,6 +52,45 @@ class AnnouncementController extends Controller
             return response(json_encode($exception->getMessage()), 500);
         }
     }
+
+    public function updateAnnouncement(Request $request)
+    {
+       
+        $data = $request->all();
+        $now = date("Y-m-d H:i");
+        try {
+            $query = DB::table('announcements')
+            ->where('id', $data['id'])
+            ->update([
+                'expiredate' => $data['expireDate'],
+                'message' => $data['message'],
+                'updated_on' => $now
+            ]); 
+            return response(json_encode($query), 200);
+        } catch (\Illuminate\Database\QueryException $exception) {            
+            return response(json_encode($exception->getMessage()), 500);
+        }      
+            // return $data;
+    }
+
+    public function deleteAnnouncement(Request $request)
+    {
+       
+        $data = $request->all();
+        try{
+            $query = DB::table('announcements')
+                ->where('id', $data['id'])
+                ->delete();
+            return response(json_encode($query), 200);         
+        } catch (\Illuminate\Database\QueryException $exception) {
+            return response(json_encode($exception->getMessage()), 500);
+        }
+
+        // return $data;
+    }
+
+
+
 
     
 }

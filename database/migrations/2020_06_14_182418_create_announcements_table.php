@@ -17,7 +17,8 @@ class CreateAnnouncementsTable extends Migration
     //         $table->id();
     //         $table->date('postdate');
     //         $table->date('expiredate');           
-    //         $table->string('message', 250);            
+    //         $table->string('message', 250); 
+            // $table->date('updated_on')->nullable();              
     //     });
     // }
 

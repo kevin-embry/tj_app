@@ -9,7 +9,7 @@ export default class Welcome extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            announcements: "",
+            announcements: [],
             welcomemessage: "",
             lastUpdate: "",
             user: {},
