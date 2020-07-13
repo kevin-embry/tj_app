@@ -5,7 +5,6 @@ export default class Footer extends React.Component {
     constructor(props){
         super(props)
         this.state = {lastUpdate: ""};
-
         this.dataSource = new RestDataSource("/getLastUpdate");   
     }    
 

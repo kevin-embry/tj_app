@@ -206,12 +206,9 @@ export default class EditUsers extends React.Component {
                       </div>
                     <p className={"error text_center " + this.state.userUpdateFailed}>User Update Failed</p> 
                     <p className={"valid text_center " + this.state.userUpdateSuccess}>User Updated</p>  
-                    <p className={"error text_center " + this.state.userDelete}>User Deleted</p>     
-                                            
-                  </div>
-                                  
+                    <p className={"error text_center " + this.state.userDelete}>User Deleted</p>  
+                  </div>         
               </div>
-              
             </div>
         )
     }

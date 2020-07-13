@@ -1,9 +1,8 @@
 import React from 'react';
-import { AuthContext, useAuth } from '../context/auth';
+// import { AuthContext, useAuth } from '../context/auth';
 import { RestDataSource } from '../webservice/RestDataSource';
 import Axios from 'axios';
 import Announcement from './announcements/Announcement';
-
 
 export default class Welcome extends React.Component {
     constructor(props){
@@ -17,8 +16,7 @@ export default class Welcome extends React.Component {
             originalMessage: "",
             showUpdateMessage: "hide"
         }               
-        this.dataSource = new RestDataSource("/getWelcome"); 
-        // this.retrieveAnnouncements(); 
+        this.dataSource = new RestDataSource("/getWelcome");
         this.handleEditClick = this.handleEditClick.bind(this);
         this.handleUpdateMessage = this.handleUpdateMessage.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,8 +28,7 @@ export default class Welcome extends React.Component {
         this.setState({
             originalMessage: this.state.welcomemessage,
             editMode: true
-        });   
-       
+        }); 
     }
 
     handleCancel(e) {
@@ -120,7 +117,8 @@ export default class Welcome extends React.Component {
                         {this.state.editMode === true ? <button className="cancelChange" onClick={this.handleCancel}>Cancel</button> : "" }
                         {this.state.editMode === true ? <button className="submitChange" onClick={this.handleSubmit}>Submit</button>  : "" }  
                     </div>
-                </div>             
+                </div>
+                {/* *****************NEED TO UPDATE THIS TO FILTER OUT EXPIRE ANNOUNCEMENTS!!!              */}
                 {this.state.announcements !== "" ? this.state.announcements.map(value => <Announcement key={"announcement"+value.id} data={value} />) : null}
                
             </div>

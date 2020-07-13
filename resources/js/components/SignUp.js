@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import {CREWS, DIVISIONS} from '../data/tjConstants'
 import DataChecker from '../data/DataChecker';
 import Axios from 'axios';
-import { Link } from 'react-router-dom';
-import { AuthContext, useAuth } from '../context/auth';
-import { Redirect } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+// import { AuthContext, useAuth } from '../context/auth';
+// import { Redirect } from 'react-router-dom';
 
 function SignUp(props) {
     
@@ -29,7 +29,6 @@ function SignUp(props) {
     })
 
     function handleChange(evt) {
-        // console.log("HERE1");
         evt.target.name == "firstName" ? setFirstName(evt.target.value) : "";
         evt.target.name == "lastName" ? setLastName(evt.target.value) : "";
         evt.target.name == "email" ? setEmail(evt.target.value) : "";
@@ -152,17 +151,6 @@ function SignUp(props) {
         var doPasswordsMatch = checkIfPasswordsMatch();
         var errors = checkAllFields();
         if (doPasswordsMatch && errors.length == 0) {
-            // console.log({
-            //     firstName: firstName,
-            //    lastName: lastName,
-            //    email: email,
-            //    servedOnBoard: servedOnBoard,
-            //    division: division,
-            //    job: job,
-            //    crew: crew,
-            //    password: password2
-            // });
-
            Axios.post("/register", {
                firstName: firstName,
                lastName: lastName,
@@ -179,11 +167,9 @@ function SignUp(props) {
            }).catch( (error) => {
                console.error(error);
            })
-
         } else {
             console.log("THERE ARE DATA ERRORS!");
         }
-        
     }
 
     return (
@@ -272,13 +258,11 @@ function SignUp(props) {
                     {(fnError || lnError || emailError) ? <InfoError /> : ""}
                     {(passwordsMatch !== null && passwordsMatch === false) ? <PasswordError /> : ""}
                 </div>
-
                 <button 
                 type="button"
                 className="submitlogin"
                 onClick={handleSubmit}
-                >Sign Up</button>                       
-                
+                >Sign Up</button>
             </form>
         </div>
     )

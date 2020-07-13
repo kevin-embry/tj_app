@@ -1,6 +1,6 @@
 import React from 'react';
 import Axios from 'axios';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 
 class AdminModule extends React.Component {
     constructor(props) {
@@ -69,14 +69,13 @@ class AdminModule extends React.Component {
         })
     }
 
-    // DOESNT WORK!!!!!!!
+    // DOESNT WORK!!!!!!! DOES IT??? CHECK ON THIS!
     handleCancel(e){
         this.clearFields();
         this.props.goHome();
     }
 
     render() {
-        // console.log(this.props);
         return (
             <div className="historyAdmin borderModule">
                 <h1>Admin Mode - {this.props.moduleName}</h1>
