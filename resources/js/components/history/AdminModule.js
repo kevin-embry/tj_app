@@ -106,8 +106,7 @@ class AdminModule extends React.Component {
                
                {/* TODO: ADD ICONS IN BUTTONS BELOW. CHANGE SUBMIT TO ADD */}
                 <div className="historyAdminButtons">
-                    <button className="historyAdminSubmit" onClick={this.handleNewEvent}>Submit</button>
-                    {/* NEED TO HANDLE CANCEL STILL!!!! */}
+                    <button className="historyAdminSubmit" onClick={this.handleNewEvent}>Submit</button>                   
                     <button className="historyAdminCancel" onClick={this.handleCancel}>Cancel</button>
                     <button type="button" className="historyAdminClear" onClick={this.clearFields}>Clear Fields</button>
                 </div>

@@ -1,20 +1,17 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import Axios from 'axios';
-import { useHistory, BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-// import { RestDataSource } from '../webservice/RestDataSource';
+import { useHistory, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import PrivateRoute from '../PrivateRoute';
 import { AuthContext, useAuth } from '../context/auth';
 import Authenticate from './Authenticate';
 import Header from './Header';
 import Menu from './Menu';
-import AdminMenu from './AdminMenu';
-// import NewAppMessage from './NewAppMessage';
 import Welcome from './Welcome';
 import Timeline from './history/Timeline'
 import Awards from './history/Awards'
 import MissleLaunches from './history/MissleLaunches'
-import DeckLogs from './DeckLogs';
+import DeckLogs from './decklogs/DeckLogs';
 import Crew from './Crew';
 import AboutUs from './AboutUs';
 import Footer from './Footer';
@@ -31,7 +28,6 @@ function App(props) {
     var existingTokens = JSON.parse(localStorage.getItem("TJUser"));
     existingTokens = (existingTokens !== null) && (existingTokens.expire > new Date() ) ? existingTokens : disableToken(); 
     const [authTokens, setAuthTokens] = useState(existingTokens);
-    // const [adminMode, setAdminMode] = useState(false);
     const [adminMode, setAdminMode] = useState(JSON.parse(localStorage.getItem("TJEditMode")));
     const [newApplicants, setNewApplicants] = useState(getNewApplicants());
     const [newUserNumber, setNewUserNumber] = useState(0);
@@ -71,13 +67,9 @@ function App(props) {
             <Router history={history}>
                 <div className="mainapp">
                     <Header {...props} />
-                    {/* {(adminMode === true) ? <AdminMenu newUsers={newUserNumber}/> : ""} */}
                     <Menu {...props} adminMode={adminMode} newUsers={newUserNumber}/>
                     <div className="body">
                         <UserContainer user={authTokens} adminMode={adminMode} adminModeCallback={toggleAdminMode}/>
-
-                        {/* I DONT WANT TO USE BELOW COMPONENT ANY MORE!!!! */}
-                        {/* {(adminMode === true && newUserNumber > 0) ? <NewAppMessage /> : "" } */}   
                         
                         <Switch>
                             <Route exact path="/" render={(props) => <Welcome {...props} adminMode={adminMode} user={authTokens} />} />
@@ -90,11 +82,11 @@ function App(props) {
                             <Route path="/history/timeline" render={(props) => <Timeline {...props} adminMode={adminMode} referer="/history/timeline"/> } />
                             <Route path="/history/awards" render={(props) => <Awards {...props} adminMode={adminMode} referer="/history/awards"/> } />
                             <Route path="/history/launches" render={(props) => <MissleLaunches {...props} adminMode={adminMode} referer="/history/misslelaunches"/> } />
-                            {/* <PrivateRoute path="/history/timeline" referer="/history/timeline" adminMode={adminMode} component={Timeline} /> */}
 
                             <Route path="/editannouncements" render={(props) => <EditAnnouncements {...props} adminMode={adminMode} />} />
                             
-                            <PrivateRoute path="/decklogs" referer="/decklogs" component={DeckLogs} />
+                            <Route path="/decklogs" render={(props) => <DeckLogs {...props} adminMode={adminMode} />} />
+                            {/* <PrivateRoute path="/decklogs" referer="/decklogs" component={DeckLogs} /> */}
                             <PrivateRoute path="/crew" referer="/crew" component={Crew} />
                             <Route component={UnderConstruction}/>
                         </Switch>

@@ -74,3 +74,10 @@ Route::get('/getAnnouncements', 'AnnouncementController@getAnnouncements');
 Route::post('/updateAnnouncement', 'AnnouncementController@updateAnnouncement');
 Route::post('/deleteAnnouncement', 'AnnouncementController@deleteAnnouncement');
 
+//DECKLOGS
+Route::post('/storeDecklog', 'DecklogsController@store');
+Route::get('/getDeckLogs', 'DecklogsController@index');
+Route::post('/showDecklogs', 'DecklogsController@show');
+Route::post('/filterData', 'DecklogsController@getFilterData');
+
+

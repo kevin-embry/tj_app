@@ -27,6 +27,7 @@
 
 .error {
   color: red;
+  margin: 0;
 }
 
 .valid {
@@ -934,6 +935,213 @@ tr:nth-child(even) {
       -ms-user-select: none;
           user-select: none;
   cursor: pointer;
+}
+
+.decklogs .dlAdmin {
+  overflow: hidden;
+  clear: both;
+}
+
+.decklogs .dlAdmin .infoContainer {
+  height: 35px;
+  margin-top: 15px;
+}
+
+.decklogs .dlAdmin .infoContainer label {
+  float: left;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  font-size: 1.2em;
+}
+
+.decklogs .dlAdmin .infoContainer .logDate {
+  width: 125px;
+  height: 20px;
+  float: left;
+  margin-right: 10px;
+  font-size: 1em;
+}
+
+.decklogs .dlAdmin .infoContainer .patrolNumber {
+  width: 160px;
+  height: 20px;
+  float: left;
+  margin-right: 10px;
+  font-size: 1em;
+}
+
+.decklogs .dlAdmin .infoContainer .patrolNotes {
+  width: 230px;
+  height: 20px;
+  float: left;
+  margin-right: 10px;
+  font-size: 1em;
+}
+
+.decklogs .dlAdmin .filesContainer {
+  overflow: hidden;
+  clear: both;
+}
+
+.decklogs .dlAdmin .filesContainer p {
+  text-align: left;
+  clear: both;
+  margin: 0 0 5px 0;
+  font-size: 1.1em;
+}
+
+.decklogs .dlAdmin .filesContainer .dlFiles {
+  height: 25px;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  font-size: 1em;
+  color: transparent;
+}
+
+.decklogs .dlAdmin .decklogAdminButtons {
+  margin-top: 15px;
+}
+
+.decklogs .dlAdmin .decklogAdminButtons button {
+  height: 30px;
+  font-size: 1.1em;
+}
+
+.decklogs .dlAdmin .decklogAdminButtons .dlAdminSubmit {
+  background-color: #b3ffb3;
+  margin-right: 20px;
+}
+
+.decklogs .dlAdmin .decklogAdminButtons .dlAdminCancel {
+  background-color: #ffb3b3;
+  margin-right: 20px;
+}
+
+.decklogs .dlAdmin .decklogAdminButtons .dlAdminClear {
+  background-color: #4db8ff;
+}
+
+.decklogs .logSelectContainer {
+  position: relative;
+}
+
+.decklogs .logSelectContainer .filterContainer {
+  width: 720px;
+  margin: 20px auto auto auto;
+  height: 50px;
+  clear: both;
+}
+
+.decklogs .logSelectContainer .filterContainer .logYear {
+  float: left;
+  width: 175px;
+}
+
+.decklogs .logSelectContainer .filterContainer .logYear p {
+  margin: 0 0 5px 0;
+  text-align: left;
+  font-size: 1.2em;
+}
+
+.decklogs .logSelectContainer .filterContainer .logYear select {
+  float: left;
+  height: 20px;
+  font-size: 1em;
+}
+
+.decklogs .logSelectContainer .filterContainer .logMonth {
+  float: left;
+  width: 175px;
+}
+
+.decklogs .logSelectContainer .filterContainer .logMonth p {
+  margin: 0 0 5px 0;
+  text-align: left;
+  font-size: 1.2em;
+}
+
+.decklogs .logSelectContainer .filterContainer .logMonth select {
+  float: left;
+  height: 20px;
+  font-size: 1em;
+}
+
+.decklogs .logSelectContainer .filterContainer .logDay {
+  float: left;
+  width: 175px;
+}
+
+.decklogs .logSelectContainer .filterContainer .logDay p {
+  margin: 0 0 5px 0;
+  text-align: left;
+  font-size: 1.2em;
+}
+
+.decklogs .logSelectContainer .filterContainer .logDay select {
+  float: left;
+  height: 20px;
+  font-size: 1em;
+}
+
+.decklogs .logSelectContainer .filterContainer .filterSearch {
+  float: left;
+  width: 175px;
+}
+
+.decklogs .logSelectContainer .filterContainer .filterSearch p {
+  margin: 0 0 5px 0;
+  text-align: left;
+  font-size: 1.2em;
+}
+
+.decklogs .logSelectContainer .filterContainer .filterSearch button {
+  float: left;
+  height: 22px;
+  font-size: 1em;
+  background-color: #ffffff;
+}
+
+.decklogs .decklogViewer {
+  position: relative;
+  width: 85%;
+  background-color: #f2f2f2;
+  border-radius: 15px;
+  border: 8px double #3A3F3B;
+  margin: auto;
+}
+
+.decklogs .decklogViewer h2 {
+  margin: 10px;
+}
+
+.decklogs .decklogViewer label {
+  font-weight: bold;
+}
+
+.decklogs .decklogViewer p {
+  font-size: 1.3em;
+  margin: 5px;
+}
+
+.decklogs .decklogViewer .singleDecklog {
+  margin: 10px auto auto auto;
+  width: 100%;
+  height: 1000px;
+}
+
+.decklogs .logResults {
+  margin: auto;
+  font-size: 1em;
+  border-collapse: collapse;
+}
+
+.decklogs .logResults tbody tr td {
+  font-size: 1.1em;
+  font-family: arial, sans-serif;
+  cursor: pointer;
+  padding: 15px;
+  border: none;
 }
 
 .underconstruction {

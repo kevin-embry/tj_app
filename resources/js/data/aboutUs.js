@@ -1,4 +1,4 @@
 export const ABOUTUS = [
      "The U.S.S Thomas Jefferson 618 Association was established on September 25 1993. It is an organzation for the veterens of the submarine USS Thomas Jefferson SSN/SSBN 618. Our primary purpose is to maintain awareness and camaraderie among former crewmembers, officers and enlisted who served aboard the Thomas Jefferson from the commisioning in the 1960\'s until the decommissioning in 1985. We provide opportunities to renew old aquaintances and pay devotional respects to the memory of former shipmates.",
-     "This website was created to commemorate the history of our proud submarine and its sailors. We hope it helps portray the daily activities and proud moments of the ships history."
+     "This website was created to commemorate the history of our proud submarine and its sailors. We hope it helps portray the daily activities and proud moments of our ships history."
 ]
