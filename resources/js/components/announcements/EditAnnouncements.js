@@ -141,9 +141,14 @@ class EditAnnouncements extends React.Component {
         )
     }
 
-    componentDidMount() {        
-        
+    componentDidMount() { 
         this.retrieveAnnouncements();
+    }
+
+    componentDidUpdate(prevProps) {
+        if(this.props !== prevProps) {
+            this.props.adminMode === false ? this.redirectToHome() : null;
+        }
     }
 }
 

@@ -8,6 +8,7 @@ export default class Welcome extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            today: new Date(),
             announcements: [],
             welcomemessage: "",
             lastUpdate: "",
@@ -118,8 +119,12 @@ export default class Welcome extends React.Component {
                         {this.state.editMode === true ? <button className="submitChange" onClick={this.handleSubmit}>Submit</button>  : "" }  
                     </div>
                 </div>
-                {/* *****************NEED TO UPDATE THIS TO FILTER OUT EXPIRE ANNOUNCEMENTS!!!              */}
-                {this.state.announcements !== "" ? this.state.announcements.map(value => <Announcement key={"announcement"+value.id} data={value} />) : null}
+
+                    {this.state.announcements !== "" ? this.state.announcements.map((value) => {
+                        if(new Date(value.expiredate) >= this.state.today) {
+                            return <Announcement key={"announcement"+value.id} data={value} />
+                        }
+                    }) : null}
                
             </div>
         );

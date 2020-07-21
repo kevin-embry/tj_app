@@ -20,12 +20,13 @@ import UserContainer from './UserContainer';
 import EditUsers from './EditUsers';
 import UnderConstruction from './UnderConstruction';
 import EditAnnouncements from './announcements/EditAnnouncements';
+// import DeckLogResults from '../fragments/DeckLogResults';
 
 function App(props) {  
   
     let history = useHistory();
     
-    var existingTokens = JSON.parse(localStorage.getItem("TJUser"));
+    let existingTokens = JSON.parse(localStorage.getItem("TJUser"));
     existingTokens = (existingTokens !== null) && (existingTokens.expire > new Date() ) ? existingTokens : disableToken(); 
     const [authTokens, setAuthTokens] = useState(existingTokens);
     const [adminMode, setAdminMode] = useState(JSON.parse(localStorage.getItem("TJEditMode")));
@@ -72,22 +73,34 @@ function App(props) {
                         <UserContainer user={authTokens} adminMode={adminMode} adminModeCallback={toggleAdminMode}/>
                         
                         <Switch>
+                            {/* PUBLIC ROUTES */}
                             <Route exact path="/" render={(props) => <Welcome {...props} adminMode={adminMode} user={authTokens} />} />
                             <Route path="/login" render={(props) => <Authenticate {...props} />} />
                             <Route path="/signup" render={(props) => <SignUp {...props} />} />
                             <Route path="/about" component={AboutUs} />
 
-                            <Route exact path="/editusers" render={(props) => <EditUsers {...props} adminMode={adminMode} newUserCallback={getNewApplicants}/>} />
-                           
-                            <Route path="/history/timeline" render={(props) => <Timeline {...props} adminMode={adminMode} referer="/history/timeline"/> } />
-                            <Route path="/history/awards" render={(props) => <Awards {...props} adminMode={adminMode} referer="/history/awards"/> } />
-                            <Route path="/history/launches" render={(props) => <MissleLaunches {...props} adminMode={adminMode} referer="/history/misslelaunches"/> } />
-
-                            <Route path="/editannouncements" render={(props) => <EditAnnouncements {...props} adminMode={adminMode} />} />
+                            {/* PRIVATE ROUTES */}
+                            {/* <Route exact path="/editusers" render={(props) => <EditUsers {...props} adminMode={adminMode} newUserCallback={getNewApplicants}/>} /> */}
+                            <PrivateRoute path="/editusers" referer="/editusers" adminMode={adminMode} newUserCallback={getNewApplicants} component={EditUsers}  />
+                          
+                            {/* <Route path="/history/timeline" render={(props) => <Timeline {...props} adminMode={adminMode} referer="/history/timeline"/> } /> */}
+                            <PrivateRoute path="/history/timeline" referer="/history/timeline" adminMode={adminMode} component={Timeline}  />
                             
-                            <Route path="/decklogs" render={(props) => <DeckLogs {...props} adminMode={adminMode} />} />
-                            {/* <PrivateRoute path="/decklogs" referer="/decklogs" component={DeckLogs} /> */}
+                            {/* <Route path="/history/awards" render={(props) => <Awards {...props} adminMode={adminMode} referer="/history/awards"/> } /> */}
+                            <PrivateRoute path="/history/awards" referer="/history/awards" adminMode={adminMode} component={Awards}  />
+
+                            {/* <Route path="/history/launches" render={(props) => <MissleLaunches {...props} adminMode={adminMode} referer="/history/misslelaunches"/> } /> */}
+                            <PrivateRoute path="/history/launches" referer="/history/launches" adminMode={adminMode} component={MissleLaunches}  />
+
+                            {/* <Route path="/editannouncements" render={(props) => <EditAnnouncements {...props} adminMode={adminMode} />} /> */}
+                            <PrivateRoute path="/editannouncements" referer="/editannouncements" adminMode={adminMode} component={EditAnnouncements}  />
+                            
+                            {/* <Route path="/decklogs" render={(props) => <DeckLogs {...props} adminMode={adminMode} />} /> */}
+                            <PrivateRoute path="/decklogs" referer="/decklogs" adminMode={adminMode} component={DeckLogs}  />
+
                             <PrivateRoute path="/crew" referer="/crew" component={Crew} />
+
+                            {/* CATCH-ALL ROUTE FOR ANYTHING NOT FINISHED IE: UNDER CONSTRUCTION  */}
                             <Route component={UnderConstruction}/>
                         </Switch>
                     </div>

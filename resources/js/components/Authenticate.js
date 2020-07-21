@@ -14,6 +14,8 @@ function Authenticate(props) {
    
     const referer = props.location.state.referer || "/";
 
+
+    // THIS NEEDS TO BE A POST REQUEST!!!!!
     function postLogin(e) {
         e.preventDefault();
         if (email !== "" && email !== null && password !== "" && password !== null) {

@@ -94,15 +94,15 @@ class DeckLogs extends React.Component {
         .then((response) => {
             switch(action) {
                 case "getYears":
-                    console.log("GET YEARS");
+                    // console.log("GET YEARS");
                     this.setState({validYears: response.data});
                     break;
                 case "getMonths":
-                    console.log("GET MONTHS");
+                    // console.log("GET MONTHS");
                     this.setState({validMonths: response.data});
                     break;
                 case "getDays":
-                    console.log("GET DAYS");
+                    // console.log("GET DAYS");
                     this.setState({validDays: response.data});
                     break;
                 default:

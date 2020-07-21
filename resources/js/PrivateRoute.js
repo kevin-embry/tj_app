@@ -1,17 +1,17 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, withRouter } from 'react-router-dom';
 import { useAuth } from './context/auth';
 
 function PrivateRoute({ component: Component, ...rest }) {
     const { authTokens } = useAuth();  
-    const ref = {...rest};  
+    const ref = {...rest}; 
 
     return(
         <Route 
             {...rest} 
             render={ props => 
                 authTokens ? ( 
-                    <Component {...props} /> ) : ( 
+                    <Component {...rest} /> ) : (     
                     <Redirect to={{
                         pathname: "/login",
                         state: { referer: ref.referer }
@@ -21,4 +21,4 @@ function PrivateRoute({ component: Component, ...rest }) {
     );
 }
 
-export default PrivateRoute;
+export default withRouter(PrivateRoute);

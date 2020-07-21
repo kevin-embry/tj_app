@@ -1,5 +1,6 @@
 import React from 'react';
 import Axios from 'axios';
+import {Redirect} from 'react-router-dom';
 import EditUsersLine from '../fragments/EditUsersLine';
 
 export default class EditUsers extends React.Component {
@@ -219,7 +220,9 @@ export default class EditUsers extends React.Component {
 
     componentDidUpdate(prevProps) {
         if(this.props !== prevProps) {
-            this.props.adminMode === false ? this.props.history.push("/") : null;
+            // this.props.adminMode === false ? this.props.history.push("/") : null;
+            console.log("COMPONENT UPDATED!");
+            this.props.adminMode === false ? this.goHome() : null;
         }
     }
 }

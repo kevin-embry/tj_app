@@ -17,6 +17,8 @@ class DeckLogResults extends React.Component {
         return [month,day,year].join('-');
       }
 
+    //TODO:
+    // THE RESULTS NEED TO BE SORTED BY DATE ASCENDING!!!!!  
     buildResults() {
         var startSlice = 0;
         var endSlice = 4;
