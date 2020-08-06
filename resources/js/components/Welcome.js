@@ -146,6 +146,9 @@ export default class Welcome extends React.Component {
             this.setState({
                 user: this.props.user
             })
+            if(this.props.user === null) {
+                this.setState({editMode: false})
+            }
         }        
     }
     

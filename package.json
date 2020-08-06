@@ -23,9 +23,12 @@
         "resolve-url-loader": "^3.1.0",
         "sass": "^1.15.2",
         "sass-loader": "^8.0.0",
-        "vue-template-compiler": "^2.6.11"
+        "vue-template-compiler": "^2.6.11",
+        "react-dropzone": "^4.2.11",
+        "react-images": "^1.1.0",
+        "react-photo-gallery": "^6.0.28"
     },
-    "dependencies": {       
+    "dependencies": {
         "react-router-dom": "^5.2.0"
     }
 }

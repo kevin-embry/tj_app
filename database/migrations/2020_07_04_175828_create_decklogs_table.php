@@ -11,26 +11,26 @@ class CreateDecklogsTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::create('decklogs', function (Blueprint $table) {
-            $table->id();
-            $table->date('postdate');
-            $table->date('logdate');
-            $table->string('patrolnumber')->nullable();
-            $table->string('patrolnotes')->nullable();
-            $table->string('file');
-            $table->timestamps();
-        });
-    }
+    // public function up()
+    // {
+    //     Schema::create('decklogs', function (Blueprint $table) {
+    //         $table->id();
+    //         $table->date('postdate');
+    //         $table->date('logdate');
+    //         $table->string('patrolnumber')->nullable();
+    //         $table->string('patrolnotes')->nullable();
+    //         $table->string('file');
+    //         $table->timestamps();
+    //     });
+    // }
 
     /**
      * Reverse the migrations.
      *
      * @return void
      */
-    public function down()
-    {
-        Schema::dropIfExists('decklogs');
-    }
+    // public function down()
+    // {
+    //     Schema::dropIfExists('decklogs');
+    // }
 }

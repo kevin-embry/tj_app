@@ -26,8 +26,8 @@ export default class Menu extends React.Component {
                     <li className="dropdown">
                         <a className="dropbtn">Photos</a>
                         <div className="dropdown-content">
-                            <Link to="images">Images</Link>
-                            <Link to="/newspapers">Newspapers</Link>
+                            <Link to="/photos/images">Images</Link>
+                            <Link to="/photos/newspapers">Newspapers</Link>
                         </div>
                     </li>
                     <li><Link to="/references">References</Link></li>

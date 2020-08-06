@@ -221,7 +221,7 @@ export default class EditUsers extends React.Component {
     componentDidUpdate(prevProps) {
         if(this.props !== prevProps) {
             // this.props.adminMode === false ? this.props.history.push("/") : null;
-            console.log("COMPONENT UPDATED!");
+            // console.log("COMPONENT UPDATED!");
             this.props.adminMode === false ? this.goHome() : null;
         }
     }

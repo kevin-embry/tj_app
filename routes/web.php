@@ -29,13 +29,15 @@ Route::get('/editannouncements', 'HomeController@index');
 Route::get('/history/timeline', 'HomeController@index');
 Route::get('/history/awards', 'HomeController@index');
 Route::get('/history/launches', 'HomeController@index');
+Route::get('/photos/images', 'HomeController@index');
+
 
 
 
 // REST ROUTES
 
 //USER ROUTES
-Route::get('/authenticate', 'UserController@login');
+Route::post('/authenticate', 'UserController@login');
 Route::post('/register', 'UserController@store');
 Route::get('/getNewUsers', 'UserController@getNewUsers');
 Route::get('/getAllUsers', 'UserController@getAllUsers');
@@ -80,4 +82,9 @@ Route::get('/getDeckLogs', 'DecklogsController@index');
 Route::post('/showDecklogs', 'DecklogsController@show');
 Route::post('/filterData', 'DecklogsController@getFilterData');
 
+//IMAGES
+Route::get('/photos', 'ImagesController@getPhotos');
+Route::post('/photos', 'ImagesController@uploadPhotos');
+Route::delete('/photos', 'ImagesController@deletePhotos');
+Route::get('/galleryNames', 'ImagesController@getGalleryNames');
 

@@ -195,7 +195,7 @@ h1 {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow: hidden;    
 }
 
 .menu li {
@@ -214,7 +214,7 @@ h1 {
   }
 
  .menu li a:hover, .dropdown:hover .dropbtn {
-    background-color: #a6a6a6;;
+    background-color: #a6a6a6;
   }
 
  .menu li.dropdown {
@@ -236,10 +236,12 @@ h1 {
     text-decoration: none;
     display: block;
     text-align: left;
+   
   }
 
   .menu .dropdown-content a:hover {
       background-color: #f1f1f1;
+  
   }
 
   .menu .dropdown:hover .dropdown-content {
@@ -1162,6 +1164,151 @@ input[type=text], input[type=password] {
         }
     }
 }
+
+//*********************Images********************************
+.photoAdmin {
+    overflow: hidden;
+    position: relative;
+    width: 80% !important;
+    // max-height: 1200px;
+
+    .checkbox-container {
+        font-size: 1.2em;
+        width: 100%;
+        margin-bottom: 15px;
+        vertical-align: middle;
+        input[type=checkbox] {
+            margin-right: 20px;
+            margin-top: 0;
+            height: 18px;
+            width: 18px;
+            vertical-align: middle;
+        }
+        
+    }
+}
+.uploader {
+    margin: auto;
+    width: 100%;
+
+   h2 {
+       margin: 0 0 15px 0;
+       text-decoration: underline;
+   }
+   input[type=text] {
+       width: 250px;
+       height: 25px;
+       margin-left: 10px;
+       font-size: 1em !important;
+   }
+
+   .galleryNameContainer {
+       margin-bottom: 15px;
+       p {
+        margin: 0 0 10px 0;
+       }
+   }
+
+    .dropzone_button {
+        width: 150px;
+        height: 23px;
+        background-color: #4db8ff;
+        padding: 16px;
+        font-size: 1.2em;
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 10px auto 10px auto;
+        cursor: pointer;
+        -webkit-box-shadow: 4px 4px 4px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 4px 4px 4px 0px rgba(0,0,0,0.75);
+        box-shadow: 4px 4px 4px 0px rgba(0,0,0,0.75);
+    }
+
+    .upload_button {
+        width: 100px;
+        height: 25px;
+        background-color: #b3ffb3;
+        font-size: 1.2em;
+        margin: auto auto 10px auto; 
+    }
+}
+
+.images {
+    width: 95%;
+    margin: auto;
+    .image {
+        position: relative;
+        float: left;
+        img {
+            // max-width: 280px;
+            max-width: 140px;
+        }
+        span {
+            position: absolute;
+            top: 1px;
+            right: 1px;
+            font-size: 1em;
+            width: 17px;
+            height: 16px;
+            // border-radius: 8px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: white;
+        }
+    }
+}
+
+.progress {
+    width: 500px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: auto;
+    .progress-bar {
+        background-color: #4db8ff;
+        height: 30px;
+        transition: width .2s ease;
+        border-radius: 10px;
+        span{
+            color: white;
+            font-size: 1.5em;
+            float: right;
+          
+        }
+    }
+}
+
+.updateGallery {
+    max-width: 1175px;
+    max-height: 1200px;
+    overflow: auto;
+    h2 {
+        margin: 0 0 15px 0;
+        text-decoration: underline;
+    }
+    .gallerySelection {
+        margin: 20px 0 50px 0;
+        
+        label {
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+        .activeGallery {
+            height: 25px;
+            width: 125px;
+            font-size: 1.1em;
+            margin-right: 20px;
+        }
+        .addImages {
+            height: 18px;
+            width: 18px;
+            vertical-align: middle; 
+            margin-bottom: 6px;
+        }
+    }
+    
+
+}
+
+
 
 //****************************404***************************
 

@@ -12,7 +12,8 @@ import Timeline from './history/Timeline'
 import Awards from './history/Awards'
 import MissleLaunches from './history/MissleLaunches'
 import DeckLogs from './decklogs/DeckLogs';
-import Crew from './Crew';
+// import Crew from './Crew';
+import Photos from './photos/Photos';
 import AboutUs from './AboutUs';
 import Footer from './Footer';
 import SignUp from './SignUp';
@@ -67,7 +68,7 @@ function App(props) {
         <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens}}>
             <Router history={history}>
                 <div className="mainapp">
-                    <Header {...props} />
+                    <Header {...props} adminModeCallback={toggleAdminMode} />
                     <Menu {...props} adminMode={adminMode} newUsers={newUserNumber}/>
                     <div className="body">
                         <UserContainer user={authTokens} adminMode={adminMode} adminModeCallback={toggleAdminMode}/>
@@ -98,7 +99,9 @@ function App(props) {
                             {/* <Route path="/decklogs" render={(props) => <DeckLogs {...props} adminMode={adminMode} />} /> */}
                             <PrivateRoute path="/decklogs" referer="/decklogs" adminMode={adminMode} component={DeckLogs}  />
 
-                            <PrivateRoute path="/crew" referer="/crew" component={Crew} />
+                            {/* <PrivateRoute path="/crew" referer="/crew" component={Crew} /> */}
+
+                            <PrivateRoute path="/photos/images" referer="/photos/images" adminMode={adminMode} component={Photos}  />
 
                             {/* CATCH-ALL ROUTE FOR ANYTHING NOT FINISHED IE: UNDER CONSTRUCTION  */}
                             <Route component={UnderConstruction}/>

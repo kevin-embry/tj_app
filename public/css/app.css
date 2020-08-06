@@ -1144,6 +1144,152 @@ tr:nth-child(even) {
   border: none;
 }
 
+.photoAdmin {
+  overflow: hidden;
+  position: relative;
+  width: 80% !important;
+}
+
+.photoAdmin .checkbox-container {
+  font-size: 1.2em;
+  width: 100%;
+  margin-bottom: 15px;
+  vertical-align: middle;
+}
+
+.photoAdmin .checkbox-container input[type=checkbox] {
+  margin-right: 20px;
+  margin-top: 0;
+  height: 18px;
+  width: 18px;
+  vertical-align: middle;
+}
+
+.uploader {
+  margin: auto;
+  width: 100%;
+}
+
+.uploader h2 {
+  margin: 0 0 15px 0;
+  text-decoration: underline;
+}
+
+.uploader input[type=text] {
+  width: 250px;
+  height: 25px;
+  margin-left: 10px;
+  font-size: 1em !important;
+}
+
+.uploader .galleryNameContainer {
+  margin-bottom: 15px;
+}
+
+.uploader .galleryNameContainer p {
+  margin: 0 0 10px 0;
+}
+
+.uploader .dropzone_button {
+  width: 150px;
+  height: 23px;
+  background-color: #4db8ff;
+  padding: 16px;
+  font-size: 1.2em;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 10px auto 10px auto;
+  cursor: pointer;
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.75);
+}
+
+.uploader .upload_button {
+  width: 100px;
+  height: 25px;
+  background-color: #b3ffb3;
+  font-size: 1.2em;
+  margin: auto auto 10px auto;
+}
+
+.images {
+  width: 95%;
+  margin: auto;
+}
+
+.images .image {
+  position: relative;
+  float: left;
+}
+
+.images .image img {
+  max-width: 140px;
+}
+
+.images .image span {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  font-size: 1em;
+  width: 17px;
+  height: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+}
+
+.progress {
+  width: 500px;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: auto;
+}
+
+.progress .progress-bar {
+  background-color: #4db8ff;
+  height: 30px;
+  transition: width 0.2s ease;
+  border-radius: 10px;
+}
+
+.progress .progress-bar span {
+  color: white;
+  font-size: 1.5em;
+  float: right;
+}
+
+.updateGallery {
+  max-width: 1175px;
+  max-height: 1200px;
+  overflow: auto;
+}
+
+.updateGallery h2 {
+  margin: 0 0 15px 0;
+  text-decoration: underline;
+}
+
+.updateGallery .gallerySelection {
+  margin: 20px 0 50px 0;
+}
+
+.updateGallery .gallerySelection label {
+  font-size: 1.2em;
+  margin-right: 10px;
+}
+
+.updateGallery .gallerySelection .activeGallery {
+  height: 25px;
+  width: 125px;
+  font-size: 1.1em;
+  margin-right: 20px;
+}
+
+.updateGallery .gallerySelection .addImages {
+  height: 18px;
+  width: 18px;
+  vertical-align: middle;
+  margin-bottom: 6px;
+}
+
 .underconstruction {
   width: 50%;
   margin: auto;

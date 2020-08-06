@@ -19,12 +19,13 @@ function Authenticate(props) {
     function postLogin(e) {
         e.preventDefault();
         if (email !== "" && email !== null && password !== "" && password !== null) {
-            const data = axios.get('/authenticate', {
-                params: {
-                    email,
-                    password
-                }
-            })
+            // const data = axios.get('/authenticate', {
+            //     params: {
+            //         email,
+            //         password
+            //     }
+            // })
+            const data = axios.post('/authenticate', { email, password })
             .then((response) => {  
                 var date = new Date();               
                 response.data.expire = date.setHours(date.getHours() + 4);
