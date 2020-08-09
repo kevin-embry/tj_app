@@ -1256,38 +1256,94 @@ tr:nth-child(even) {
   float: right;
 }
 
-.updateGallery {
+.galleryViewer {
   max-width: 1175px;
-  max-height: 1200px;
-  overflow: auto;
+  max-height: 1205px;
+  min-height: 650px;
 }
 
-.updateGallery h2 {
+.galleryViewer h2 {
   margin: 0 0 15px 0;
   text-decoration: underline;
 }
 
-.updateGallery .gallerySelection {
-  margin: 20px 0 50px 0;
+.galleryViewer .gallerySelection {
+  margin: 15px 0 20px 0;
 }
 
-.updateGallery .gallerySelection label {
+.galleryViewer .gallerySelection label {
   font-size: 1.2em;
   margin-right: 10px;
 }
 
-.updateGallery .gallerySelection .activeGallery {
+.galleryViewer .gallerySelection .activeGallery {
   height: 25px;
   width: 125px;
-  font-size: 1.1em;
+  font-size: 1em;
   margin-right: 20px;
 }
 
-.updateGallery .gallerySelection .addImages {
+.galleryViewer .gallerySelection .addImages {
   height: 18px;
   width: 18px;
   vertical-align: middle;
   margin-bottom: 6px;
+}
+
+.updateGallery h2 {
+  margin: 0;
+  text-decoration: underline;
+}
+
+.imageUserModule {
+  overflow: hidden;
+  position: relative;
+  width: 80% !important;
+}
+
+.showImage {
+  margin-bottom: 15px;
+  background-color: linen;
+  position: relative;
+}
+
+.showImage .rightImageScroll {
+  position: absolute;
+  top: calc((100%/2) - 20px);
+  right: 5px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+  background-color: #4db8ff;
+}
+
+.showImage .leftImageScroll {
+  position: absolute;
+  top: calc((100%/2) - 20px);
+  left: 5px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+  background-color: #4db8ff;
+}
+
+.showImage .rightImageScroll:hover {
+  cursor: pointer;
+}
+
+.showImage .leftImageScroll:hover {
+  cursor: pointer;
+}
+
+.showImage .individualImage {
+  max-width: 100%;
+  max-height: 450px;
+}
+
+.react-photo-gallery--gallery {
+  overflow-y: auto;
+  height: 466px;
+  min-height: 565px;
 }
 
 .underconstruction {

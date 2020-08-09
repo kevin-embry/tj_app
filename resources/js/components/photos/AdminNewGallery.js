@@ -8,7 +8,6 @@ class AdminNewGallery extends React.Component {
         this.state = {
             fileIncorrectError: false,
             galleryName: "",
-            // galleryNameError: "",
             failMessages: [],            
             images: [],
             progress: 0,
@@ -69,12 +68,12 @@ class AdminNewGallery extends React.Component {
 
         
         
-        images.map((image) => {
+        images.map( (image) => {
             let formData = new FormData();
             formData.append("file", image);
             formData.append("galleryname", this.state.galleryName.toLowerCase().trim());
  
-             Axios.post("/photos", formData, config)
+            Axios.post("/photos", formData, config)
                 .then(response => {
                     console.log("RESPONSE: ", response);
                     this.setState({uploading: true}); 
@@ -95,8 +94,6 @@ class AdminNewGallery extends React.Component {
                 .catch((error) => {
                     this.buildErrors(error.response.data.errors); 
                     console.log("ERROR=> ", error);
-                    // this.setState({galleryNameError: error.response.data.errors.galleryname})
-                    // setInterval(() => this.setState({failMessages: false}), 4000);
                 })
         });
     }
@@ -105,7 +102,6 @@ class AdminNewGallery extends React.Component {
         return (
             <div className="uploader">
                     <div className="galleryNameContainer">
-                        <h2>New Gallery</h2>
                         <label htmlFor="newGalleryName"><b>New Gallery Name:</b>
                             <input 
                                 name="newGalleryName" 
@@ -181,7 +177,6 @@ class AdminNewGallery extends React.Component {
             </div>
         )
     }
-
 }
 
 export default AdminNewGallery;

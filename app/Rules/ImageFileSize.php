@@ -26,7 +26,7 @@ class ImageFileSize implements Rule
     public function passes($attribute, $value)
     {
         $size = $value->getSize();
-        if ($size < 5000) {
+        if ($size <= 5000) {
             return true; 
         } else {
             $this->fileSize = $size;

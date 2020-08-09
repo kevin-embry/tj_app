@@ -1,5 +1,6 @@
 import React from 'react';
 import AdminModule from './AdminModule';
+import UserModule from './UserModule';
 
 class Photos extends React.Component {
     constructor(props) {
@@ -18,9 +19,15 @@ class Photos extends React.Component {
             <div className="photos">
                 {this.props.adminMode===true ? 
                     <AdminModule 
-                        moduleName="images"                         
+                        adminMode={this.props.adminMode}                         
                         goHome={this.redirectToHome}
-                    /> : null}
+                    />
+                    :
+                    <UserModule
+                        adminMode={this.props.adminMode}
+                        goHome={this.redirectToHome}
+                    />
+                }    
             </div>
         )
     }
