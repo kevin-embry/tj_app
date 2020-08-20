@@ -133,6 +133,8 @@ class GalleryViewer extends React.Component {
                         <hr />
                     </div>
                 }
+
+                {/* TODO: NEED TO SEPERATE OUT THIS INTO ITS OWN COMPONENT */}
                 
                 {this.state.images.length ? 
                     // <Gallery 
