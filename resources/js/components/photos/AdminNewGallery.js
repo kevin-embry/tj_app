@@ -65,8 +65,6 @@ class AdminNewGallery extends React.Component {
             config = {headers: { 'Content-Type': 'multipart/form-data'}},
             total_files = this.state.images.length,
             uploaded = 0;
-
-        
         
         images.map( (image) => {
             let formData = new FormData();

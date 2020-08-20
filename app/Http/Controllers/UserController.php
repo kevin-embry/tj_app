@@ -77,14 +77,16 @@ class UserController extends Controller
         }
     }
 
-    public function getNewUsers(Request $request) {
+    public function getNewUsers(Request $request) 
+    {
         $users = DB::table('user')
                     ->where('approved', 'false')                   
                     ->get();
         return $users;            
     }
 
-    public function getAllUsers() {
+    public function getAllUsers() 
+    {
         $users = DB::table('user')
                     ->orderBy('approved', 'asc')  
                     ->orderBy('lastname', 'asc')                                  
@@ -92,7 +94,8 @@ class UserController extends Controller
         return $users;         
     }
 
-    public function updateUser(Request $request) {
+    public function updateUser(Request $request) 
+    {
         $data = $request->all();
         $date = date('Y-m-d');
         try {
@@ -112,7 +115,8 @@ class UserController extends Controller
         }      
     }
 
-    public function deleteUser(Request $request) {
+    public function deleteUser(Request $request) 
+    {
         $data = $request->all();
         try {
             $query = DB::table('user')
@@ -133,6 +137,11 @@ class UserController extends Controller
         } catch (\Illuminate\Database\QueryException $exception) {            
             return response(json_encode($exception->getMessage()), 500);
         }   
+    }
+
+    public function recoverPassword(Request $request)
+    {
+        return "PERFECT!";
     }
     
 }

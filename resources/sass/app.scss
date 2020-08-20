@@ -1360,7 +1360,24 @@ input[type=text], input[type=password] {
     min-height: 565px;
 }
 
-
+.forgotPassword {
+    .passwordRecoverInput {
+        label {
+            font-size: 1.2em;
+        }
+        .emailInput {
+            width: 300px;
+            height: 30px;
+        }
+    }
+    .passwordRecoverButton {
+        .submitEmail {
+            width: 75px;
+            height: 30px;
+            background-color: #b3ffb3;
+        }
+    }
+}
 
 
 //****************************404***************************

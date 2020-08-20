@@ -30,6 +30,7 @@ Route::get('/history/timeline', 'HomeController@index');
 Route::get('/history/awards', 'HomeController@index');
 Route::get('/history/launches', 'HomeController@index');
 Route::get('/photos/images', 'HomeController@index');
+Route::get('/forgotPassword', 'HomeController@index');
 
 
 
@@ -43,6 +44,7 @@ Route::get('/getNewUsers', 'UserController@getNewUsers');
 Route::get('/getAllUsers', 'UserController@getAllUsers');
 Route::post('/updateUser', 'UserController@updateUser');
 Route::post('/deleteUser', 'UserController@deleteUser');
+Route::post('/recoverPassword', 'UserController@recoverPassword');
 
 //WELCOME PAGE ROUTES
 Route::get('/getWelcome', 'HomeController@getWelcomeMessage');

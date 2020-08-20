@@ -43,7 +43,7 @@ class MakeAdmin extends Command
         $this->info("THIS SCRIPT CREATES THE FIRST ADMIN USER FOR TJHISTORY WEBSITE.");
         $this->info("");
         if ($this->checkIfExists() !== null) {
-            $this->info("SUPERADMIN USER ALREADY EXISTS! SCRIPT WILL EXIT");
+            $this->info("SUPERADMIN USER ALREADY EXISTS! SCRIPT WILL NOW EXIT.");
             exit();
         }
 
@@ -67,6 +67,7 @@ class MakeAdmin extends Command
             );
             $this->info("User Created");
             $this->info("");
+            $this->info("Please note these credentials:");
             $this->info("Email: {$this->email}");
             $this->info("Password: {$this->password}");
         } catch(\Exception $e) {
@@ -80,9 +81,6 @@ class MakeAdmin extends Command
         $this->info("ENTER PASSWORD. PASSWORD SHOULD BE 6 CHARACTERS OR GREATER WITH LETTERS AND NUMBERS");
         $password1 = $this->secret("Enter the password for {$this->email}");
         $password2 = $this->secret("Re-Enter the password for {$this->email}");
-
-
-
         if ($password1 === $password2) {
             $this->checkPassword($password2);
             $this->password = $password2;

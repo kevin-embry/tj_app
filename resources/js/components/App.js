@@ -5,6 +5,7 @@ import { useHistory, BrowserRouter as Router, Route, Switch } from 'react-router
 import PrivateRoute from '../PrivateRoute';
 import { AuthContext, useAuth } from '../context/auth';
 import Authenticate from './Authenticate';
+import ForgotPassword from './ForgotPassword';
 import Header from './Header';
 import Menu from './Menu';
 import Welcome from './Welcome';
@@ -79,6 +80,7 @@ function App(props) {
                             <Route path="/login" render={(props) => <Authenticate {...props} />} />
                             <Route path="/signup" render={(props) => <SignUp {...props} />} />
                             <Route path="/about" component={AboutUs} />
+                            <Route path="/forgotPassword" component={ForgotPassword} />
 
                             {/* PRIVATE ROUTES */}
                             {/* <Route exact path="/editusers" render={(props) => <EditUsers {...props} adminMode={adminMode} newUserCallback={getNewApplicants}/>} /> */}

@@ -35,9 +35,9 @@ class AdminModule extends React.Component {
                 <h1>Admin Mode - Add/Edit Photos</h1>
                 <hr />
                 <div className="checkbox-container">
-                    <label htmlFor="updateGallery">Check To Update Existing Gallery:
+                    <label htmlFor="updateGallery">Update Existing Gallery:
                     <input name="updateGallery" type="checkbox" checked={this.state.updateGallery} onChange={this.handleCheckboxCheck} /></label>
-                    <label htmlFor="newGallery">Check For New Gallery:
+                    <label htmlFor="newGallery">New Gallery:
                     <input name="newGallery" type="checkbox" checked={this.state.newGallery} onChange={this.handleCheckboxCheck} /></label>
                 </div>
                 {this.state.newGallery && <AdminNewGallery />}

@@ -1346,6 +1346,21 @@ tr:nth-child(even) {
   min-height: 565px;
 }
 
+.forgotPassword .passwordRecoverInput label {
+  font-size: 1.2em;
+}
+
+.forgotPassword .passwordRecoverInput .emailInput {
+  width: 300px;
+  height: 30px;
+}
+
+.forgotPassword .passwordRecoverButton .submitEmail {
+  width: 75px;
+  height: 30px;
+  background-color: #b3ffb3;
+}
+
 .underconstruction {
   width: 50%;
   margin: auto;

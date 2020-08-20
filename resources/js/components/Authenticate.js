@@ -103,7 +103,7 @@ function Authenticate(props) {
                         onClick={goHome} 
                         className="cancelbtn"
                         >Cancel</button>
-                    <span className="psw">Forgot <Link to="register">password?</Link></span>
+                    <span className="psw">Forgot <Link to="/forgotPassword">password?</Link></span>
                     </div>
                 </form>
             </div>
