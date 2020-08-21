@@ -130,18 +130,12 @@ class UserController extends Controller
                 $query = DB::table('crew')
                 ->where('email', $data['email'])
                 ->delete(); 
-            }    
-
+            }
             
             return response(json_encode("USER " . $data['email'] . " DELETED"), 200);
         } catch (\Illuminate\Database\QueryException $exception) {            
             return response(json_encode($exception->getMessage()), 500);
         }   
-    }
-
-    public function recoverPassword(Request $request)
-    {
-        return "PERFECT!";
     }
     
 }

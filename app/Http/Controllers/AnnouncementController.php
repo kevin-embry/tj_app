@@ -34,17 +34,14 @@ class AnnouncementController extends Controller
         } catch(\Illuminate\Database\QueryException $exception) {
             return response(json_encode($exception->getMessage()), 500);
         }
-
        
     }
-
-    //MEED TO ADD EXPIREDATE AS BELOW!!!!!!!!!!!!!!!!!!!
+    
     public function getAnnouncements(Request $request)
     {
         $now = date("Y-m-d H:i");
         try {
             $query = DB::table('announcements')
-                // ->where('expiredate', ">=" , $now)
                 ->orderBy('expiredate', 'asc')  
                 ->get();
             return response(json_encode($query), 200);
@@ -70,12 +67,11 @@ class AnnouncementController extends Controller
         } catch (\Illuminate\Database\QueryException $exception) {            
             return response(json_encode($exception->getMessage()), 500);
         }      
-            // return $data;
+            
     }
 
     public function deleteAnnouncement(Request $request)
     {
-       
         $data = $request->all();
         try{
             $query = DB::table('announcements')
@@ -86,11 +82,6 @@ class AnnouncementController extends Controller
             return response(json_encode($exception->getMessage()), 500);
         }
 
-        // return $data;
     }
-
-
-
-
     
 }

@@ -1355,6 +1355,10 @@ tr:nth-child(even) {
   height: 30px;
 }
 
+.forgotPassword .passwordRecoverButton {
+  margin-top: 10px;
+}
+
 .forgotPassword .passwordRecoverButton .submitEmail {
   width: 75px;
   height: 30px;

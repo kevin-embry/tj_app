@@ -5,7 +5,8 @@ class ForgotPassword extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: ""
+            email: "",
+            error: ""
         }
 
         this.handleEmailInput = this.handleEmailInput.bind(this);
@@ -27,7 +28,9 @@ class ForgotPassword extends React.Component {
             console.log(response);
         })
         .catch((error) => {
-            console.log(error);
+            // console.log(error.response.data.errors.email);
+            this.setState({error: error.response.data.errors.email})
+           
         })
     }
 
@@ -42,11 +45,12 @@ class ForgotPassword extends React.Component {
                 <div className="passwordRecoverInput">
                     <label htmlFor="emailInput">Email: </label>
                     <input type="text" className="emailInput" value={this.state.email} onChange={this.handleEmailInput}/>
-                   
-                </div>
+                </div>              
+                {this.state.error && <div className="error">{this.state.error[0]}</div>}        
                 <div className="passwordRecoverButton">
                     <button className="submitEmail" onClick={this.handleSubmit}>Submit</button>
                 </div>
+        
             </div>
         )
     }

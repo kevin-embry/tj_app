@@ -44,7 +44,12 @@ Route::get('/getNewUsers', 'UserController@getNewUsers');
 Route::get('/getAllUsers', 'UserController@getAllUsers');
 Route::post('/updateUser', 'UserController@updateUser');
 Route::post('/deleteUser', 'UserController@deleteUser');
-Route::post('/recoverPassword', 'UserController@recoverPassword');
+
+//PASSWORD RECOVERY ROUTES
+Route::post('/recoverPassword', 'ForgotPasswordController@recoverPassword');
+
+
+
 
 //WELCOME PAGE ROUTES
 Route::get('/getWelcome', 'HomeController@getWelcomeMessage');
