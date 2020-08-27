@@ -29,7 +29,7 @@ class MakeAdmin extends Command
     public function __construct()
     {
         parent::__construct();
-        $this->email = "superadmin@tjhistory.org";
+        $this->email = "superadmin@tj618history.org";
         $this->password = "";
     }
 

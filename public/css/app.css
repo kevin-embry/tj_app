@@ -1346,7 +1346,7 @@ tr:nth-child(even) {
   min-height: 565px;
 }
 
-.forgotPassword .passwordRecoverInput label {
+.forgotPassword label {
   font-size: 1.2em;
 }
 
@@ -1355,11 +1355,16 @@ tr:nth-child(even) {
   height: 30px;
 }
 
-.forgotPassword .passwordRecoverButton {
+.forgotPassword .codeEntry .resetCode {
+  width: 300px;
+  height: 30px;
+}
+
+.forgotPassword .forgotPasswordSubmit {
   margin-top: 10px;
 }
 
-.forgotPassword .passwordRecoverButton .submitEmail {
+.forgotPassword .forgotPasswordSubmit .submitEmail {
   width: 75px;
   height: 30px;
   background-color: #b3ffb3;

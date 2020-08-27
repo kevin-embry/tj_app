@@ -47,6 +47,7 @@ Route::post('/deleteUser', 'UserController@deleteUser');
 
 //PASSWORD RECOVERY ROUTES
 Route::post('/recoverPassword', 'ForgotPasswordController@recoverPassword');
+Route::post('/checkToken', 'ForgotPasswordController@checkResetToken');
 
 
 
