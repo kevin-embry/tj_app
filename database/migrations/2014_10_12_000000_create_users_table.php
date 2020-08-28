@@ -22,7 +22,9 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique(); 
             $table->string('password');
             $table->string('role');
-            $table->string('approved');   
+            $table->string('approved');  
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable(); 
         });
     }    
 
