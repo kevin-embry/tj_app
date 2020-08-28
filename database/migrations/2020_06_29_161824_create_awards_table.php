@@ -11,25 +11,25 @@ class CreateAwardsTable extends Migration
      *
      * @return void
      */
-    // public function up()
-    // {
-    //     Schema::create('awards', function (Blueprint $table) {
-    //         $table->id();
-    //         $table->date('eventdate');
-    //         $table->string('activity', 150);
-    //         $table->text('notes')->nullable();
-    //         $table->date('added_on')->nullable();
-    //         $table->date('updated_on')->nullable();
-    //     });
-    // }
+    public function up()
+    {
+        Schema::create('awards', function (Blueprint $table) {
+            $table->id();
+            $table->date('eventdate');
+            $table->string('activity', 150);
+            $table->text('notes')->nullable();
+            $table->date('added_on')->nullable();
+            $table->date('updated_on')->nullable();
+        });
+    }
 
     /**
      * Reverse the migrations.
      *
      * @return void
      */
-    // public function down()
-    // {
-    //     Schema::dropIfExists('awards');
-    // }
+    public function down()
+    {
+        Schema::dropIfExists('awards');
+    }
 }

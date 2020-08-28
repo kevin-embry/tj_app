@@ -11,24 +11,24 @@ class CreateAnnouncementsTable extends Migration
      *
      * @return void
      */
-    // public function up()
-    // {
-    //     Schema::create('announcements', function (Blueprint $table) {
-    //         $table->id();
-    //         $table->date('postdate');
-    //         $table->date('expiredate');           
-    //         $table->string('message', 250); 
-            // $table->date('updated_on')->nullable();              
-    //     });
-    // }
+    public function up()
+    {
+        Schema::create('announcements', function (Blueprint $table) {
+            $table->id();
+            $table->date('postdate');
+            $table->date('expiredate');           
+            $table->string('message', 250); 
+            $table->date('updated_on')->nullable();              
+        });
+    }
 
     /**
      * Reverse the migrations.
      *
      * @return void
      */
-    // public function down()
-    // {
-    //     Schema::dropIfExists('announcements');
-    // }
+    public function down()
+    {
+        Schema::dropIfExists('announcements');
+    }
 }

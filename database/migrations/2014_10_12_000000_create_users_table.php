@@ -13,18 +13,18 @@ class CreateUsersTable extends Migration
      */
 
      
-    // public function up()
-    // {
-    //     Schema::create('user', function (Blueprint $table) {
-    //         $table->id();
-    //         $table->string('firstname');
-    //         $table->string('lastname');
-    //         $table->string('email')->unique(); 
-    //         $table->string('password');
-    //         $table->string('role');
-    //         $table->string('approved');   
-    //     });
-    // }    
+    public function up()
+    {
+        Schema::create('user', function (Blueprint $table) {
+            $table->id();
+            $table->string('firstname');
+            $table->string('lastname');
+            $table->string('email')->unique(); 
+            $table->string('password');
+            $table->string('role');
+            $table->string('approved');   
+        });
+    }    
 
     /**
      * Reverse the migrations.
@@ -33,9 +33,9 @@ class CreateUsersTable extends Migration
      */
 
    
-    // public function down()
-    // {
-    //     Schema::dropIfExists('users');
-    // }
+    public function down()
+    {
+        Schema::dropIfExists('users');
+    }
   
 }

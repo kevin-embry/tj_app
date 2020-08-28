@@ -13,14 +13,14 @@ class CreateWelcomeTable extends Migration
      */
 
     
-    // public function up()
-    // {
-    //     Schema::create('welcome', function (Blueprint $table) {
-    //         $table->id();   
-    //         $table->date('editdate');             
-    //         $table->text('message', 1000);                 
-    //     });
-    // }
+    public function up()
+    {
+        Schema::create('welcome', function (Blueprint $table) {
+            $table->id();   
+            $table->date('editdate');             
+            $table->text('message', 1000);                 
+        });
+    }
    
     /**
      * Reverse the migrations.
@@ -28,9 +28,9 @@ class CreateWelcomeTable extends Migration
      * @return void
      */
    
-    // public function down()
-    // {
-    //     Schema::dropIfExists('welcome');
-    // }
+    public function down()
+    {
+        Schema::dropIfExists('welcome');
+    }
     
 }

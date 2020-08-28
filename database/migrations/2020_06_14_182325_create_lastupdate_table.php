@@ -11,21 +11,21 @@ class CreateLastupdateTable extends Migration
      *
      * @return void
      */
-    // public function up()
-    // {
-    //     Schema::create('lastupdate', function (Blueprint $table) {
-    //         $table->id();
-    //         $table->date('lastupdate');
-    //     });
-    // }
+    public function up()
+    {
+        Schema::create('lastupdate', function (Blueprint $table) {
+            $table->id();
+            $table->date('lastupdate');
+        });
+    }
 
     /**
      * Reverse the migrations.
      *
      * @return void
      */
-    // public function down()
-    // {
-    //     Schema::dropIfExists('lastupdate');
-    // }
+    public function down()
+    {
+        Schema::dropIfExists('lastupdate');
+    }
 }
