@@ -52,7 +52,6 @@ class HomeController extends Controller
         $data = $request->all();
         $message = $data['message'];
         $date = date('Y-m-d');
-        
 
         try {
             $query1 = DB::table('welcome')
