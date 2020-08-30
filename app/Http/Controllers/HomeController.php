@@ -72,7 +72,7 @@ class HomeController extends Controller
                     "success" => $query1, 
                     "date" => $date]), 200);
             } else {
-                return response(json_encode($query1), 400);
+                return response(json_encode("Update failure." . $query1), 500);
             }  
         } catch (\Illuminate\Database\QueryException $e) {
             return response(json_encode($e), 500);

@@ -1,8 +1,8 @@
-/node_modules/*
+node_modules/*
 /public/hot
 /public/storage
 /storage/*.key
-/vendor/*
+vendor/*
 .env
 .env.example
 .env.backup
@@ -11,5 +11,5 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-fakeSMTP.jar
+fakeSMTP-2.0.jar
 /received-emails
