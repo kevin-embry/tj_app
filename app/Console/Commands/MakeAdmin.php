@@ -71,6 +71,7 @@ class MakeAdmin extends Command
             $this->info("Please note these credentials:");
             $this->info("Email: {$this->email}");
             $this->info("Password: {$this->password}");
+            $this->info("");
             
             if($this->createInitialWelcomeMessage()) {
                 $this->info("Initial Welcome Message Created");

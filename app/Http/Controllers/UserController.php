@@ -72,7 +72,7 @@ class UserController extends Controller
             }
             return response(json_encode($data), 200);
         } catch(\Illuminate\Database\QueryException $e) {
-            dd($e);
+            // dd($e);
             return response(json_encode($e), 500);
         }
     }

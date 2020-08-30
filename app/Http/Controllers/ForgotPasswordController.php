@@ -35,7 +35,7 @@ class ForgotPasswordController extends Controller
         // $token = request()->resetToken;
         $sendEmail = new ForgotPassword();
         // $sendEmail->checkToken($token);
-        dd($sendEmail->checkToken(request()->resetToken, request()->email));
+        return $sendEmail->checkToken(request()->resetToken, request()->email);
         
     }
 }

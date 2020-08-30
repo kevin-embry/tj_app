@@ -50,8 +50,9 @@ class ForgotPassword extends React.Component {
             email: this.state.email
         })
         .then((response) => {
-           
-            console.log("RESPONSE FROM BACKEND", response.data);
+            if (response.data === true || response.data === 1) {
+                console.log("RESPONSE FROM BACKEND", response.data);
+            }
         })
         .catch((error) => {
             console.log(error);
