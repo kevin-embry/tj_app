@@ -41,6 +41,7 @@ class MakeAdmin extends Command
     public function handle()
     {
         $this->info("THIS SCRIPT CREATES THE FIRST ADMIN USER FOR TJHISTORY WEBSITE.");
+        $this->info("IT ALSO CREATES INITIAL ENTRIES FOR LAST UPDATE AND WELCOME MESSAGE.");
         $this->info("");
         if ($this->checkIfExists() !== null) {
             $this->info("SUPERADMIN USER ALREADY EXISTS! SCRIPT WILL NOW EXIT.");
@@ -70,6 +71,19 @@ class MakeAdmin extends Command
             $this->info("Please note these credentials:");
             $this->info("Email: {$this->email}");
             $this->info("Password: {$this->password}");
+            
+            if($this->createInitialWelcomeMessage()) {
+                $this->info("Initial Welcome Message Created");
+            } else {
+                throw new \Exception("Welcome message create failed");
+            }
+
+            if($this->createInitialLastUpdate()) {
+                $this->info("Initial LastUpdate Set");
+            } else {
+                throw new \Exception("Lastupdate create failed");
+            }
+
         } catch(\Exception $e) {
             $this->info("ADMIN USER CREATION FAILED");
             $this->info($e);
@@ -111,5 +125,26 @@ class MakeAdmin extends Command
                     ->where('email', $this->email)                   
                     ->first();
         return $user;            
+    }
+
+    private function createInitialWelcomeMessage()
+    {
+        $query = DB::table('welcome')->insert(
+            [
+                'editdate' => date("Y-m-d"),
+                'message' => 'Welcome to the new SSN/SSBN TJ History Site.'
+            ]
+        );
+        return $query;
+    }
+
+    private function createInitialLastUpdate()
+    {
+        $query = DB::table('lastupdate')->insert(
+            [
+                'lastupdate' => date("Y-m-d")
+            ]
+        );
+        return $query;
     }
 }
