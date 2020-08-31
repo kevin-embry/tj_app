@@ -9,7 +9,7 @@ use App\ForgotPassword;
 
 class ForgotPasswordController extends Controller
 {
-    
+   
     public function recoverPassword(Request $request)
     {
         request()->validate([
@@ -32,10 +32,33 @@ class ForgotPasswordController extends Controller
             'resetToken' => 'required',
             'email' => 'required'         
         ]);
-        // $token = request()->resetToken;
+       
         $sendEmail = new ForgotPassword();
-        // $sendEmail->checkToken($token);
-        return $sendEmail->checkToken(request()->resetToken, request()->email);
-        
+       
+        $result = $sendEmail->checkToken(request()->resetToken, request()->email);  
+
+        if ($result === true) {
+            return response(json_encode(true), 200);
+        } else {
+            return response("Token does not exist in the database", 500);
+        }
+
+    }
+
+    public function updatePassword(Request $request) 
+    {
+        request()->validate([
+            'email' => 'required|email:rfc,dns',
+            'password' => 'required|min:6|same:password2',
+            'password2' => 'required|min:6'
+        ]);
+
+        $instance = new ForgotPassword();
+        try{
+            $result = $instance->updatePassword(request()->email, request()->password2);
+            return response(json_encode(true), 200);
+        }catch(\Exception $e){
+            return response(\json_encode(false), 500);
+        }
     }
 }

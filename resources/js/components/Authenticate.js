@@ -14,17 +14,9 @@ function Authenticate(props) {
    
     const referer = props.location.state.referer || "/";
 
-
-    // THIS NEEDS TO BE A POST REQUEST!!!!!
     function postLogin(e) {
         e.preventDefault();
         if (email !== "" && email !== null && password !== "" && password !== null) {
-            // const data = axios.get('/authenticate', {
-            //     params: {
-            //         email,
-            //         password
-            //     }
-            // })
             const data = axios.post('/authenticate', { email, password })
             .then((response) => {  
                 var date = new Date();               

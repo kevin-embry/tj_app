@@ -5,7 +5,7 @@ import { useHistory, BrowserRouter as Router, Route, Switch } from 'react-router
 import PrivateRoute from '../PrivateRoute';
 import { AuthContext, useAuth } from '../context/auth';
 import Authenticate from './Authenticate';
-import ForgotPassword from './ForgotPassword';
+import ForgotPassword from './passwordreset/ForgotPassword';
 import Header from './Header';
 import Menu from './Menu';
 import Welcome from './Welcome';

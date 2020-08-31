@@ -39,6 +39,20 @@ class ForgotPassword extends Model
         }
     }
 
+    public function updatePassword($email, $password)
+    {
+       try{
+            $query = DB::table('user')
+                ->where('email', $email)
+                ->update([
+                    'password' => encrypt($password),
+                ]);
+            return $query;     
+       }catch(\Exception $e){
+            return $e->getMessage();
+       }
+    }
+
     public function checkToken($token, $email)
     {
         $now = date("Y-m-d H:i:s");
@@ -47,11 +61,15 @@ class ForgotPassword extends Model
                     ->where('token', $token)
                     ->where('email', $email)                   
                     ->first();
-
-            // TAKE TOKEN TIME AND ADD 10 MINUTES
-            // IF TOKEN TIME IS GREATER THAN NOW IT IS A VALID TOKEN        
-            $token_timestamp = strtotime('+10 minutes', strtotime($returnedToken->created_at))  ; 
-            return $token_timestamp >= strtotime($now) ? true : false;
+            if($returnedToken) {
+                 // TAKE TOKEN TIME AND ADD 10 MINUTES
+                // IF TOKEN TIME IS GREATER THAN NOW IT IS A VALID TOKEN        
+                $token_timestamp = strtotime('+10 minutes', strtotime($returnedToken->created_at))  ; 
+                return $token_timestamp >= strtotime($now) ? true : false;
+            } else {
+                return false;
+            } 
+           
         } catch(\Exception $e) {
             return $e;
         }
@@ -71,4 +89,5 @@ class ForgotPassword extends Model
             return $e;
         }
     }
+    
 }

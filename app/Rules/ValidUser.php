@@ -44,6 +44,6 @@ class ValidUser implements Rule
      */
     public function message()
     {
-        return 'A user with the email does not exist.';
+        return 'A user with this email does not exist in our system.';
     }
 }

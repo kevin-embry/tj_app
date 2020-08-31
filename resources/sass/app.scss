@@ -318,7 +318,7 @@ h1 {
     float: left;
     width: 140px;
     font-size: 1.2em;
-    color: red;
+    color: green;
 }
 
 .submitChange {
@@ -1383,6 +1383,30 @@ input[type=text], input[type=password] {
             height: 30px;
             background-color: #b3ffb3;
         }
+    }
+    .changePasswordModule {
+        width: 300px;
+        margin: auto;
+        p {
+            margin: 0;
+            text-align: left;
+            font-size: 1.2em;
+        }
+        .newPasswordInput {
+            width: 300px;
+            height: 25px;
+        }
+        button {
+            background-color: #b3ffb3;
+            width: 100px;
+            height: 30px;
+            margin-top: 15px;
+            font-size: 1.1em;
+        }
+    }
+    .newPasswordInput {
+        width: 300px;
+        height: 25px;
     }
 }
 
