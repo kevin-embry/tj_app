@@ -26,10 +26,10 @@ class ImageFileSize implements Rule
     public function passes($attribute, $value)
     {
         $size = $value->getSize();
-        if ($size <= 5000) {
+        if ($size <= 5000000) {
             return true; 
         } else {
-            $this->fileSize = $size;
+            $this->fileSize = $size/1000000;
             return false;
         }
     }
@@ -41,6 +41,6 @@ class ImageFileSize implements Rule
      */
     public function message()
     {
-        return 'Images must be less than 5,000KB. This image is ' . $this->fileSize . 'KB.';
+        return 'Images must be less than 5MB. This image is ' . round($this->fileSize,2) . 'MB.';
     }
 }

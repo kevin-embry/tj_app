@@ -33,7 +33,7 @@ class ImagesController extends Controller
        
         $now = date("Y-m-d H:i");
         request()->validate([
-            'file' => ['mimes:jpg,png', 'required', new ImageFileSize],
+            'file' => ['mimes:jpg,jpeg,png', 'required', new ImageFileSize],
             'galleryname' => ['required' ,'min:4', 'max:25', new NoSpecialChars]
         ]);
         
