@@ -115,7 +115,7 @@ class AdminNewGallery extends React.Component {
                     </div>
                    
                   
-                    <label htmlFor="dropzone_button">Press button below or drag images to button</label>
+                    <label htmlFor="dropzone_button">Select one or more images. Push button below:</label>
                     <Dropzone
                         onDropAccepted={this.onDrop.bind(this)}
                         onDropRejected={this.onDropRejected.bind(this)}

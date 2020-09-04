@@ -11,7 +11,6 @@ class AdminUpdateGallery extends React.Component {
 
             // TODO: NEED TO SOMEHOW SEPERATE OUT THE GALLERY VIEWER FROM ALL 
             // OTHER UPDATE FUNCTIONALITY
-
             // TODO: ALSO NEED TO IMPORT THE NEW GALLERY COMPONENT INTO THIS 
 
             <div className="updateGallery">
