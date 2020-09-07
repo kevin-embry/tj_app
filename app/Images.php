@@ -17,4 +17,9 @@ class Images extends Model
 
         return $galleries;
     }   
+
+    public function deleteImageFromDisk($image)
+    {
+        
+    }
 }

@@ -15,8 +15,8 @@ class AdminUpdateGallery extends React.Component {
             activeGallery: "",
             addImages: false,
             showImage: false,
-            selectAll: false,
-            selectedImages: [],
+            // selectAll: false,
+            // selectedImages: [],
             selected_count: false
             
         }
@@ -32,6 +32,20 @@ class AdminUpdateGallery extends React.Component {
         this.state.images.map(image => {
             if(image.selected){
                console.log(image);
+               Axios.post('/deletephoto', {
+                   image: image
+               })
+               .then((response) => {
+                   console.log(response);
+                   if(response.data.status == "success") {
+                       this.setState({selected_count: 0})
+                        this.loadImages(); 
+
+                   }
+               })
+               .catch((error) => {
+                   console.log(error);
+               })
             }
         });
        
@@ -56,13 +70,14 @@ class AdminUpdateGallery extends React.Component {
     handleAddImagesCheckbox(e) {
         this.setState({
             addImages: !this.state.addImages
-        })
+        })        
     }
 
     handleGalleryChange(e) {
         this.setState({
             activeGallery: e.target.value,
-            currentImage: 0
+            currentImage: 0,
+            selected_count: 0
         });
         this.retrieveImagesFromSelection(e.target.value);
     }
@@ -213,19 +228,22 @@ class AdminUpdateGallery extends React.Component {
                     }
                     
                     <label htmlFor="addImages">Add images to gallery: 
-                        <input type="checkbox" name="addImages" className="addImages" value={this.state.addImages} onChange={this.handleAddImagesCheckbox} />
+                        {/* <input type="checkbox" name="addImages" className="addImages" value={this.state.addImages} onChange={this.handleAddImagesCheckbox} /> */}
+                        <input type="checkbox" name="addImages" className="addImages" checked={this.state.addImages} onChange={this.handleAddImagesCheckbox} />
                     </label>
                      
                 </div>
 
                 {(!this.state.addImages && this.state.images.length) ? 
                     <div>
-                        <p><b>Note: </b>Images do not open in admin mode</p>
+                        <h3><b>Note: </b>Images do not open in admin mode</h3>
+                        <p>Select images to mark for deletion</p>
 
                         {this.state.selected_count > 0  && 
                             <button 
+                                className="deleteImages"
                                 onClick={(e) => { if (window.confirm('This action can not be reverted. Are You sure you wish to delete the selected image(s)?')) this.deleteImages(e)}}
-                            >Delete {this.state.selected_count} Images</button>}
+                            >Delete {this.state.selected_count} Image(s)</button>}
 
                         <Gallery 
                             photos={photos}

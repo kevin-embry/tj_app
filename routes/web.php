@@ -94,6 +94,6 @@ Route::post('/filterData', 'DecklogsController@getFilterData');
 //IMAGES
 Route::get('/photos', 'ImagesController@getPhotos');
 Route::post('/photos', 'ImagesController@uploadPhotos');
-Route::delete('/photos', 'ImagesController@deletePhotos');
+Route::post('/deletephoto', 'ImagesController@deletePhoto');
 Route::get('/galleryNames', 'ImagesController@getGalleryNames');
 

@@ -6,6 +6,7 @@ use App\Images;
 use Illuminate\Http\Request;
 use App\Rules\NoSpecialChars;
 use App\Rules\ImageFileSize;
+use Illuminate\Support\Facades\Storage;
 
 class ImagesController extends Controller
 {
@@ -63,9 +64,22 @@ class ImagesController extends Controller
      * @param  \App\Images  $images
      * @return \Illuminate\Http\Response
      */
-    public function deletePhotos(Request $request)
+    public function deletePhoto(Request $request)
     {
-        //
+        $imageToDelete = request()->image;
+        $image = new Images();
+
+        try {
+            $image::where('id', $imageToDelete['id'])
+                ->where('galleryname', $imageToDelete['galleryname'])
+                ->delete();
+
+            Storage::disk('public')->delete($imageToDelete['url']); 
+            return response(json_encode(['status' => 'success']), 200);    
+        } catch(\Exception $e) {
+            return response(json_encode(['status' => 'fail']), 500);
+        }
+                  
     }
 
     public function getGalleryNames() 
