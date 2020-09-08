@@ -57,7 +57,7 @@ class AdminUpdateGallery extends React.Component {
             .then((response) => {
                 this.setState({galleryNames: response.data});
                 if(Array.isArray(response.data) && response.data.length > 0) {
-                    selectedGallery = response.data[0];
+                    selectedGallery = this.state.activeGallery === "" ? response.data[0] : this.state.activeGallery;
                     this.setState({activeGallery: selectedGallery});
                 }
                 this.retrieveImagesFromSelection(selectedGallery);
