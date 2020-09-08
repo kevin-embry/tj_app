@@ -79,7 +79,11 @@ class UserController extends Controller
 
     public function getNewUsers(Request $request) 
     {
+        // $users = DB::table('user')
+        //             ->where('approved', 'false')                   
+        //             ->get();
         $users = DB::table('user')
+                    ->select('id', 'firstname', 'lastname', 'email')
                     ->where('approved', 'false')                   
                     ->get();
         return $users;            
