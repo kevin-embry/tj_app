@@ -1,7 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 import Gallery from 'react-photo-gallery';
-import Lightbox from 'react-images';
+// import Lightbox from 'react-images';
 
 class GalleryViewer extends React.Component {
     constructor(props) {
@@ -12,12 +12,12 @@ class GalleryViewer extends React.Component {
             lightboxIsOpen: false,
             galleryNames: [],
             activeGallery: "",
-            addImages: false,
+            // addImages: false,
             showImage: false,
             individualImage: ""
         }
         this.handleGalleryChange = this.handleGalleryChange.bind(this);
-        this.handleAddImagesCheckbox = this.handleAddImagesCheckbox.bind(this);
+        // this.handleAddImagesCheckbox = this.handleAddImagesCheckbox.bind(this);
         this.goToNext = this.goToNext.bind(this);
         this.goToPrevious = this.goToPrevious.bind(this);
 
@@ -25,11 +25,11 @@ class GalleryViewer extends React.Component {
         
     }
 
-    handleAddImagesCheckbox(e) {
-        this.setState({
-            addImages: !this.state.addImages
-        })
-    }
+    // handleAddImagesCheckbox(e) {
+    //     this.setState({
+    //         addImages: !this.state.addImages
+    //     })
+    // }
 
     handleGalleryChange(e) {
         this.setState({
@@ -107,16 +107,9 @@ class GalleryViewer extends React.Component {
                             {this.state.galleryNames.map(name => <option key={name}>{name}</option>)}
                         </select>
                     }
-                    
-                    {this.props.adminMode===true &&
-                        <label htmlFor="addImages">Add images to gallery: 
-                            <input type="checkbox" name="addImages" className="addImages" value={this.state.addImages} onChange={this.handleAddImagesCheckbox} />
-                        </label>
-                    }
-                     {this.props.adminMode && <p><b>Note: </b>Images do not open in admin mode</p>}
                 </div>
 
-                { (this.state.showImage && this.props.adminMode === false) && 
+                { this.state.showImage && 
                     <div className="showImage">
                         {/* <p>Click photo to enlarge</p> */}
                         {this.state.currentImage < this.state.images.length - 1 && 

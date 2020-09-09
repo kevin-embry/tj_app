@@ -1207,27 +1207,29 @@ input[type=text], input[type=password] {
        }
    }
 
-    .dropzone_button {
-        width: 150px;
-        height: 23px;
-        background-color: #4db8ff;
-        padding: 16px;
-        font-size: 1.2em;
-        font-family: Arial, Helvetica, sans-serif;
-        margin: 10px auto 10px auto;
-        cursor: pointer;
-        -webkit-box-shadow: 4px 4px 4px 0px rgba(0,0,0,0.75);
-        -moz-box-shadow: 4px 4px 4px 0px rgba(0,0,0,0.75);
-        box-shadow: 4px 4px 4px 0px rgba(0,0,0,0.75);
-    }
+    
+}
 
-    .upload_button {
-        width: 100px;
-        height: 25px;
-        background-color: #b3ffb3;
-        font-size: 1.2em;
-        margin: auto auto 10px auto; 
-    }
+.dropzone_button {
+    width: 150px;
+    height: 23px;
+    background-color: #4db8ff;
+    padding: 16px;
+    font-size: 1.2em;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 10px auto 10px auto;
+    cursor: pointer;
+    -webkit-box-shadow: 4px 4px 4px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 4px 4px 4px 0px rgba(0,0,0,0.75);
+    box-shadow: 4px 4px 4px 0px rgba(0,0,0,0.75);
+}
+
+.upload_button {
+    width: 100px;
+    height: 25px;
+    background-color: #b3ffb3;
+    font-size: 1.2em;
+    margin: auto auto 10px auto; 
 }
 
 .images {
@@ -1283,27 +1285,29 @@ input[type=text], input[type=password] {
         margin: 0 0 15px 0;
         text-decoration: underline;
     }
-    .gallerySelection {
-        margin: 15px 0 20px 0;
+}   
 
-        label {
-            font-size: 1.2em;
-            margin-right: 10px;
-        }
-        .activeGallery {
-            height: 25px;
-            width: 125px;
-            font-size: 1.0em;
-            margin-right: 20px;
-        }
-        .addImages {
-            height: 18px;
-            width: 18px;
-            vertical-align: middle; 
-            margin-bottom: 6px;
-        }
+.gallerySelection {
+    margin: 15px 0 20px 0;
+
+    label {
+        font-size: 1.2em;
+        margin-right: 10px;
+    }
+    .activeGallery {
+        height: 25px;
+        width: 125px;
+        font-size: 1.0em;
+        margin-right: 20px;
+    }
+    .addImages {
+        height: 18px;
+        width: 18px;
+        vertical-align: middle; 
+        margin-bottom: 6px;
     }
 }
+
 
 .updateGallery{
     h2 {
@@ -1356,6 +1360,14 @@ input[type=text], input[type=password] {
     overflow-y: auto;
     height: 466px;
     min-height: 565px;
+}
+
+.deleteImages {
+    margin-bottom: 15px;
+    height: 30px;
+    background-color: #ffb3b3;
+    font-size: 1.1em;
+    border: none;
 }
 
 .forgotPassword {

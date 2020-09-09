@@ -94,15 +94,12 @@ class DeckLogs extends React.Component {
         .then((response) => {
             switch(action) {
                 case "getYears":
-                    // console.log("GET YEARS");
                     this.setState({validYears: response.data});
                     break;
                 case "getMonths":
-                    // console.log("GET MONTHS");
                     this.setState({validMonths: response.data});
                     break;
                 case "getDays":
-                    // console.log("GET DAYS");
                     this.setState({validDays: response.data});
                     break;
                 default:
@@ -122,7 +119,7 @@ class DeckLogs extends React.Component {
         })
         .then((response) => {
             this.setState({
-                selectedLogs: response.data,
+                selectedLogs: response.data.sort( (a,b) => (a.logdate > b.logdate) ? 1 : -1),
                 filterYear: "",
                 filterMonth: "",
                 filterDay: "",
@@ -153,7 +150,7 @@ class DeckLogs extends React.Component {
     render() {
         return (
             <div className="decklogs">
-                {this.props.adminMode === true ? <AdminModule redirectToHome={this.redirectToHome} /> : null }
+                {(this.props.adminMode === true && this.state.deckLog === "") ? <AdminModule redirectToHome={this.redirectToHome} /> : null }
                 <div className={"borderModule logSelectContainer " + this.state.selectVisiblity}>
                     <span 
                         onClick={this.redirectToHome}

@@ -13,7 +13,7 @@ class UserModule extends React.Component {
                 <span 
                     onClick={ (e) => this.props.goHome(e)}
                     className="close" 
-                    title="Close Add/Edit Photos"
+                    title="Close Photos"
                     >&times;
                 </span>
                 <h1>Thomas Jefferson Galleries</h1>

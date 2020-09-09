@@ -3,7 +3,7 @@ node_modules/*
 /public/storage
 /public/css/*
 /public/js/*
-/public/images/*
+/public/images
 /storage/*.key
 vendor/*
 .env
