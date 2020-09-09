@@ -17,13 +17,13 @@ class CreateCrewTable extends Migration
             $table->id();
             $table->string('firstname');
             $table->string('lastname');
-            $table->string('email');
+            // $table->string('email');
             $table->string('crew');
-            $table->string('servedonboard');
+            // $table->string('servedonboard');
             $table->string('division');
             $table->string('job');
-            $table->date('datefrom');
-            $table->date('dateto');
+            $table->string('datefrom');
+            $table->string('dateto');
         });
     }
 

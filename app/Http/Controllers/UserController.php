@@ -40,7 +40,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        
+        // dd(request());
         $data = $request->all();
         $now = date("Y-m-d H:i");
         try {
@@ -66,7 +66,9 @@ class UserController extends Controller
                         'crew' => $data['crew'],
                         'servedonboard' => $data['servedOnBoard'],
                         'division' => $data['division'],
-                        'job' => $data['job']
+                        'job' => $data['job'],
+                        'datefrom' => $data['dateFrom'],
+                        'dateto' => $data['dateTo']
                     ]
                 );
             }
