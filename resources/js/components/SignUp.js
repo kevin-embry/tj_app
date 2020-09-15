@@ -15,8 +15,8 @@ function SignUp(props) {
     const [division, setDivision] = useState("");
     const [crew, setCrew] = useState("");
     const [job, setJob] = useState("");
-    const [dateFrom, setDateFrom] = useState("1962");
-    const [dateTo, setDateTo] = useState("1962");
+    const [dateFrom, setDateFrom] = useState(1962);
+    const [dateTo, setDateTo] = useState(1962);
     const [password1, setPassword1] = useState("");
     const [password2, setPassword2] = useState("");
     const [passwordsMatch, setPasswordsMatch] = useState(null);
@@ -24,6 +24,7 @@ function SignUp(props) {
     const [lnError, setLnError] = useState(false);
     const [emailError, setEmailError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
+    const [servedYearsError, setServedYearsError] = useState(false);
 
     // console.log({
     //     dateFrom: dateFrom,
@@ -44,8 +45,8 @@ function SignUp(props) {
         evt.target.name == "crewcolor" ? setCrew(evt.target.value) : "";
         evt.target.name == "division" ? setDivision(evt.target.value) : "";
         evt.target.name == "job" ? setJob(evt.target.value) : "";
-        evt.target.name == "dateFrom" ? setDateFrom(evt.target.value) : "";
-        evt.target.name == "dateTo" ? setDateTo(evt.target.value) : "";
+        evt.target.name == "dateFrom" ? setDateFrom(Number(evt.target.value)) : "";
+        evt.target.name == "dateTo" ? setDateTo(Number(evt.target.value)) : "";
         evt.target.name == "password1" ? setPassword1(evt.target.value) : "";
         evt.target.name == "password2" ? setPassword2(evt.target.value) : ""; 
     }
@@ -69,20 +70,24 @@ function SignUp(props) {
 
     function DatesSelect(props) {
         return (
-            <div className="servedDates">
+           
+                <div className="servedDates">
                 <p>Select the dates you served:</p>
-                <label htmlFor="dateFrom">Start Date: </label>
-                <select className="division" name="dateFrom" value={dateFrom} onChange={handleChange} >
-                    {SERVEDDATES.map(date => 
-                        <option key={"date" + date}>{date}</option>    
-                    )};
-                </select>
-                <label htmlFor="dateTo">End Date: </label>
-                <select className="division" name="dateTo" value={dateTo} onChange={handleChange} >
-                    {SERVEDDATES.map(date => 
-                        <option key={"date" + date}>{date}</option>    
-                    )};
-                </select>
+                <div className={servedYearsError == true ? "loginerror" : ""}>
+                    <label htmlFor="dateFrom">Start Date: </label>
+                    <select className="division" name="dateFrom" value={dateFrom} onChange={handleChange} >
+                        {SERVEDDATES.map(date => 
+                            <option key={"date" + date}>{date}</option>    
+                        )};
+                    </select>
+                    <label htmlFor="dateTo">End Date: </label>
+                    <select className="division" name="dateTo" value={dateTo} onChange={handleChange} >
+                        {SERVEDDATES.map(date => 
+                            <option key={"date" + date}>{date}</option>    
+                        )};
+                    </select>
+                </div>
+                
             </div> 
         )
     }
@@ -150,13 +155,13 @@ function SignUp(props) {
     function checkAllFields() {
        var errors = [];
        if(!DataChecker.checkFirstName(firstName)) {
-            errors.push('firstName');
+            errors.push('first name');
             setFnError(true);
        } else {
            setFnError(false);
        };
         if(!DataChecker.checkLastName(lastName)) {
-            errors.push('lastName');
+            errors.push('last name');
             setLnError(true);
         } else {
             setLnError(false);
@@ -172,6 +177,13 @@ function SignUp(props) {
             setPasswordError(true);
         } else {
             setPasswordError(false);
+        };
+        if(servedOnBoard === "yes" && !DataChecker.checkServedYears(dateFrom, dateTo)) {
+            console.log("SERVED YEARS ERROR!");
+            errors.push('served years');
+            setServedYearsError(true);
+        } else {
+            setServedYearsError(false);
         };
         return errors;
     }
@@ -289,7 +301,7 @@ function SignUp(props) {
                         onChange={handleChange} 
                         required 
                     /> 
-                    {(fnError || lnError || emailError) ? <InfoError /> : ""}
+                    {(fnError || lnError || emailError || servedYearsError) ? <InfoError /> : ""}
                     {(passwordsMatch !== null && passwordsMatch === false) ? <PasswordError /> : ""}
                 </div>
                 <button 

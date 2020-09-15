@@ -45,6 +45,18 @@ return [
             'auth_mode' => null,
         ],
 
+        // 'smtp' => [
+        //     'transport' => 'smtp',
+        //     'host' => 'smtp.gmail.com',
+        //     'port' => 25,
+        //     'encryption' => 'ssl',
+        //     'username' => 'tj618history@gmail.com',
+        //     'password' => 'Xo+R19!=Lye',
+        //     'timeout' => null,
+        //     'auth_mode' => null,
+        // ],
+        
+
         'ses' => [
             'transport' => 'ses',
         ],

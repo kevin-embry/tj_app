@@ -10,11 +10,11 @@ class TableLine extends React.Component {
         const isSuperAdmin = this.props.user.email === "superadmin@tjhistory.org" ? true : false;
         return (
             <React.Fragment>               
-                <td key={Math.floor(Math.random()*100000000)}>{this.props.user.lastname}</td>
-                <td key={Math.floor(Math.random()*100000000)}>{this.props.user.firstname}</td>
-                <td key={Math.floor(Math.random()*100000000)}>{this.props.user.email}</td>
-                <td key={Math.floor(Math.random()*100000000)}>{new Date(this.props.user.created_at).toDateString()}</td>          
-                <td key={Math.floor(Math.random()*100000000)}>{this.props.user.role}</td>
+                <td className={needsApproval} key={Math.floor(Math.random()*100000000)}>{this.props.user.lastname}</td>
+                <td className={needsApproval} key={Math.floor(Math.random()*100000000)}>{this.props.user.firstname}</td>
+                <td className={needsApproval} key={Math.floor(Math.random()*100000000)}>{this.props.user.email}</td>
+                <td className={needsApproval} key={Math.floor(Math.random()*100000000)}>{new Date(this.props.user.created_at).toDateString()}</td>          
+                <td className={needsApproval} key={Math.floor(Math.random()*100000000)}>{this.props.user.role}</td>
                 <td className={needsApproval} key={Math.floor(Math.random()*100000000)}>{this.props.user.approved}</td>
                 <td><button 
                         onClick={ () => this.props.editUserCallback(this.props.user)}

@@ -40,7 +40,15 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        // dd(request());
+        request()->validate([
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'email' => 'required',
+            'password' => 'required|min:6',
+            'dateFrom' => 'required',
+            'dateTo' => 'required|gte:dateFrom'
+        ]);
+        
         $data = $request->all();
         $now = date("Y-m-d H:i");
         try {
@@ -58,13 +66,13 @@ class UserController extends Controller
     
             if ($data['servedOnBoard'] === 'yes') {
 
-                $query2 = DB::table('crew')->insert(
+                $query2 = DB::table('crews')->insert(
                     [
                         'firstname' => $data['firstName'],
                         'lastname' => $data['lastName'],
-                        'email' => $data['email'],
+                        // 'email' => $data['email'],
                         'crew' => $data['crew'],
-                        'servedonboard' => $data['servedOnBoard'],
+                        // 'servedonboard' => $data['servedOnBoard'],
                         'division' => $data['division'],
                         'job' => $data['job'],
                         'datefrom' => $data['dateFrom'],
@@ -74,16 +82,12 @@ class UserController extends Controller
             }
             return response(json_encode($data), 200);
         } catch(\Illuminate\Database\QueryException $e) {
-            // dd($e);
             return response(json_encode($e), 500);
         }
     }
 
     public function getNewUsers(Request $request) 
     {
-        // $users = DB::table('user')
-        //             ->where('approved', 'false')                   
-        //             ->get();
         $users = DB::table('user')
                     ->select('id', 'firstname', 'lastname', 'email')
                     ->where('approved', 'false')                   
@@ -129,11 +133,11 @@ class UserController extends Controller
                 ->where('id', $data['id'])
                 ->delete(); 
 
-            $crewMember = DB::table('crew') 
+            $crewMember = DB::table('crews') 
                 ->where('email', $data['email'])                   
                 ->first();
             if($crewMember) {
-                $query = DB::table('crew')
+                $query = DB::table('crews')
                 ->where('email', $data['email'])
                 ->delete(); 
             }

@@ -21,7 +21,7 @@ class DeckLogResults extends React.Component {
     // THE RESULTS NEED TO BE SORTED BY DATE ASCENDING!!!!!  
     buildResults() {
         var startSlice = 0;
-        var endSlice = 4;
+        var endSlice = 5;
         var lastLogIndex = this.props.data.length;
 
         var slice = [];
@@ -36,7 +36,7 @@ class DeckLogResults extends React.Component {
                 </tr>
             );
             startSlice = endSlice;
-            (endSlice + 4) < lastLogIndex ? endSlice = (endSlice + 4) : endSlice = lastLogIndex + 1; 
+            (endSlice + 5) < lastLogIndex ? endSlice = (endSlice + 5) : endSlice = lastLogIndex + 1; 
         }
         this.setState({content: rows});
     }  

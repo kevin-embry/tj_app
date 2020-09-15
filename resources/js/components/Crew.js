@@ -1,17 +1,45 @@
 import React from 'react';
+import Axios from 'axios';
 
-function Crew(props) {
-    console.log("CREW: ", props);
+class Crew extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            crewMembers: []
+        }
+
+        console.log("CREW PAGE: ", props);        
+    }
+
+    getCrewMembers() {
+        return Axios.get('/getCrew')
+                    .then((response) => {
+                        this.setState({
+                            crewMembers: response.data
+                        })
+                    })
+                    .catch(error => console.log(error));
+    }
     
-    return (        
-        <div className="crew">
-          
-            <div>                   
-                <h1>CREW PAGE!</h1> 
-               
-            </div> 
-        </div>
-    );  
+
+    render() {
+        // console.log("STATE: ", this.state);
+        return (
+            <div>
+                {this.state.crewMembers.map((value) => 
+                    <p>{value.email}</p>
+                )}
+            </div>
+           
+        )
+    }
+
+    componentDidMount() {
+        this.getCrewMembers();
+    }
+    
 }
+
+
 
 export default Crew;

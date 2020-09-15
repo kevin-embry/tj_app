@@ -49,7 +49,8 @@ class ForgotPassword extends React.Component {
             this.setState({emailSubmitted: true, enterCode: true});
         })
         .catch((error) => {
-            this.setState({error: error.response.data.errors.email})
+            console.log(error);
+            // this.setState({error: error.response.data.errors.email})
         })
     }
 

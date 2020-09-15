@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import Axios from 'axios';
 import { useHistory, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import PrivateRoute from '../PrivateRoute';
 import { AuthContext, useAuth } from '../context/auth';
 import Authenticate from './Authenticate';
@@ -13,7 +14,7 @@ import Timeline from './history/Timeline'
 import Awards from './history/Awards'
 import MissleLaunches from './history/MissleLaunches'
 import DeckLogs from './decklogs/DeckLogs';
-// import Crew from './Crew';
+import Crew from './Crew';
 import Photos from './photos/Photos';
 import AboutUs from './AboutUs';
 import Footer from './Footer';
@@ -25,6 +26,7 @@ import EditAnnouncements from './announcements/EditAnnouncements';
 // import DeckLogResults from '../fragments/DeckLogResults';
 
 function App(props) {  
+    console.log("APP START");
   
     let history = useHistory();
     
@@ -81,6 +83,7 @@ function App(props) {
                             <Route path="/signup" render={(props) => <SignUp {...props} />} />
                             <Route path="/about" component={AboutUs} />
                             <Route path="/forgotPassword" component={ForgotPassword} />
+                            <Route exact path="/history"><Redirect to="/" /></Route>
 
                             {/* PRIVATE ROUTES */}
                             {/* <Route exact path="/editusers" render={(props) => <EditUsers {...props} adminMode={adminMode} newUserCallback={getNewApplicants}/>} /> */}
@@ -101,7 +104,7 @@ function App(props) {
                             {/* <Route path="/decklogs" render={(props) => <DeckLogs {...props} adminMode={adminMode} />} /> */}
                             <PrivateRoute path="/decklogs" referer="/decklogs" adminMode={adminMode} component={DeckLogs}  />
 
-                            {/* <PrivateRoute path="/crew" referer="/crew" component={Crew} /> */}
+                            <PrivateRoute path="/crew" referer="/crew" adminMode={adminMode} component={Crew} />
 
                             <PrivateRoute path="/photos/images" referer="/photos/images" adminMode={adminMode} component={Photos}  />
 

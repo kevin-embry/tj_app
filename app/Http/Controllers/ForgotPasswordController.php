@@ -19,11 +19,12 @@ class ForgotPasswordController extends Controller
         $resetToken = \Str::random(10);
         $sendEmail = new ForgotPassword();
         try {
-            $sendEmail->sendResetEmail($email, $resetToken);
-            return response(json_encode(true), 200);
+            $result = $sendEmail->sendResetEmail($email, $resetToken);
+            return response(json_encode($result), 200);
         } catch(\Exception $e) {
-            return response(json_encode(false), 500);
+            return response(json_encode($e), 500);
         }
+        // error.response.data.errors.email
     }
 
     public function checkResetToken(Request $request)

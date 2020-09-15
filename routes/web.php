@@ -26,13 +26,12 @@ Route::get('/references', 'HomeController@index');
 Route::get('/about', 'HomeController@index');
 Route::get('/editusers', 'HomeController@index');
 Route::get('/editannouncements', 'HomeController@index');
+Route::get('/history', 'HomeController@index');
 Route::get('/history/timeline', 'HomeController@index');
 Route::get('/history/awards', 'HomeController@index');
 Route::get('/history/launches', 'HomeController@index');
 Route::get('/photos/images', 'HomeController@index');
 Route::get('/forgotPassword', 'HomeController@index');
-
-
 
 
 // REST ROUTES
@@ -50,7 +49,8 @@ Route::post('/recoverPassword', 'ForgotPasswordController@recoverPassword');
 Route::post('/checkToken', 'ForgotPasswordController@checkResetToken');
 Route::post('/updatePassword', 'ForgotPasswordController@updatePassword');
 
-
+//CREW PAGE
+Route::get('/getCrew', 'CrewController@getCrew');
 
 
 //WELCOME PAGE ROUTES
