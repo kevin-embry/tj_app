@@ -45,8 +45,12 @@ function App(props) {
 
     function disableToken() {
         localStorage.setItem("TJUser", null);
-        localStorage.setItem("TJEditMode", false);  
+        localStorage.setItem("TJEditMode", false);
         return null;
+    }
+
+    function disableAdminMode() {
+        setAdminMode(false);  
     }
 
     function toggleAdminMode() {
@@ -71,7 +75,7 @@ function App(props) {
         <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens}}>
             <Router history={history}>
                 <div className="mainapp">
-                    <Header {...props} adminModeCallback={toggleAdminMode} />
+                    <Header {...props} disableAdminModeCallback={disableAdminMode}/>
                     <Menu {...props} adminMode={adminMode} newUsers={newUserNumber}/>
                     <div className="body">
                         <UserContainer user={authTokens} adminMode={adminMode} adminModeCallback={toggleAdminMode}/>
