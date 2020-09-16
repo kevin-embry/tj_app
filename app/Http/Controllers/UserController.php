@@ -21,9 +21,12 @@ class UserController extends Controller
     {
         $data = $request->all();
         $user = DB::table('user')
-                    ->where('email', $data['email'])                   
+                    ->where('email', $data['email']) 
                     ->first();
 
+        if($user != null && $user->approved === 'false') {
+            return response(json_encode("User not approved"), 401);
+        }  
 
         if ( ($user !== null) && ($data['password'] === decrypt($user->password)) ){
             return response(json_encode(array(
@@ -34,7 +37,7 @@ class UserController extends Controller
                         "role" => $user->role
                     )), 200);
         } else {
-            return response(json_encode($user), 401);
+            return response(json_encode("User not found"), 404);
         }
     }
 
