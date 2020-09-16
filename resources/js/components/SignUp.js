@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import {CREWS, DIVISIONS, SERVEDDATES} from '../data/tjConstants'
 import DataChecker from '../data/DataChecker';
 import Axios from 'axios';
-// import { Link } from 'react-router-dom';
-// import { AuthContext, useAuth } from '../context/auth';
-// import { Redirect } from 'react-router-dom';
 
 function SignUp(props) {
     
@@ -25,11 +22,6 @@ function SignUp(props) {
     const [emailError, setEmailError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
     const [servedYearsError, setServedYearsError] = useState(false);
-
-    // console.log({
-    //     dateFrom: dateFrom,
-    //     dateTo: dateTo
-    // });
 
     const divisions = [];
     Object.keys(DIVISIONS).forEach( (key) => {
@@ -193,8 +185,8 @@ function SignUp(props) {
         var errors = checkAllFields();
         if (doPasswordsMatch && errors.length == 0) {
            Axios.post("/register", {
-               firstName: firstName,
-               lastName: lastName,
+               firstName: firstName.toLowerCase(),
+               lastName: lastName.toLowerCase(),
                email: email,
                servedOnBoard: servedOnBoard,
                division: division,

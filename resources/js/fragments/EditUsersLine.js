@@ -7,7 +7,7 @@ class TableLine extends React.Component {
     
     render() {
         const needsApproval = this.props.user.approved === "false" ? "needsApproval" : "";
-        const isSuperAdmin = this.props.user.email === "superadmin@tjhistory.org" ? true : false;
+        const isSuperAdmin = this.props.user.email === "superadmin@tj618history.org" ? true : false;
         return (
             <React.Fragment>               
                 <td className={needsApproval} key={Math.floor(Math.random()*100000000)}>{this.props.user.lastname}</td>

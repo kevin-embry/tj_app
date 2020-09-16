@@ -37,8 +37,7 @@ export default class Menu extends React.Component {
                         <div className="dropdown-content">
                             <a href="http://va.gov" target ="_blank">VA Website</a>
                             <a href="http://www.geocities.ws/ssbn618/" target="_blank">TJ Geocities Site</a>
-                            <a href="#">Link3</a>
-                            <a href="#">Link4</a>
+                            <a href="http://www.decklog.com" target ="_blank">Find A Shipmate</a>
                         </div>
                     </li>
                     {this.props.adminMode === true? 

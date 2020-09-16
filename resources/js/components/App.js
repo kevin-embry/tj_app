@@ -23,10 +23,9 @@ import UserContainer from './UserContainer';
 import EditUsers from './EditUsers';
 import UnderConstruction from './UnderConstruction';
 import EditAnnouncements from './announcements/EditAnnouncements';
-// import DeckLogResults from '../fragments/DeckLogResults';
 
 function App(props) {  
-    console.log("APP START");
+    // console.log("APP START");
   
     let history = useHistory();
     
