@@ -25,7 +25,6 @@ class Crew extends React.Component {
                     })
                     .catch(error => console.log(error));
     }
-    
   
     render() {
         return (
@@ -62,9 +61,7 @@ class Crew extends React.Component {
                         </table>
                     </div>
                 }
-                
             </div>
-           
         )
     }
 
@@ -73,7 +70,5 @@ class Crew extends React.Component {
     }
     
 }
-
-
 
 export default Crew;

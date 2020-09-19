@@ -69,7 +69,6 @@ class CrewAdmin extends React.Component {
                 dateTo: this.state.dateTo
             })
             .then((response) => {
-                // console.log(response);
                 this.setState({submitSuccess: true});
                 setTimeout(() => {
                     this.setState({ submitSuccess: false });
@@ -86,10 +85,7 @@ class CrewAdmin extends React.Component {
                 errorsFound: errors
             })
         }
-
     }
-
-   
 
     handleChange(e) {
         e.preventDefault();
@@ -111,7 +107,6 @@ class CrewAdmin extends React.Component {
         } 
         return errors;
     }
-    
 
     render() {
         const divisions = [];
@@ -128,7 +123,6 @@ class CrewAdmin extends React.Component {
                 </span>
                 <h1>Crew - Admin Module</h1>
                 <hr />
-
                 <div className="addCrewModule">
                     <table className="addCrewTable">
                         <thead>
@@ -191,8 +185,6 @@ class CrewAdmin extends React.Component {
                     </div>
                     
                 </div>
-
-
                 <div className="crewModule">
                     <table className="crewTable">
                         <thead>

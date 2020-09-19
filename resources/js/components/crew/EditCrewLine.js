@@ -108,7 +108,6 @@ class EditCrewLine extends React.Component {
         Object.keys(DIVISIONS).forEach( (key) => {
             divisions.push(key);
         });
-        // console.log(this.state);
         return (
             <React.Fragment>
                 <tr>               
@@ -122,6 +121,7 @@ class EditCrewLine extends React.Component {
                             disabled={this.state.disabled} 
                             onChange={this.handleLastnameChange.bind(this)} />
                     </td>
+
                     <td>
                         <input
                             className="crewNamesInput"
@@ -132,6 +132,7 @@ class EditCrewLine extends React.Component {
                             disabled={this.state.disabled} 
                             onChange={this.handleChange.bind(this)} />
                     </td>
+
                     <td>
                         <select 
                             name="division"
@@ -145,6 +146,7 @@ class EditCrewLine extends React.Component {
                             {divisions.map(choice => <option key={Math.floor(Math.random()*100000000)}>{choice}</option>)}
                         </select>
                     </td>
+
                     <td>
                         <select 
                             name="job"
@@ -158,6 +160,7 @@ class EditCrewLine extends React.Component {
                             {this.state.jobsDropdown.map(choice => <option key={Math.floor(Math.random()*100000000)}>{choice}</option>)}
                         </select>
                     </td>
+
                     <td>
                         <select 
                             name="crew" 
@@ -173,7 +176,6 @@ class EditCrewLine extends React.Component {
                     </td>
 
                     <td className={this.state.dateError == true ? "crewError" : ""}>
-                    {/* <td className="crewError"> */}
                         <select 
                             name="dateFrom" 
                             className="crewSelects"
@@ -270,7 +272,6 @@ class EditCrewLine extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
         if(prevState.division !== this.state.division) {
-            // console.log("HERE!");
             this.setState({
                 jobsDropdown: DIVISIONS[this.state.division]
             })
