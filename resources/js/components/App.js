@@ -14,7 +14,7 @@ import Timeline from './history/Timeline'
 import Awards from './history/Awards'
 import MissleLaunches from './history/MissleLaunches'
 import DeckLogs from './decklogs/DeckLogs';
-import Crew from './Crew';
+import Crew from './crew/Crew';
 import Photos from './photos/Photos';
 import AboutUs from './AboutUs';
 import Footer from './Footer';

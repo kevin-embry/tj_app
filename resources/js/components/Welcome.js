@@ -6,7 +6,7 @@ import Announcement from './announcements/Announcement';
 
 export default class Welcome extends React.Component {
     constructor(props){
-        super(props);
+        super();
         this.state = {
             today: new Date(),
             announcements: [],

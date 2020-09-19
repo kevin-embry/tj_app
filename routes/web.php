@@ -14,24 +14,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 // GENERAL ROUTES
-Route::get('/', 'HomeController@index');
-Route::get('/signup', 'HomeController@index');
-Route::get('/login', 'HomeController@index');
-Route::get('/decklogs', 'HomeController@index');
-Route::get('/crew', 'HomeController@index');
-Route::get('/comments', 'HomeController@index');
-Route::get('/images', 'HomeController@index');
-Route::get('/newspapers', 'HomeController@index');
-Route::get('/references', 'HomeController@index');
-Route::get('/about', 'HomeController@index');
-Route::get('/editusers', 'HomeController@index');
-Route::get('/editannouncements', 'HomeController@index');
-Route::get('/history', 'HomeController@index');
-Route::get('/history/timeline', 'HomeController@index');
-Route::get('/history/awards', 'HomeController@index');
-Route::get('/history/launches', 'HomeController@index');
-Route::get('/photos/images', 'HomeController@index');
-Route::get('/forgotPassword', 'HomeController@index');
+// Route::get('/', 'HomeController@index');
+// Route::get('/signup', 'HomeController@index');
+// Route::get('/login', 'HomeController@index');
+// Route::get('/decklogs', 'HomeController@index');
+// Route::get('/crew', 'HomeController@index');
+// Route::get('/comments', 'HomeController@index');
+// Route::get('/images', 'HomeController@index');
+// Route::get('/newspapers', 'HomeController@index');
+// Route::get('/references', 'HomeController@index');
+// Route::get('/about', 'HomeController@index');
+// Route::get('/editusers', 'HomeController@index');
+// Route::get('/editannouncements', 'HomeController@index');
+// Route::get('/history', 'HomeController@index');
+// Route::get('/history/timeline', 'HomeController@index');
+// Route::get('/history/awards', 'HomeController@index');
+// Route::get('/history/launches', 'HomeController@index');
+// Route::get('/photos/images', 'HomeController@index');
+// Route::get('/forgotPassword', 'HomeController@index');
 
 
 // REST ROUTES
@@ -51,6 +51,9 @@ Route::post('/updatePassword', 'ForgotPasswordController@updatePassword');
 
 //CREW PAGE
 Route::get('/getCrew', 'CrewController@getCrew');
+Route::post('/updateCrew', 'CrewController@updateCrew');
+Route::post('/deleteCrew', 'CrewController@deleteCrew');
+Route::post('/storeCrew', 'CrewController@storeCrew');
 
 
 //WELCOME PAGE ROUTES
@@ -97,3 +100,5 @@ Route::post('/photos', 'ImagesController@uploadPhotos');
 Route::post('/deletephoto', 'ImagesController@deletePhoto');
 Route::get('/galleryNames', 'ImagesController@getGalleryNames');
 
+//CATCH ALL FOR ROUTES
+Route::any('/{path?}', 'HomeController@index');

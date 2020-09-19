@@ -1435,6 +1435,107 @@ input[type=text], input[type=password] {
         width: 300px;
         height: 25px;
     }
+    
+}
+
+
+//*****************************CREW*************************
+.crewTable {
+    font-family: arial, sans-serif;
+    font-size: 1em;
+    border-collapse: collapse;
+    width: 100%;
+   
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px 0px 8px 5px;
+        background-color: #fff9e6;
+        button {
+            span {
+                img {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+      }
+    .crewNamesInput {
+        width: 90px;
+        background-color: white;
+    }
+    .crewSelects {
+        min-width: 45px;
+        max-width: 90px;
+        background-color: white;
+    }
+    .crewedit {
+        background-color: #4db8ff;
+    }
+    .crewdelete {
+        background-color: red;
+    }
+    .crewsave {
+        background-color:#b3ffb3;
+    }
+    .crewundo {
+        background-color: #ffb3b3;
+    }
+}
+
+.crewError {
+    background-color: #ffb3b3 !important;
+    // border: 1px solid red !important;
+}
+.addCrewModule {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+    background-color: #fff9e6;
+    .errorContainer {
+        p {
+            margin: 0;
+            font-size: 1em;
+            color: red;
+        }
+    }
+    .addCrewTable {
+        margin: auto;
+        border-collapse: collapse;
+        td, th {
+            border: none;
+            text-align: center;
+            input, select {
+                font-size: .9em;
+               
+            }
+        }
+    }
+    .crewButtons {
+        margin-top: 20px;
+        // padding-bottom: 20px;
+        .crewSubmit {
+            background-color: #b3ffb3;
+            margin-right: 15px;
+            height: 25px;
+            font-size: 1.1em;
+        }
+        .crewCancel {
+            background-color: #ffb3b3;
+            margin-right: 15px;
+            height: 25px;
+            font-size: 1.1em;
+        }
+        .crewClear {
+            background-color: #4db8ff;
+            height: 25px;
+            font-size: 1.1em;
+        }
+
+        // <button className="crewSubmit">Submit</button>
+        //                 <button className="crewCancel">Cancel</button>
+        //                 <button className="crewClear">Clear Fields</button>
+    }
 }
 
 

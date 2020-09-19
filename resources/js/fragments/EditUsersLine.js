@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 class TableLine extends React.Component {
     constructor(props) {
-        super(props)
+        super()
     }
     
     render() {
