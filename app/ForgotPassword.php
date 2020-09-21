@@ -9,12 +9,16 @@ use Illuminate\Support\Facades\Mail;
 
 class ForgotPassword extends Model
 {
-    // private $gmailUser;
-    // private $gmailPassword;
+    public $gmailUser;
+    public $gmailPassword;
 
     public function __construct() {
-        $this->$gmailUser = env("MAIL_USERNAME");
-        $this->$gmailPassword = env("MAIL_PASSWORD");
+        try {
+            $this->gmailUser = env('MAIL_USERNAME');
+            $this->gmailPassword = env('MAIL_PASSWORD');
+        } catch(\Exception $e) {
+            dd($e);
+        }
     }
 
     public function sendResetEmail($email, $resetToken)
@@ -37,8 +41,8 @@ class ForgotPassword extends Model
         ";
 
         $transport = (new \Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
-        ->setUsername('tj618history@gmail.com')
-        ->setPassword('wutijivixhoyoben');
+        ->setUsername($this->gmailUser)
+        ->setPassword($this->gmailPassword);
 
         $mailer = new \Swift_Mailer($transport);
      
