@@ -22,7 +22,6 @@ class EditCrewLine extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
-        console.log(props);
     }
 
     toggleEdit() {
@@ -51,6 +50,11 @@ class EditCrewLine extends React.Component {
         let change = {};
         change[e.target.name] = e.target.value;
         this.setState(change); 
+        if (e.target.name === "division") {
+            console.log("DIVISION CHANGED!!!!");
+            console.log(DIVISIONS[e.target.value][0]);
+            this.setState({job: DIVISIONS[e.target.value][0]})
+        }
     }
 
     handleLastnameChange(e) {
@@ -79,12 +83,10 @@ class EditCrewLine extends React.Component {
         })
         .catch((error) => {
             console.log(error);
-            // this.setState({dateError: true});
-            // if(error.response.data.errors.dateTo !== null) {
-                
-            //     window.confirm('The start date must be less than or equal to the end date');
-                
-            // }
+            this.setState({dateError: true});
+            if(error.response.data.errors.dateTo !== null) {
+                window.confirm('The start date must be less than or equal to the end date');
+            }
         })
     }
 
@@ -100,7 +102,6 @@ class EditCrewLine extends React.Component {
         .catch((error) => {
             console.log(error);
         })
-        
     }
     
     render() {
@@ -225,7 +226,6 @@ class EditCrewLine extends React.Component {
                             </button>
                         </td>
                     }
-                    
 
                     {this.state.disabled !== true && 
                         <td>
@@ -250,7 +250,6 @@ class EditCrewLine extends React.Component {
                             </button>
                         </td>
                     }
-
                 </tr>
             </React.Fragment>
         )

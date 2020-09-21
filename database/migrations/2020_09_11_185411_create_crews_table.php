@@ -17,12 +17,12 @@ class CreateCrewsTable extends Migration
             $table->id();
             $table->string('firstname');
             $table->string('lastname');
-            $table->string('email');
-            $table->string('crew')->nullable();
+            $table->string('email')->nullable();
+            $table->string('crew');
             $table->string('division');
             $table->string('job');
-            $table->string('datefrom');
-            $table->string('dateto');
+            $table->integer('datefrom');
+            $table->integer('dateto');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable(); 
         });

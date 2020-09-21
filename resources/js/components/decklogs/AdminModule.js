@@ -113,6 +113,7 @@ class AdminModule extends React.Component {
                         name="patrolNumber"
                         className="patrolNumber"
                         title="Patrol Number"
+                        placeholder="Optional"
                         value={this.state.patrolNumber}
                         onChange={this.handleChange}
                     />
@@ -121,6 +122,7 @@ class AdminModule extends React.Component {
                         name="patrolNotes"
                         className="patrolNotes"
                         title="Patrol Notes"
+                        placeholder="Optional"
                         value={this.state.patrolNotes}
                         onChange={this.handleChange}
                     />          

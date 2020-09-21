@@ -17,12 +17,38 @@ class CrewAdmin extends React.Component {
             dateFrom: "1962",
             dateTo: "1962",
             errorsFound: "",
-            submitSuccess: false
+            submitSuccess: false,
+            currentPage: 1,
+            lastPageIndex: 1,
+            crewPerPage: 12
         }
         this.getCrewMembers = this.getCrewMembers.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.goHome = this.goHome.bind(this);
+        this.handlePageButtonClick = this.handlePageButtonClick.bind(this);
+        this.handleLeftArrowClick = this.handleLeftArrowClick.bind(this);
+        this.handleRightArrowClick = this.handleRightArrowClick.bind(this);
+    }
+
+    handleLeftArrowClick() {
+        let pageDecrement = this.state.currentPage > 1 ? this.state.currentPage - 1 : 1;
+      this.setState({
+          currentPage: pageDecrement
+      })
+    }
+
+    handleRightArrowClick() {      
+      let pageIncrement = this.state.currentPage < this.state.lastPageIndex ? this.state.currentPage + 1 : this.state.lastPageIndex;
+      this.setState({
+          currentPage: pageIncrement
+      })
+    }
+
+    handlePageButtonClick(e) {
+        this.setState({
+            currentPage: Number(e.target.id)
+        })          
     }
 
     goHome() {
@@ -46,7 +72,8 @@ class CrewAdmin extends React.Component {
         return Axios.get('/getCrew')
                     .then((response) => {
                         this.setState({
-                            crewMembers: response.data
+                            crewMembers: response.data,
+                            lastPageIndex: Math.ceil(Object.keys(response.data).length / this.state.crewPerPage)
                         })
                     })
                     .catch(error => console.log(error));
@@ -80,7 +107,6 @@ class CrewAdmin extends React.Component {
                 console.log(error);
             })
         } else {
-            console.log("ERRORS FOUND!", errors);
             this.setState({
                 errorsFound: errors
             })
@@ -91,7 +117,7 @@ class CrewAdmin extends React.Component {
         e.preventDefault();
         let change = {};
         change[e.target.name] = e.target.value;
-        this.setState(change); 
+        this.setState(change);         
     }
 
     checkData(firstName, lastName, dateFrom, dateTo) {
@@ -103,16 +129,54 @@ class CrewAdmin extends React.Component {
             errors.push('First Name');
         } 
         if(!DataChecker.checkServedYears(dateFrom, dateTo)) {
-            errors.push('Date to must be greater or equal to Date From');
+            errors.push('Date To must be greater or equal to Date From');
         } 
         return errors;
     }
 
     render() {
+        //Build Divisions dropdown
         const divisions = [];
         Object.keys(DIVISIONS).forEach( (key) => {
             divisions.push(key);
         });
+
+        const allCrewMembers = this.state.crewMembers;
+        const crewPerPage = this.state.crewPerPage;
+        const currentPage = this.state.currentPage;
+       
+        // ************Logic for displaying events
+        const indexOfLastCrew = currentPage * crewPerPage;
+        const indexOfFirstCrew = indexOfLastCrew - crewPerPage;
+        
+        const currentCrew = allCrewMembers.slice(indexOfFirstCrew, indexOfLastCrew);
+
+        const renderedCrew = currentCrew.map((crewMember, index) => {
+            return <EditCrewLine key={Math.floor(Math.random()*100000000)} crew={crewMember} rerenderCallback={this.getCrewMembers} />
+        });
+
+        // ***************Logic for displaying page numbers
+        const pageNumbers = [];
+        for (let i = 1; i <= Math.ceil(allCrewMembers.length / crewPerPage); i++) {
+          pageNumbers.push(i);         
+        } 
+
+        const renderPageNumbers = pageNumbers.map(number => {
+          if (number >= this.state.currentPage - 4 && number <=  this.state.currentPage + 4) {
+            return (
+              <li key={"crewpage"+number}>
+                <button 
+                  className="paginationButton" 
+                  id={number} 
+                  onClick={this.handlePageButtonClick}
+                  style={{backgroundColor: number === this.state.currentPage ? "#ffffff" : "#cccccc"}}
+                  >{number}
+                </button>
+              </li>
+            );
+          }
+        });
+
         return(
             <div className="crewadmin borderModule">
                 <span 
@@ -142,27 +206,27 @@ class CrewAdmin extends React.Component {
                                 <td><input name="firstName" value={this.state.firstName} onChange={this.handleChange}/></td>
                                 <td>
                                     <select name="division" value={this.state.division} onChange={this.handleChange}>
-                                        {divisions.map(division => <option>{division}</option>)}
+                                        {divisions.map(division => <option key={"crew." + division}>{division}</option>)}
                                     </select>
                                 </td>
                                 <td>
                                     <select name="job" value={this.state.job} onChange={this.handleChange}>
-                                        {DIVISIONS[this.state.division].map(job => <option>{job}</option>)}
+                                        {DIVISIONS[this.state.division].map(job => <option key={"crew." + job}>{job}</option>)}
                                     </select>
                                 </td>
                                 <td>
                                     <select name="crew" value={this.state.crew} onChange={this.handleChange}>
-                                        {CREWS.map(crew => <option>{crew}</option>)}
+                                        {CREWS.map(crew => <option key={"crew." + crew}>{crew}</option>)}
                                     </select>
                                 </td>
                                 <td>
                                     <select name="dateFrom" value={this.state.dateFrom} onChange={this.handleChange}>
-                                        {SERVEDDATES.map(date => <option>{date}</option>)}
+                                        {SERVEDDATES.map(date => <option key={"dateFrom." + date}>{date}</option>)}
                                     </select>
                                 </td>
                                 <td>
                                     <select name="dateTo" value={this.state.dateTo} onChange={this.handleChange}>
-                                        {SERVEDDATES.map(date => <option>{date}</option>)}
+                                        {SERVEDDATES.map(date => <option key={"dateTo." + date}>{date}</option>)}
                                     </select>
                                 </td>
                             </tr>
@@ -173,7 +237,7 @@ class CrewAdmin extends React.Component {
                         {this.state.errorsFound && 
                             <div>
                                 <p>Please fix the following errors: </p>
-                                {this.state.errorsFound.map(error => <p>{error}</p>)}
+                                {this.state.errorsFound.map(error => <p key={"crewError"+error}>{error}</p>)}
                             </div>}
                     </div>
                     {this.state.submitSuccess === true && <p className="valid">Submit Success</p>}
@@ -198,11 +262,25 @@ class CrewAdmin extends React.Component {
                             </tr>
                         </thead>
                         <tbody>
-                        {this.state.crewMembers.map((crewMember) => 
-                            <EditCrewLine key={Math.floor(Math.random()*100000000)} crew={crewMember} rerenderCallback={this.getCrewMembers} />
-                        )}
+                        {/* CREW TABLE BUILT ABOVE IN RENDER() */}
+                        {renderedCrew}
                         </tbody>
                     </table>
+                    <div className="eventPagination">
+                            <ul className="pageNumbers">
+                                {this.state.currentPage !== 1 && 
+                                <li key="leftArrow" >
+                                    <button className="arrowButton" onClick={this.handleLeftArrowClick}><img src="../../images/icons/leftarrow_small.png" /></button>
+                                </li>
+                                }
+                                {renderPageNumbers}
+                                {this.state.currentPage !== this.state.lastPageIndex &&
+                                    <li key="rightArrow">
+                                        <button className="arrowButton" onClick={this.handleRightArrowClick}><img src="../../images/icons/rightarrow_small.png" /></button>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
                 </div>
             </div>
         )

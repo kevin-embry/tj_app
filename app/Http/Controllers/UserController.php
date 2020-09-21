@@ -73,7 +73,7 @@ class UserController extends Controller
                     [
                         'firstname' => $data['firstName'],
                         'lastname' => $data['lastName'],
-                        // 'email' => $data['email'],
+                        'email' => $data['email'],
                         'crew' => $data['crew'],
                         // 'servedonboard' => $data['servedOnBoard'],
                         'division' => $data['division'],

@@ -25,7 +25,7 @@ export const DIVISIONS = {
         "cook",
         "supply"
     ],
-    stewards: ["stewards"],
+    stewards: ["steward"],
     unknown: ["unknown"]
 }
 

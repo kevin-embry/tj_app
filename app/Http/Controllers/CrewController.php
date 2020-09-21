@@ -22,7 +22,7 @@ class CrewController extends Controller
             'job' => 'required',
             'crew' => 'required',
             'dateFrom' => 'required',
-            'dateTo' => 'required'
+            'dateTo' => 'required|gte:dateFrom'
         ]);
 
         try {
