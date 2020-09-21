@@ -5,7 +5,7 @@ import EventsModule from './EventsModule';
 
 class Awards extends React.Component {
     constructor(props) {
-        super(props)
+        super()
         this.state = {
             historyEvents: [{id: 0, eventdate: "", activity: "", notes: ""}],
             eventsPerPage: 15,
@@ -14,7 +14,7 @@ class Awards extends React.Component {
         this.retrieveEvents();
         this.redirectToHome = this.redirectToHome.bind(this);
         this.retrieveEvents = this.retrieveEvents.bind(this);
-        console.log(props)
+        // console.log(props)
     }
 
     retrieveEvents() {

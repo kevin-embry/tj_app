@@ -82,9 +82,6 @@ class AdminModule extends React.Component {
                 <h3>New Events require a minimum of date and event name. Notes are optional.</h3>
                 <hr/>
                 <div className="addevent">
-                    {/* <button type="button">
-                        <img src="../../images/icons/plus_icon.png" /><span>Add</span> 
-                    </button> */}
                     <span>Add New:</span>
                     <input 
                         name="historyDate" 
@@ -105,7 +102,7 @@ class AdminModule extends React.Component {
                
                {/* TODO: ADD ICONS IN BUTTONS BELOW. CHANGE SUBMIT TO ADD */}
                 <div className="historyAdminButtons">
-                    <button className="historyAdminSubmit" onClick={this.handleNewEvent}>Submit</button>                   
+                    <button className="historyAdminSubmit" onClick={this.handleNewEvent}>Add</button>                   
                     <button className="historyAdminCancel" onClick={this.handleCancel}>Cancel</button>
                     <button type="button" className="historyAdminClear" onClick={this.clearFields}>Clear Fields</button>
                 </div>

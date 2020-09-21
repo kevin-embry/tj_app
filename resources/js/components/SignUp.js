@@ -196,8 +196,8 @@ function SignUp(props) {
                dateTo: dateTo,
                password: password2
            }).then( (response) => {
-                console.log(response);
-                alert("Your submission has been accepted. Please allow 24 to 48 hours for review/acceptance of your request. Thank you.");
+                // console.log(response);
+                alert("Your submission has been received. Please allow 24 to 48 hours for review/acceptance of your request. Thank you.");
                 props.history.push("/");
            }).catch( (error) => {
                console.error(error);
