@@ -70,6 +70,16 @@
     color: red;
 }
 
+.print {
+    position: absolute;
+    top: 12px;
+    right: 35px;
+    // cursor: pointer;
+    img {
+        width: 28px;
+    }
+}
+
 button {
     cursor: pointer;
 }
@@ -84,7 +94,7 @@ button {
     background: white;
     height: 18px;
     width: 19px;
-    font-size: .75em;
+    font-size: .80em;
     display: inline-block;
     color: black;
     position: absolute;
@@ -567,13 +577,14 @@ input[type=text], input[type=password] {
 }
 
 .loginerror {
-    border-color: red !important;
+    border: 1px solid red !important;
+    // border-color: red !important;
 }
 
 .errorDisplay {
     margin-left: 20px;
     color: red;
-    font-size: .9em;
+    font-size: 1.2em;
 }
 
 .footer {
@@ -692,6 +703,22 @@ input[type=text], input[type=password] {
 .password_container {
     clear: both;
     font-size: 1em;
+}
+
+.servedDates {
+    margin-top: 15px;
+    text-align: left;
+    p {
+       margin: 20px 0 20px 0; 
+    }
+    label {
+        font-size: 1.3em;
+    }
+    select {
+        height: 25px;
+        font-size: 1em;
+        margin-right: 20px;
+    }
 }
 
 //***********************About Us***************************
@@ -815,10 +842,15 @@ input[type=text], input[type=password] {
 
 //******************************HISTORY***********************
 
+.historyAdmin {
+    h3 {
+        margin: 5px;
+    }
+}
 .addevent {
     width: 100%;  
     height: 30px;
-    padding: 25px 0;
+    padding: 8px 0 20px 0;
 
     span {
         float: left;
@@ -943,34 +975,51 @@ input[type=text], input[type=password] {
             margin-top: 20px;
         }
     }
+    
+}
 
-    .eventPagination {
-        margin-top: 25px;
-        .pageNumbers {
-            list-style: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding-left: 0;
+.eventPagination {
+    margin-top: 25px;
+    .pageNumbers {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-left: 0;
 
-            .paginationButton {
-                width: 32px;
-                height: 32px;
-                text-align: center;
-                padding: 0;
-                float: left;
-                img {
-                    width: 30px;
-                    height: 30px;
-                }
+        .paginationButton {
+            width: 32px;
+            height: 32px;
+            text-align: center;
+            padding: 0;
+            float: left;
+            // img {
+            //     width: 30px;
+            //     height: 30px;
+            // }
+        }
+        .paginationButton:focus {
+            background-color: white;
+        }
+
+        .arrowButton {
+            width: 32px;
+            height: 32px;
+            text-align: center;
+            padding: 0;
+            float: left;
+            img {
+                width: 30px;
+                height: 30px;
             }
+        }
 
-            li {
-                margin-right: .3em;
-                color: blue;
-                user-select: none;
-                cursor: pointer;
-            }
+
+        li {
+            margin-right: .3em;
+            color: blue;
+            user-select: none;
+            cursor: pointer;
         }
     }
 }
@@ -1417,6 +1466,106 @@ input[type=text], input[type=password] {
     .newPasswordInput {
         width: 300px;
         height: 25px;
+    }
+    
+}
+
+
+//*****************************CREW*************************
+.crewTable {
+    font-family: arial, sans-serif;
+    font-size: 1em;
+    border-collapse: collapse;
+    width: 100%;
+   
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 8px 0px 8px 5px;
+        background-color: #fff9e6;
+        button {
+            span {
+                img {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+      }
+    .crewNamesInput {
+        width: 90px;
+        background-color: white;
+    }
+    .crewSelects {
+        min-width: 45px;
+        max-width: 90px;
+        background-color: white;
+    }
+    .crewedit {
+        background-color: #4db8ff;
+    }
+    .crewdelete {
+        background-color: red;
+    }
+    .crewsave {
+        background-color:#b3ffb3;
+    }
+    .crewundo {
+        background-color: #ffb3b3;
+    }
+}
+
+.crewError {
+    background-color: #ffb3b3 !important;
+}
+.addCrewModule {
+    padding-top: 0;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    background-color: #fff9e6;
+    .errorContainer {
+        p {
+            margin: 0;
+            font-size: 1em;
+            color: red;
+        }
+    }
+    .addCrewTable {
+        margin: auto;
+        border-collapse: collapse;
+        td, th {
+            border: none;
+            text-align: center;
+            input, select {
+                font-size: .9em;
+               
+            }
+        }
+    }
+    .crewButtons {
+        margin-top: 5px;
+        // padding-bottom: 20px;
+        .crewSubmit {
+            background-color: #b3ffb3;
+            margin-right: 15px;
+            height: 25px;
+            font-size: 1.1em;
+        }
+        .crewCancel {
+            background-color: #ffb3b3;
+            margin-right: 15px;
+            height: 25px;
+            font-size: 1.1em;
+        }
+        .crewClear {
+            background-color: #4db8ff;
+            height: 25px;
+            font-size: 1.1em;
+        }
+
+        // <button className="crewSubmit">Submit</button>
+        //                 <button className="crewCancel">Cancel</button>
+        //                 <button className="crewClear">Clear Fields</button>
     }
 }
 

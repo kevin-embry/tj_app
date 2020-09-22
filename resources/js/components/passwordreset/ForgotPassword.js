@@ -49,7 +49,8 @@ class ForgotPassword extends React.Component {
             this.setState({emailSubmitted: true, enterCode: true});
         })
         .catch((error) => {
-            this.setState({error: error.response.data.errors.email})
+            console.log(error);
+            // this.setState({error: error.response.data.errors.email})
         })
     }
 
@@ -114,7 +115,7 @@ class ForgotPassword extends React.Component {
                 {!this.state.emailSubmitted &&
                     <div>
                         <h3>Please enter your email below to reset your password.</h3>
-                        <h3>A code valid for 10 minutes will be sent to your email.</h3>
+                        <h3>A code valid for 10 minutes will be sent to your email.</h3>                      
                         <div className="passwordRecoverInput">
                             <label htmlFor="emailInput">Email: </label>
                             <input type="text" className="emailInput" value={this.state.email} onChange={this.handleEmailInput} />
@@ -129,6 +130,7 @@ class ForgotPassword extends React.Component {
                     <div>
                         <h3>Please check your email.</h3>
                         <h3>Please enter the reset code below that was emailed to you. It is valid for 10 minutes only.</h3>
+                        <h3>If you do not receive it please check your junk/spam folder.</h3>
                         <div className="codeEntry">
                             <label htmlFor="resetCode">Enter Code: </label>
                             <input type="text" name="resetCode" className="resetCode" value={this.state.resetCode} onChange={this.handleResetCodeInput}/>

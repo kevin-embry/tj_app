@@ -7,7 +7,6 @@ export default class DataChecker {
     }
 
     static checkLastName(lastName) {
-        // const regex = /^[a-z0-9]+(?:[._-]['a-z0-9]+)*$/;
         const regex = /^[A-Za-z0-9]+((\s)?((\'|\-|\.)?([A-Za-z0-9])+))*$/;
         var check = regex.test(String(lastName));
         return check;
@@ -23,5 +22,9 @@ export default class DataChecker {
         var regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
         var check = regex.test(String(password));
         return check;
+    }
+
+    static checkServedYears(startYear, endYear) {
+        return startYear <= endYear;
     }
 }

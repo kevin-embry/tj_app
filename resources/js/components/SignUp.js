@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
-import {CREWS, DIVISIONS} from '../data/tjConstants'
+import {CREWS, DIVISIONS, SERVEDDATES} from '../data/tjConstants'
 import DataChecker from '../data/DataChecker';
 import Axios from 'axios';
-// import { Link } from 'react-router-dom';
-// import { AuthContext, useAuth } from '../context/auth';
-// import { Redirect } from 'react-router-dom';
 
 function SignUp(props) {
     
@@ -15,6 +12,8 @@ function SignUp(props) {
     const [division, setDivision] = useState("");
     const [crew, setCrew] = useState("");
     const [job, setJob] = useState("");
+    const [dateFrom, setDateFrom] = useState(1962);
+    const [dateTo, setDateTo] = useState(1962);
     const [password1, setPassword1] = useState("");
     const [password2, setPassword2] = useState("");
     const [passwordsMatch, setPasswordsMatch] = useState(null);
@@ -22,6 +21,7 @@ function SignUp(props) {
     const [lnError, setLnError] = useState(false);
     const [emailError, setEmailError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
+    const [servedYearsError, setServedYearsError] = useState(false);
 
     const divisions = [];
     Object.keys(DIVISIONS).forEach( (key) => {
@@ -37,6 +37,8 @@ function SignUp(props) {
         evt.target.name == "crewcolor" ? setCrew(evt.target.value) : "";
         evt.target.name == "division" ? setDivision(evt.target.value) : "";
         evt.target.name == "job" ? setJob(evt.target.value) : "";
+        evt.target.name == "dateFrom" ? setDateFrom(Number(evt.target.value)) : "";
+        evt.target.name == "dateTo" ? setDateTo(Number(evt.target.value)) : "";
         evt.target.name == "password1" ? setPassword1(evt.target.value) : "";
         evt.target.name == "password2" ? setPassword2(evt.target.value) : ""; 
     }
@@ -56,6 +58,30 @@ function SignUp(props) {
 
     function goHome() {
         props.history.push("/");
+    }
+
+    function DatesSelect(props) {
+        return (
+           
+                <div className="servedDates">
+                <p>Select the dates you served:</p>
+                <div className={servedYearsError == true ? "loginerror" : ""}>
+                    <label htmlFor="dateFrom">Start Date: </label>
+                    <select className="division" name="dateFrom" value={dateFrom} onChange={handleChange} >
+                        {SERVEDDATES.map(date => 
+                            <option key={"date" + date}>{date}</option>    
+                        )};
+                    </select>
+                    <label htmlFor="dateTo">End Date: </label>
+                    <select className="division" name="dateTo" value={dateTo} onChange={handleChange} >
+                        {SERVEDDATES.map(date => 
+                            <option key={"date" + date}>{date}</option>    
+                        )};
+                    </select>
+                </div>
+                
+            </div> 
+        )
     }
 
     function JobsSelect(props) {
@@ -121,13 +147,13 @@ function SignUp(props) {
     function checkAllFields() {
        var errors = [];
        if(!DataChecker.checkFirstName(firstName)) {
-            errors.push('firstName');
+            errors.push('first name');
             setFnError(true);
        } else {
            setFnError(false);
        };
         if(!DataChecker.checkLastName(lastName)) {
-            errors.push('lastName');
+            errors.push('last name');
             setLnError(true);
         } else {
             setLnError(false);
@@ -144,6 +170,13 @@ function SignUp(props) {
         } else {
             setPasswordError(false);
         };
+        if(servedOnBoard === "yes" && !DataChecker.checkServedYears(dateFrom, dateTo)) {
+            console.log("SERVED YEARS ERROR!");
+            errors.push('served years');
+            setServedYearsError(true);
+        } else {
+            setServedYearsError(false);
+        };
         return errors;
     }
 
@@ -152,17 +185,19 @@ function SignUp(props) {
         var errors = checkAllFields();
         if (doPasswordsMatch && errors.length == 0) {
            Axios.post("/register", {
-               firstName: firstName,
-               lastName: lastName,
+               firstName: firstName.toLowerCase(),
+               lastName: lastName.toLowerCase(),
                email: email,
                servedOnBoard: servedOnBoard,
                division: division,
                job: job,
                crew: crew,
+               dateFrom: dateFrom,
+               dateTo: dateTo,
                password: password2
            }).then( (response) => {
-                console.log(response);
-                alert("Your submission has been accepted. Please allow 24 to 48 hours for review/acceptance of your request. Thank you.");
+                // console.log(response);
+                alert("Your submission has been received. Please allow 24 to 48 hours for review/acceptance of your request. Thank you.");
                 props.history.push("/");
            }).catch( (error) => {
                console.error(error);
@@ -226,14 +261,17 @@ function SignUp(props) {
                         <option key="yes" value="yes">Yes</option>                                
                     </select>
                 </p>
+
+                {servedOnBoard === "yes" && <DatesSelect /> }
                 
                 {servedOnBoard === "yes" ? <CrewColor /> : ""}
-
+                
                 <div className="divisions_container">
                     {servedOnBoard === "yes" ? <DivisionSelect /> : ""}
                     {division !== "" ? <JobsSelect jobs={DIVISIONS[division]} /> : ""}
                 </div>
 
+               
                 <div className="password_container">
                     <p>Please Select a Password: </p>
                     <input 
@@ -255,7 +293,7 @@ function SignUp(props) {
                         onChange={handleChange} 
                         required 
                     /> 
-                    {(fnError || lnError || emailError) ? <InfoError /> : ""}
+                    {(fnError || lnError || emailError || servedYearsError) ? <InfoError /> : ""}
                     {(passwordsMatch !== null && passwordsMatch === false) ? <PasswordError /> : ""}
                 </div>
                 <button 

@@ -10,6 +10,7 @@ function Authenticate(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isError, setIsError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
     const { setAuthTokens } = useAuth();
    
     const referer = props.location.state.referer || "/";
@@ -25,12 +26,20 @@ function Authenticate(props) {
                 setIsError(false);
                 setLoggedIn(true);
             })
-            .catch((error) => {    
-                setIsError(true);    
-                console.log({
-                    status: error.response.status,
-                    message: error.response.statusText
-                });
+            .catch((error) => {  
+                switch(error.response.status) {
+                    case 404:
+                        setErrorMessage("User not found or incorrect email/password")
+                        break;
+                    case 401:
+                        setErrorMessage("User Not Approved. Check back later.")
+                        break;    
+                    default: 
+                        setErrorMessage("Internal server error")
+                        break;   
+                }
+                setIsError(true);
+               
             })
         } else {           
             setIsError(true);  
@@ -46,7 +55,7 @@ function Authenticate(props) {
     }
 
     function ErrorMessage(props) {        
-        return <b className={props.className}>Incorrect Email/Password</b>        
+    return <b className={props.className}>{errorMessage}</b>        
     }
         
     return (
@@ -56,7 +65,7 @@ function Authenticate(props) {
                 <form className="authform" onSubmit={postLogin}>
                     <div className="container">
                         
-                        <label htmlFor="email"><b>Email</b>{isError == true ? <ErrorMessage className="errorDisplay"/> : ""}</label>
+                        <label htmlFor="email"><b>Email</b></label>
                         <input 
                             type="text" 
                             className = {isError == true ? "loginerror" : ""}
@@ -81,7 +90,9 @@ function Authenticate(props) {
                                 setPassword(e.target.value)
                             }} 
                             required 
-                        />   
+                        />  
+
+                        {isError == true ? <ErrorMessage className="errorDisplay"/> : ""} 
                        
                         <button 
                         type="submit"

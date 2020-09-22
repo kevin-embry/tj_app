@@ -9,6 +9,7 @@ function AboutUs(props) {
             {ABOUTUS.map((message, index) =>
                 <p key={index} >{"   " + message}</p>
             )}
+            <h3>This site runs best in Chrome, Firefox or Edge. Sorry, there is no support for Internet Explorer.</h3>
         </div>
     )
 } 

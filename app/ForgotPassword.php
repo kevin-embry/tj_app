@@ -4,14 +4,27 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+
 
 class ForgotPassword extends Model
 {
+    public $gmailUser;
+    public $gmailPassword;
+
+    public function __construct() {
+        try {
+            $this->gmailUser = env('MAIL_USERNAME');
+            $this->gmailPassword = env('MAIL_PASSWORD');
+        } catch(\Exception $e) {
+            dd($e);
+        }
+    }
+
     public function sendResetEmail($email, $resetToken)
     {
         $to = $email;
-        $subject = "Password Reset Request from TJ History Website";
-        $message = "
+        $messageBody = "
             <html>
                 <body>
                     <h2>This email is from the Thomas Jefferson History Website</h2>
@@ -20,23 +33,30 @@ class ForgotPassword extends Model
                     <p>If you did not request a password reset, please ignore this message.</p>
                     <hr/>
                     <p>Please use the following token in the Thomas Jefferson app to reset your password:</p>
-                    <h1>{$resetToken}</h1>
+                    <h1><b>{$resetToken}</b></h1>
                     <p>Best Regards,</p>
                     <p>Thomas Jefferson History Webmaster</p>
                 </body>
             </html>
         ";
-        $headers = "MIME-Version: 1.0" . "\r\n";
-        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-        $headers .= 'From: <DoNotReply@tj618history.org>' . "\r\n";
-        // $headers .= 'Cc: webmaster@th618history.org' . "\r\n";
-        try{
-            mail($to,$subject,$message,$headers);
-            $this->storeToken($email, $resetToken);
+
+        $transport = (new \Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
+        ->setUsername($this->gmailUser)
+        ->setPassword($this->gmailPassword);
+
+        $mailer = new \Swift_Mailer($transport);
+     
+        $message = (new \Swift_Message('Password Reset Request from TJ History Website'))
+        ->setFrom(['DoNotReply@tj618history.org' => 'TJ618History Webmaster'])
+        ->setTo($to)
+        ->setBody($messageBody, 'text/html');
+      
+        if($mailer->send($message)) {
             return true;
-        }catch(\Exception $e) {
-            return $e;
+        } else {
+            throw new \Exception('Mail Delivery Failure');
         }
+       
     }
 
     public function updatePassword($email, $password)

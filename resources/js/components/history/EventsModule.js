@@ -1,10 +1,10 @@
 import React from 'react'
-import Axios from 'axios';
+// import Axios from 'axios';
 import EditEvent from './EditEvent';
 
 class EventsModule extends React.Component {
     constructor(props) {
-        super(props)
+        super()
         this.state = {
           currentPage: 1,
           editEventVisible: false
@@ -20,8 +20,8 @@ class EventsModule extends React.Component {
 
       handleClick(e) {
           this.setState({
-              currentPage: event.target.id
-          })
+              currentPage: Number(e.target.id)
+          })          
       }
 
       handleLeftArrowClick() {
@@ -31,9 +31,12 @@ class EventsModule extends React.Component {
         })
       }
 
-      //TODO: THIS DOES NOT WORK YET. FIX IT!
       handleRightArrowClick() {
-        let pageIncrement = this.state.currentPage < this.state.lastPageIndex ? this.state.currentPage + 1 : this.state.lastPageIndex;
+        console.log({
+          currentPage: this.state.currentPage,
+          lastPageIndex: this.props.lastPageIndex
+        })
+        let pageIncrement = this.state.currentPage < this.props.lastPageIndex ? this.state.currentPage + 1 : this.props.lastPageIndex;
         this.setState({
             currentPage: pageIncrement
         })
@@ -62,17 +65,18 @@ class EventsModule extends React.Component {
       }
 
       render() {
-        // console.log(this.state);
+        //History Events are pulled in through props
         const historyEvents = this.props.events;
-        const eventsPerPage = this.props.eventsPerPage
+        const eventsPerPage = 8;
         const currentPage = this.state.currentPage;
        
         // ************Logic for displaying events
         const indexOfLastEvent = currentPage * eventsPerPage;
         const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
-        const currentEvent = historyEvents.slice(indexOfFirstEvent, indexOfLastEvent);
+        
+        const currentEvents = historyEvents.slice(indexOfFirstEvent, indexOfLastEvent);
 
-        const renderEvents = currentEvent.map((event, index) => {
+        const renderedEvents = currentEvents.map((event, index) => {
             return <tr key={"event"+index}>
                         <td>{this.getFormattedDate(event.eventdate)}</td>
                         <td>{event.activity}</td>
@@ -95,11 +99,20 @@ class EventsModule extends React.Component {
         } 
 
         const renderPageNumbers = pageNumbers.map(number => {
-          return (
-            <li key={"page"+number}>
-              <button className="paginationButton" id={number} onClick={this.handleClick}>{number}</button>
-            </li>
-          );
+          if (number >= this.state.currentPage - 4 && number <=  this.state.currentPage + 4) {
+            return (
+              <li key={"page"+number}>
+                <button 
+                  className="paginationButton" 
+                  id={number} 
+                  onClick={this.handleClick}
+                  style={{backgroundColor: number === this.state.currentPage ? "#ffffff" : "#cccccc"}}
+                  >{number}
+                </button>
+              </li>
+            );
+          }
+          
         });
         
           return (
@@ -131,16 +144,23 @@ class EventsModule extends React.Component {
                             </tr>                   
                         </thead>
                         <tbody>
-                        {renderEvents}                 
+                        {renderedEvents}                 
                         </tbody>
                     </table>
                 </div> 
                 <div className="eventPagination">
                     <ul className="pageNumbers">
-                        <li key="leftArrow" ><button className="paginationButton" onClick={this.handleLeftArrowClick}><img src="../../images/icons/leftarrow_small.png" /></button></li>
+                        {this.state.currentPage !== 1 && 
+                        <li key="leftArrow" >
+                          <button className="arrowButton" onClick={this.handleLeftArrowClick}><img src="../../images/icons/leftarrow_small.png" /></button>
+                        </li>
+                        }
                         {renderPageNumbers}
-                        {/* RIGHT ARROW DOES NOT WORK YET */}
-                        <li key="rightArrow"><button className="paginationButton" onClick={this.handleRightArrowClick}><img src="../../images/icons/rightarrow_small.png" /></button></li>
+                        {this.state.currentPage !== this.props.lastPageIndex &&
+                          <li key="rightArrow">
+                            <button className="arrowButton" onClick={this.handleRightArrowClick}><img src="../../images/icons/rightarrow_small.png" /></button>
+                          </li>
+                        }
                     </ul>
                 </div>
             </div>

@@ -3,7 +3,7 @@ import { RestDataSource } from '../webservice/RestDataSource';
 
 export default class Footer extends React.Component {
     constructor(props){
-        super(props)
+        super()
         this.state = {lastUpdate: ""};
         this.dataSource = new RestDataSource("/getLastUpdate");   
     }    
@@ -12,7 +12,7 @@ export default class Footer extends React.Component {
         return (
             <div className="footer">
                 <div className="contactus">
-                    <a href="mailto:superadmin@tj618history.org">Contact Us</a>
+                    <a href="mailto:tj618history@gmail.com">Contact Us</a>
                 </div>
                <div className="footercenter">
                    <p>Thomas Jefferson</p>

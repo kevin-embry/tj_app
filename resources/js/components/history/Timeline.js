@@ -5,10 +5,10 @@ import EventsModule from './EventsModule';
 
 class Timeline extends React.Component {
     constructor(props) {
-        super(props)
+        super()
         this.state = {
             historyEvents: [{id: 0, eventdate: "", activity: "", notes: ""}],
-            eventsPerPage: 20,
+            eventsPerPage: 8,
             lastPageIndex: 1
         }
         this.retrieveEvents();
@@ -34,7 +34,6 @@ class Timeline extends React.Component {
     }
 
     render() {
-        // console.log(this.props);
         return (
             <div className="timeline">
                 {this.props.adminMode===true ? 
@@ -48,7 +47,7 @@ class Timeline extends React.Component {
                     moduleName="Timeline" 
                     events={this.state.historyEvents} 
                     lastPageIndex={this.state.lastPageIndex}
-                    eventsPerPage={this.state.eventsPerPage}
+                    // eventsPerPage={this.state.eventsPerPage}
                     adminMode={this.props.adminMode}
                     refreshEvents={this.retrieveEvents}
                     updateURL="/updateTimelineEvent"

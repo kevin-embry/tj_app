@@ -3,12 +3,11 @@ import { useAuth } from '../context/auth';
 import { Link } from 'react-router-dom';
 
 function LogOutContainer(props) {
-
     const { setAuthTokens } = useAuth();  
     // console.log(props);  
-    function logOut(){     
+    function logOut(){ 
+        props.disableAdminModeCallback();    
         setAuthTokens(null);
-        props.adminModeCallback();
     }    
 
     return (

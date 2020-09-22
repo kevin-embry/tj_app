@@ -16,7 +16,7 @@ class EditSingleAnnouncement extends React.Component {
     }
 
     handleUpdate(e) {
-        console.log('IN UPDATE!!!!!!!');
+        // console.log('IN UPDATE!!!!!!!');
         Axios.post('/updateAnnouncement', {
             id: this.state.id,
             expireDate: this.state.announceDate,

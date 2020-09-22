@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\DB;
 
 class Decklogs extends Model
 {
-//    protected $fillable = ['postdate', 'logdate', 'patrolnumber', 'patrolnotes', 'file'];
 
    public function getYears()
    {
