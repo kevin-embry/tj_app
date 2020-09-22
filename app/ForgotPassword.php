@@ -52,6 +52,7 @@ class ForgotPassword extends Model
         ->setBody($messageBody, 'text/html');
       
         if($mailer->send($message)) {
+            $this->storeToken($email, $resetToken);
             return true;
         } else {
             throw new \Exception('Mail Delivery Failure');
