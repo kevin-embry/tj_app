@@ -24,6 +24,7 @@ import EditUsers from './EditUsers';
 import UnderConstruction from './UnderConstruction';
 import EditAnnouncements from './announcements/EditAnnouncements';
 
+
 function App(props) {  
     // console.log("APP START");
   
@@ -35,6 +36,7 @@ function App(props) {
     const [adminMode, setAdminMode] = useState(JSON.parse(localStorage.getItem("TJEditMode")));
     const [newApplicants, setNewApplicants] = useState(getNewApplicants());
     const [newUserNumber, setNewUserNumber] = useState(0);
+    const [loading, setLoading] = useState(false);
 
     //Auth token gets set in promise in authenticate component
     const setTokens = (data) => {
@@ -55,6 +57,10 @@ function App(props) {
     function toggleAdminMode() {
         localStorage.setItem("TJEditMode", !adminMode);
         setAdminMode(!adminMode);
+    }
+
+    function toggleLoading() {
+        setLoading(!loading);
     }
 
     function getNewApplicants() {
@@ -114,6 +120,7 @@ function App(props) {
                             {/* CATCH-ALL ROUTE FOR ANYTHING NOT FINISHED IE: UNDER CONSTRUCTION  */}
                             <Route component={UnderConstruction}/>
                         </Switch>
+                        
                     </div>
                     <Footer />
                 </div>
