@@ -47,20 +47,28 @@ class DecklogsController extends Controller
      
         //STORE PDF TO s3
         $filePath = env('APPLICATION_ENV').'/decklogs/dl'.time().request()->file->getClientOriginalName();
-        $file = request()->file; 
-        $result = Storage::disk('s3')->put($filePath, file_get_contents($file), 'public');
+        $file = request()->file;
+        
+        try{
+            $result = Storage::disk('s3')->put($filePath, file_get_contents($file), 'public');
 
-        //SAVE TO DATABASE
-        if($result) {
-            $decklog = new Decklogs();
-            $decklog->logdate = request('logdate');
-            $decklog->postdate = request('postdate');
-            $decklog->patrolnumber = request('patrolnumber');
-            $decklog->patrolnotes = request('patrolnotes');
-            $decklog->file = $filePath;
-            $decklog->save();
+            //SAVE TO DATABASE
+            if($result) {
+                $decklog = new Decklogs();
+                $decklog->logdate = request('logdate');
+                $decklog->postdate = request('postdate');
+                $decklog->patrolnumber = request('patrolnumber');
+                $decklog->patrolnotes = request('patrolnotes');
+                $decklog->file = $filePath;
+                $decklog->save();
+            } else {
+                throw new \Exception("Decklog save failed");
+            }
+            return response(json_encode("File Saved"), 201);
+        }catch(\Exception $e) {
+            return response(json_encode($e), 500);
         }
-        return redirect('/decklogs');
+       
     }
 
     public function getFilterData(Request $request)
