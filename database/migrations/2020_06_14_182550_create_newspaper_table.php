@@ -11,23 +11,26 @@ class CreateNewspaperTable extends Migration
      *
      * @return void
      */
-    // public function up()
-    // {
-    //     Schema::create('newspaper', function (Blueprint $table) {
-    //         $table->id();
-    //         $table->date('postdate');
-    //         $table->string('fileloaction');
-    //         $table->string('comments');
-    //     });
-    // }
+    public function up()
+    {
+        Schema::create('newspaper', function (Blueprint $table) {
+            $table->id();
+            $table->date('postdate');
+            $table->string('url');
+            $table->integer('height');
+            $table->integer('width');
+            $table->string('comments')->nullable();
+            $table->timestamps();
+        });
+    }
 
     /**
      * Reverse the migrations.
      *
      * @return void
      */
-    // public function down()
-    // {
-    //     Schema::dropIfExists('newspaper');
-    // }
+    public function down()
+    {
+        Schema::dropIfExists('newspaper');
+    }
 }

@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use App\Decklogs;
 
 class DecklogsController extends Controller
 {
-    public function __construct()
-    {
-        // date_default_timezone_set("America/New_York");
+
+    public function __construct() {
     }
 
     //render the list of pdfs
@@ -29,7 +29,7 @@ class DecklogsController extends Controller
             'filterMonth' => 'required',
             'filterDay' => 'nullable'
         ]);
-        
+             
         $logs = $decklogs->getLogs(request()->filterYear, request()->filterMonth, request()->filterDay);
        
         return response(json_encode($logs));
@@ -44,19 +44,22 @@ class DecklogsController extends Controller
             'patrolnotes' => 'nullable',
             'file' => 'required|mimes:pdf'
         ]);
-
-        //STORE PDF TO PUBLIC
-        $path = $request->file->store('decklogs', 'public');
+     
+        //STORE PDF TO s3
+        $filePath = env('APPLICATION_ENV').'/decklogs/dl'.time().request()->file->getClientOriginalName();
+        $file = request()->file; 
+        $result = Storage::disk('s3')->put($filePath, file_get_contents($file), 'public');
 
         //SAVE TO DATABASE
-        $decklog = new Decklogs();
-        $decklog->logdate = request('logdate');
-        $decklog->postdate = request('postdate');
-        $decklog->patrolnumber = request('patrolnumber');
-        $decklog->patrolnotes = request('patrolnotes');
-        $decklog->file = $path;
-        $decklog->save();
-
+        if($result) {
+            $decklog = new Decklogs();
+            $decklog->logdate = request('logdate');
+            $decklog->postdate = request('postdate');
+            $decklog->patrolnumber = request('patrolnumber');
+            $decklog->patrolnotes = request('patrolnotes');
+            $decklog->file = $filePath;
+            $decklog->save();
+        }
         return redirect('/decklogs');
     }
 

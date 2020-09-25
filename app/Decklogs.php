@@ -52,6 +52,7 @@ class Decklogs extends Model
 
    public function getLogs($year, $month, $day = null)
    {
+       $s3path = "https://".env('AWS_BUCKET').".s3.".env('AWS_DEFAULT_REGION').".amazonaws.com/";
        $logs = [];
 
        $query = Decklogs::where(DB::raw('YEAR(logdate)'), $year)
@@ -64,6 +65,7 @@ class Decklogs extends Model
         $data = $query->get();
 
         foreach($data as $key => $value) {
+            $value->attributes['file'] = $s3path.$value->attributes['file'];
             array_push($logs, $value->attributes);
         }
         return $data;

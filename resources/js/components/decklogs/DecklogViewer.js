@@ -2,7 +2,7 @@ import React from 'react';
 
 class DecklogViewer extends React.Component {
     constructor(props) {
-        super(props)
+        super()
         this.closeViewer = this.closeViewer.bind(this);
     }
 

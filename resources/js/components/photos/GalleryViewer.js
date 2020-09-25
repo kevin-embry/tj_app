@@ -90,7 +90,7 @@ class GalleryViewer extends React.Component {
     render() {
         let photos = this.state.images.map(image => {
             return {
-                src: '/storage/' + image.url,
+                src: image.url,
                 width: image.width,
                 height: image.height,
                 id: image.id
@@ -111,7 +111,6 @@ class GalleryViewer extends React.Component {
 
                 { this.state.showImage && 
                     <div className="showImage">
-                        {/* <p>Click photo to enlarge</p> */}
                         {this.state.currentImage < this.state.images.length - 1 && 
                             <img className="rightImageScroll" src="../../images/icons/rightarrow_small.png" onClick={this.goToNext.bind(this)} />
                         }                        
