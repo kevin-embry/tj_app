@@ -30,7 +30,8 @@ class DecklogViewer extends React.Component {
                 <embed 
                     name="singleDecklog" 
                     className="singleDecklog" 
-                    src={this.props.source}
+                    src={this.props.source+"#view=FitH"}
+                    width="100%"
                 />
             </div>         
         )
