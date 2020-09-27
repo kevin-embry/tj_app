@@ -16,6 +16,7 @@ import MissleLaunches from './history/MissleLaunches'
 import DeckLogs from './decklogs/DeckLogs';
 import Crew from './crew/Crew';
 import Photos from './photos/Photos';
+import VideoModule from './videos/VideoModule';
 import AboutUs from './AboutUs';
 import Footer from './Footer';
 import SignUp from './SignUp';
@@ -114,6 +115,8 @@ function App(props) {
                             <PrivateRoute path="/decklogs" referer="/decklogs" adminMode={adminMode} component={DeckLogs}  />
 
                             <PrivateRoute path="/crew" referer="/crew" adminMode={adminMode} component={Crew} />
+
+                            <PrivateRoute path="/videos" referer="/videos" adminMode={adminMode} component={VideoModule} />
 
                             <PrivateRoute path="/photos/images" referer="/photos/images" adminMode={adminMode} component={Photos}  />
 

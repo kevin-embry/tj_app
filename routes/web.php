@@ -32,6 +32,7 @@ Route::get('/history/awards', 'HomeController@index');
 Route::get('/history/launches', 'HomeController@index');
 Route::get('/photos/images', 'HomeController@index');
 Route::get('/forgotPassword', 'HomeController@index');
+Route::get('/videos', 'HomeController@index');
 
 
 // REST ROUTES

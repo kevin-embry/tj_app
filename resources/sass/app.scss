@@ -1080,9 +1080,12 @@ input[type=text], input[type=password] {
 
     .logSelectContainer {
         position: relative;
+        h3 {
+            margin: 5px;
+        }
         .filterContainer {
             width: 720px;
-            margin: 20px auto auto auto;
+            margin: 10px auto auto auto;
             height: 50px;
             clear: both;
             .logYear {
@@ -1541,6 +1544,48 @@ input[type=text], input[type=password] {
             font-size: 1.1em;
         }
 
+    }
+}
+
+.videomodule {
+    width: 90%;
+    border: 8px double #3A3F3B;
+    border-radius: 5px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    background-color: #f2f2f2;
+    .heading {
+        padding: 20px;
+        border-bottom: 2px solid black;
+    }
+    .siding {
+        background-color: #fff9e6;
+        float: left;
+        min-width: 240px;
+        width: 25%;
+        height: 700px;
+        clear: both;
+        border-right: 2px solid black;
+        // border-top: 2px solid black;
+        p {
+            text-align: left;
+            margin-left: 10px;
+            font-size: 1.1em;
+            width: 90%;
+        }
+        a {
+            // width: 90%;
+            text-decoration: none;
+            color: black;
+        }
+    }
+    .videoplayer {
+        .player {
+            width: 800px;
+            height: 600px;
+            margin-top: 45px;
+        }
     }
 }
 
