@@ -1547,6 +1547,8 @@ input[type=text], input[type=password] {
     }
 }
 
+//**********************VIDEO MODULE**********************************
+
 .videomodule {
     width: 90%;
     border: 8px double #3A3F3B;
@@ -1555,19 +1557,19 @@ input[type=text], input[type=password] {
     position: relative;
     overflow: hidden;
     background-color: #f2f2f2;
+    font-family: Arial, Helvetica, sans-serif;
     .heading {
-        padding: 20px;
+        padding: 10px;
         border-bottom: 2px solid black;
+        
     }
     .siding {
         background-color: #fff9e6;
         float: left;
         min-width: 240px;
-        width: 25%;
-        height: 700px;
-        clear: both;
-        border-right: 2px solid black;
-        // border-top: 2px solid black;
+        width: 26%;
+        height: 679px;
+        overflow: auto;
         p {
             text-align: left;
             margin-left: 10px;
@@ -1575,20 +1577,45 @@ input[type=text], input[type=password] {
             width: 90%;
         }
         a {
-            // width: 90%;
             text-decoration: none;
             color: black;
         }
+
+        .videoselect {
+            clear: both;
+            height: 90px;
+            padding: 5px;
+            cursor: pointer;
+            .videothumbs {
+                width: 120px;
+                height: 80px;
+                float: left;
+            }
+            .videodescription {
+                width: 185px;
+                float: left;
+                margin: 10px 5px 5px 5px;
+                word-wrap: break-word;
+            }
+        }
+        
     }
     .videoplayer {
+        background: url(..\\images\\woodpanel.png) no-repeat 0 0 scroll;
+        background-color:#0C0C0C;
+        background-size: 100% 100%;
+        width:74%;
+        padding-bottom: 30px;
+        float: right;
         .player {
             width: 800px;
             height: 600px;
             margin-top: 45px;
+            border: hidden;
+            border-radius: 10px;
         }
     }
 }
-
 
 //****************************404***************************
 
