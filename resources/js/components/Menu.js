@@ -39,8 +39,7 @@ export default class Menu extends React.Component {
                             <a href="http://va.gov" target ="_blank">VA Website</a>
                             <a href="http://www.geocities.ws/ssbn618/" target="_blank">TJ Geocities Site</a>
                             <a href="http://www.decklog.com" target ="_blank">Find A Shipmate</a>
-                            {/* <a href="#" target ="_blank">TJ618 Facebook</a> */}
-                            <Link to="/disabled">TJ618 Facebook</Link>
+                            <a href="https://www.facebook.com/groups/50372229369">TJ618 Facebook</a>
                             <a href="https://www.navsource.org/archives/08/08618.htm" target ="_blank">NavSource TJ618</a>
                             <a href="https://en.wikipedia.org/wiki/USS_Thomas_Jefferson_(SSBN-618)" target ="_blank">TJ618 Wiki</a>
                         </div>
