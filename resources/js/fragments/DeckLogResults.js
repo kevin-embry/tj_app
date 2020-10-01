@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 class DeckLogResults extends React.Component {
     constructor(props) {
-        super(props)
+        super()
         this.state = {
             startIndex: 0,
             endIndex: 3,
