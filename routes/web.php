@@ -93,6 +93,8 @@ Route::post('/deleteAnnouncement', 'AnnouncementController@deleteAnnouncement');
 Route::post('/storeDecklog', 'DecklogsController@store');
 Route::get('/getDeckLogs', 'DecklogsController@index');
 Route::post('/showDecklogs', 'DecklogsController@show');
+Route::post('/updateDecklog', 'DecklogsController@update');
+Route::post('/deleteDecklog', 'DecklogsController@delete');
 Route::post('/filterData', 'DecklogsController@getFilterData');
 
 //IMAGES

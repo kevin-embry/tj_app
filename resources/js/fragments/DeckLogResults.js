@@ -14,6 +14,8 @@ class DeckLogResults extends React.Component {
         this.undoChanges = this.undoChanges.bind(this);
         this.handlePatrolNotesChange = this.handlePatrolNotesChange.bind(this);
         this.handlePatrolNumberChange = this.handlePatrolNumberChange.bind(this);
+        this.deleteDecklog = this.deleteDecklog.bind(this);
+        this.saveChanges = this.saveChanges.bind(this);
     }
 
     handlePatrolNumberChange(e) {
@@ -39,6 +41,31 @@ class DeckLogResults extends React.Component {
 
     toggleEdit() {
         this.setState({editMode: !this.state.editMode})
+    }
+
+    saveChanges() {
+        Axios.post('/updateDecklog', {
+            patrolnumber: this.state.patrolnumber,
+            patrolnotes: this.state.patrolnotes
+        })
+        .then((response) => {
+            console.log(response);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
+
+    deleteDecklog() {
+        Axios.post('/deleteDecklog', {
+            id: this.props.id
+        })
+        .then((response) => {
+            console.log(response);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
     }
     
     render() {
@@ -96,11 +123,13 @@ class DeckLogResults extends React.Component {
                     {(this.props.adminMode && this.state.editMode) && <td><button 
                                                 className="save"
                                                 title="Save Changes"
+                                                onClick={this.saveChanges}
                                             ><span><img src="..\..\..\images\icons\save-icon.svg"/></span></button></td>}
 
                     {(this.props.adminMode && this.state.editMode) && <td><button 
                                                 className="trash"
                                                 title="Delete Decklog"
+                                                onClick={this.deleteDecklog}
                                             ><span><img src="..\..\..\images\icons\trash_icon.png"/></span></button></td>}
                 </tr>
             </React.Fragment>

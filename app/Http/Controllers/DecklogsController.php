@@ -71,6 +71,16 @@ class DecklogsController extends Controller
        
     }
 
+    public function update(Request $request)
+    {
+        return "UPDATE REACHED";
+    }
+
+    public function delete(Request $request)
+    {
+        return "DELETE REACHED";
+    }
+
     public function getFilterData(Request $request)
     {
         $decklogs = new Decklogs();
