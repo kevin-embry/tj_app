@@ -7,7 +7,7 @@ import SelectedImage from "./SelectedImage";
 
 class AdminUpdateGallery extends React.Component {
     constructor(props) {
-        super(props)
+        super()
         this.state = {
             images: [],
             newImages: [],
@@ -28,7 +28,7 @@ class AdminUpdateGallery extends React.Component {
     }
 
     deleteImages() {
-        console.log("DELETING THESE MARKED IMAGES: ");
+        // console.log("DELETING THESE MARKED IMAGES: ");
         this.state.images.map(image => {
             if(image.selected){
                console.log(image);
@@ -40,7 +40,6 @@ class AdminUpdateGallery extends React.Component {
                    if(response.data.status == "success") {
                        this.setState({selected_count: 0})
                         this.loadImages(); 
-
                    }
                })
                .catch((error) => {
@@ -208,7 +207,7 @@ class AdminUpdateGallery extends React.Component {
         let photos = this.state.images.map(image => {
             let selected = image.selected != null ? image.selected : false;
             return {
-                src: '/storage/' + image.url,
+                src: image.url,
                 width: image.width,
                 height: image.height,
                 id: image.id,
@@ -228,7 +227,6 @@ class AdminUpdateGallery extends React.Component {
                     }
                     
                     <label htmlFor="addImages">Add images to gallery: 
-                        {/* <input type="checkbox" name="addImages" className="addImages" value={this.state.addImages} onChange={this.handleAddImagesCheckbox} /> */}
                         <input type="checkbox" name="addImages" className="addImages" checked={this.state.addImages} onChange={this.handleAddImagesCheckbox} />
                     </label>
                      
@@ -242,6 +240,7 @@ class AdminUpdateGallery extends React.Component {
                         {this.state.selected_count > 0  && 
                             <button 
                                 className="deleteImages"
+                                title="Delete Selected Images"
                                 onClick={(e) => { if (window.confirm('This action can not be reverted. Are You sure you wish to delete the selected image(s)?')) this.deleteImages(e)}}
                             >Delete {this.state.selected_count} Image(s)</button>}
 

@@ -11,7 +11,7 @@ function Header(props) {
         return (
             <div className="header">
                 <img id="dolphins" src="..\..\images\subdolphins.png" title="Dolphins"/>                
-                <Link to="/"><img id="titlepatch" src="..\..\images\titlepatch_new.png" title="SSN/SSBN 618"/></Link>               
+                <Link to="/"><img id="titlepatch" src="..\..\images\titlepatch.png" title="SSN/SSBN 618"/></Link>               
                 <img id="tjpatch" src="..\..\images\tjpatch.png" title="Hostility against Tyranny"/>    
                 {user.authTokens !== null ? <LogoutContainer disableAdminModeCallback={props.disableAdminModeCallback} />:<LoginContainer/>}
             </div>

@@ -4,7 +4,7 @@ import Axios from 'axios';
 
 class AdminNewGallery extends React.Component {
     constructor(props) {
-        super(props)
+        super()
         this.state = {
             fileIncorrectError: false,
             galleryName: "",
@@ -14,6 +14,7 @@ class AdminNewGallery extends React.Component {
             uploading: false,
             uploaded: 0,
             supported_mime: [
+                'image/jpg',
                 'image/jpeg',
                 'image/png',
             ]
@@ -90,8 +91,8 @@ class AdminNewGallery extends React.Component {
                     }
                 })
                 .catch((error) => {
-                    this.buildErrors(error.response.data.errors); 
                     console.log("ERROR=> ", error);
+                    this.buildErrors(error.response.data.errors);
                 })
         });
     }

@@ -7,23 +7,10 @@
 // Bootstrap
 // @import '~bootstrap/scss/bootstrap';
 
-// .mainapp {
-//     text-align: center;
-//     width: 75%;
-//     margin: auto;
-//     // background: url(..\\images\\ocean_crop.png);
-//     // background-repeat: no-repeat;
-//     // background-size: 100% 100%;
-//     min-width: 1350px;
-// }
-
 .mainapp {
     text-align: center;
     width: 75%;
     margin: auto;
-    // background: url(..\\images\\ocean_crop.png);
-    // background-repeat: no-repeat;
-    // background-size: 100% 100%;
     min-width: 1350px;
 }
 
@@ -119,13 +106,11 @@ h1 {
 }
 
 
-
 // ****************************HEADER*********************************
 .header{
     background: url(..\\images\\ocean_crop.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    // background-color: #000000;
     height: 150px;    
     color: white;
     position: relative;
@@ -578,7 +563,6 @@ input[type=text], input[type=password] {
 
 .loginerror {
     border: 1px solid red !important;
-    // border-color: red !important;
 }
 
 .errorDisplay {
@@ -993,10 +977,6 @@ input[type=text], input[type=password] {
             text-align: center;
             padding: 0;
             float: left;
-            // img {
-            //     width: 30px;
-            //     height: 30px;
-            // }
         }
         .paginationButton:focus {
             background-color: white;
@@ -1030,7 +1010,6 @@ input[type=text], input[type=password] {
         clear: both;
         .infoContainer {
             height: 35px;
-            margin-top: 15px;
             label {
                     float: left;
                     margin-bottom: 10px;
@@ -1077,15 +1056,12 @@ input[type=text], input[type=password] {
                 font-size: 1em;
                 color: transparent;
             }
-            
         } 
         .decklogAdminButtons {
-            margin-top: 15px;
+            margin-top: 5px;
             button {
                 height: 30px;
                 font-size: 1.1em;
-                // padding: 5px;
-               
             }
             .dlAdminSubmit {
                 background-color: #b3ffb3;
@@ -1100,14 +1076,16 @@ input[type=text], input[type=password] {
                 background-color: #4db8ff;
             }
         }
-
     }
 
     .logSelectContainer {
         position: relative;
+        h3 {
+            margin: 5px;
+        }
         .filterContainer {
             width: 720px;
-            margin: 20px auto auto auto;
+            margin: 10px auto auto auto;
             height: 50px;
             clear: both;
             .logYear {
@@ -1255,8 +1233,6 @@ input[type=text], input[type=password] {
         margin: 0 0 10px 0;
        }
    }
-
-    
 }
 
 .dropzone_button {
@@ -1396,9 +1372,11 @@ input[type=text], input[type=password] {
     }
     .rightImageScroll:hover {
         cursor: pointer;
+        border: 1px solid white;
     }
     .leftImageScroll:hover {
         cursor: pointer;
+        border: 1px solid white;
     }
     .individualImage {
         max-width: 100%;
@@ -1417,6 +1395,10 @@ input[type=text], input[type=password] {
     background-color: #ffb3b3;
     font-size: 1.1em;
     border: none;
+}
+
+.deleteImages:hover {
+    border: 2px solid red;
 }
 
 .forgotPassword {
@@ -1544,7 +1526,6 @@ input[type=text], input[type=password] {
     }
     .crewButtons {
         margin-top: 5px;
-        // padding-bottom: 20px;
         .crewSubmit {
             background-color: #b3ffb3;
             margin-right: 15px;
@@ -1563,12 +1544,82 @@ input[type=text], input[type=password] {
             font-size: 1.1em;
         }
 
-        // <button className="crewSubmit">Submit</button>
-        //                 <button className="crewCancel">Cancel</button>
-        //                 <button className="crewClear">Clear Fields</button>
     }
 }
 
+//**********************VIDEO MODULE**********************************
+
+.videomodule {
+    width: 90%;
+    border: 8px double #3A3F3B;
+    border-radius: 5px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    background-color: #f2f2f2;
+    font-family: Arial, Helvetica, sans-serif;
+    .heading {
+        padding: 10px;
+        border-bottom: 2px solid black;
+        
+    }
+    .siding {
+        background-color: #fff9e6;
+        float: left;
+        min-width: 240px;
+        width: 26%;
+        height: 679px;
+        overflow: auto;
+        h3 {
+            margin: 10px;
+        }
+        p {
+            text-align: left;
+            margin-left: 10px;
+            font-size: 1.1em;
+            width: 90%;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .videoselect {
+            clear: both;
+            height: 70px;
+            padding: 5px;
+            cursor: pointer;
+            margin-bottom: 5px;
+            .videothumbs {
+                width: 30%;
+                // height: 80px;
+                float: left;
+            }
+            .videodescription {
+                width: 65%;
+                float: left;
+                margin: 5px 5px 5px 5px;
+                word-wrap: break-word;
+            }
+        }
+        
+    }
+    .videoplayer {
+        background: url(..\\images\\woodpanel.png) no-repeat 0 0 scroll;
+        background-color:#0C0C0C;
+        background-size: 100% 100%;
+        width:74%;
+        padding-bottom: 30px;
+        float: right;
+        .player {
+            width: 800px;
+            height: 600px;
+            margin-top: 45px;
+            border: hidden;
+            border-radius: 10px;
+        }
+    }
+}
 
 //****************************404***************************
 

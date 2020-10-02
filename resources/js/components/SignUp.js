@@ -187,7 +187,7 @@ function SignUp(props) {
            Axios.post("/register", {
                firstName: firstName.toLowerCase(),
                lastName: lastName.toLowerCase(),
-               email: email,
+               email: email.toLowerCase(),
                servedOnBoard: servedOnBoard,
                division: division,
                job: job,

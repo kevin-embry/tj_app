@@ -16,6 +16,7 @@ import MissleLaunches from './history/MissleLaunches'
 import DeckLogs from './decklogs/DeckLogs';
 import Crew from './crew/Crew';
 import Photos from './photos/Photos';
+import VideoModule from './videos/VideoModule';
 import AboutUs from './AboutUs';
 import Footer from './Footer';
 import SignUp from './SignUp';
@@ -23,6 +24,7 @@ import UserContainer from './UserContainer';
 import EditUsers from './EditUsers';
 import UnderConstruction from './UnderConstruction';
 import EditAnnouncements from './announcements/EditAnnouncements';
+
 
 function App(props) {  
     // console.log("APP START");
@@ -35,6 +37,7 @@ function App(props) {
     const [adminMode, setAdminMode] = useState(JSON.parse(localStorage.getItem("TJEditMode")));
     const [newApplicants, setNewApplicants] = useState(getNewApplicants());
     const [newUserNumber, setNewUserNumber] = useState(0);
+    const [loading, setLoading] = useState(false);
 
     //Auth token gets set in promise in authenticate component
     const setTokens = (data) => {
@@ -55,6 +58,10 @@ function App(props) {
     function toggleAdminMode() {
         localStorage.setItem("TJEditMode", !adminMode);
         setAdminMode(!adminMode);
+    }
+
+    function toggleLoading() {
+        setLoading(!loading);
     }
 
     function getNewApplicants() {
@@ -109,11 +116,14 @@ function App(props) {
 
                             <PrivateRoute path="/crew" referer="/crew" adminMode={adminMode} component={Crew} />
 
+                            <PrivateRoute path="/videos" referer="/videos" adminMode={adminMode} component={VideoModule} />
+
                             <PrivateRoute path="/photos/images" referer="/photos/images" adminMode={adminMode} component={Photos}  />
 
                             {/* CATCH-ALL ROUTE FOR ANYTHING NOT FINISHED IE: UNDER CONSTRUCTION  */}
                             <Route component={UnderConstruction}/>
                         </Switch>
+                        
                     </div>
                     <Footer />
                 </div>

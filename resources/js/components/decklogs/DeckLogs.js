@@ -6,7 +6,7 @@ import DeckLogResults from '../../fragments/DeckLogResults';
 
 class DeckLogs extends React.Component {
     constructor(props) {
-        super(props)
+        super()
         this.state = {
             validYears: [],
             validMonths: [],
@@ -27,7 +27,7 @@ class DeckLogs extends React.Component {
             return months[monthValue-1];
         }
 
-        this.decklogDirectory = "../../../storage/";
+        // this.decklogDirectory = "../../../storage/";
         this.handleLogSelect = this.handleLogSelect.bind(this);
         this.redirectToHome = this.redirectToHome.bind(this);
         this.retrieveFilterInfo = this.retrieveFilterInfo.bind(this);
@@ -206,7 +206,8 @@ class DeckLogs extends React.Component {
                     : null }
                 </div>
                  
-                 {this.state.deckLog !== "" ? <DecklogViewer closeViewerCallback={this.closeViewer} log={this.state.deckLog} source={this.decklogDirectory + this.state.deckLog.file} /> : null}
+                 {/* {this.state.deckLog !== "" ? <DecklogViewer closeViewerCallback={this.closeViewer} log={this.state.deckLog} source={this.decklogDirectory + this.state.deckLog.file} /> : null} */}
+                 {this.state.deckLog !== "" ? <DecklogViewer closeViewerCallback={this.closeViewer} log={this.state.deckLog} source={this.state.deckLog.file} /> : null}
       
             </div>
         );  
