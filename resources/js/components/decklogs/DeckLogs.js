@@ -36,6 +36,8 @@ class DeckLogs extends React.Component {
         this.handleDaySelect = this.handleDaySelect.bind(this);
         this.handleDecklogSearch = this.handleDecklogSearch.bind(this);
         this.closeViewer = this.closeViewer.bind(this);
+
+       
     }
 
     handleYearSelect(e) {
@@ -148,6 +150,7 @@ class DeckLogs extends React.Component {
     }
 
     render() {
+        console.log("IN DECKLOGS: ", this.props);
         return (
             <div className="decklogs">
                 {(this.props.adminMode === true && this.state.deckLog === "") ? <AdminModule redirectToHome={this.redirectToHome} /> : null }
@@ -195,10 +198,23 @@ class DeckLogs extends React.Component {
 
                     {this.state.selectedLogs !== "" ? 
                         <div>
-                            <h3>Select a log date:</h3>
+                            <hr />
+                            <h3>Select a log to view:</h3>
                             <table className="logResults">
                                 <tbody>
-                                    <DeckLogResults data={this.state.selectedLogs} logSelectCallback={this.handleLogSelect}/>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Log Date</th>
+                                        <th>Patrol No.</th>
+                                        <th>Patrol Notes</th>
+                                    </tr>
+                                    {this.state.selectedLogs.map((log) => <DeckLogResults 
+                                                                                key={"dl"+log.file} 
+                                                                                log={log} 
+                                                                                logSelectCallback={this.handleLogSelect} 
+                                                                                adminMode={this.props.adminMode} 
+                                                                            /> )}
+                                    
                                 </tbody>
                             </table>
                             
@@ -207,7 +223,11 @@ class DeckLogs extends React.Component {
                 </div>
                  
                  {/* {this.state.deckLog !== "" ? <DecklogViewer closeViewerCallback={this.closeViewer} log={this.state.deckLog} source={this.decklogDirectory + this.state.deckLog.file} /> : null} */}
-                 {this.state.deckLog !== "" ? <DecklogViewer closeViewerCallback={this.closeViewer} log={this.state.deckLog} source={this.state.deckLog.file} /> : null}
+                 {this.state.deckLog !== "" ? <DecklogViewer 
+                                                    closeViewerCallback={this.closeViewer} 
+                                                    log={this.state.deckLog} 
+                                                    source={this.state.deckLog.file}
+                                              /> : null}
       
             </div>
         );  
