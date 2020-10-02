@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
-
 class ForgotPassword extends Model
 {
     public $gmailUser;
@@ -27,7 +26,7 @@ class ForgotPassword extends Model
         $messageBody = "
             <html>
                 <body>
-                    <h2>This email is from the Thomas Jefferson History Website</h2>
+                    <h2>This is an automated email from the Thomas Jefferson History Website</h2>
                     <p>Please <b>DO NOT</b> reply to this email.</p>
                     <p>A password reset request has been issued for the user: <b>{$email}</b></p>
                     <p>If you did not request a password reset, please ignore this message.</p>

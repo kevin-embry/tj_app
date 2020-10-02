@@ -10,6 +10,13 @@ use Illuminate\Support\Facades\Storage;
 
 class ImagesController extends Controller
 {
+
+    private $s3path;
+
+    public function __construct() {
+        $this->s3path = "https://".env('AWS_BUCKET').".s3.".env('AWS_DEFAULT_REGION').".amazonaws.com/";
+    }
+
     /**
      * Display the specified images
      *
@@ -18,9 +25,12 @@ class ImagesController extends Controller
      */
     public function getPhotos(Request $request)
     {
-        // dd(request()->gallery);
-      
-        return Images::where('galleryname', request()->gallery)->get();
+        $returnedImages = [];
+        foreach (Images::where('galleryname', request()->gallery)->get() as $image) {
+            $image['url'] = $this->s3path.$image['url'];
+            array_push($returnedImages, $image);
+        }
+        return $returnedImages;
     }
 
     /**
@@ -38,19 +48,21 @@ class ImagesController extends Controller
             'galleryname' => ['required' ,'min:4', 'max:25', new NoSpecialChars]
         ]);
         
-              //STORE PDF TO PUBLIC
-        $path = $request->file->store('galleries/'.Request()->galleryname, 'public');
-        list($width, $height) = getimagesize(Request()->file);
+        //STORE PDF TO S3
+        $file = $request->file; 
+        $filePath = env('APPLICATION_ENV').'/galleries/'.Request()->galleryname.'/image'.time().request()->file->getClientOriginalName(); 
+        $result = Storage::disk('s3')->put($filePath, file_get_contents($file), 'public');
+        
 
         //SAVE TO DATABASE
-        if($path) {
+        list($width, $height) = getimagesize(Request()->file);
+        if($result) {
             $image = new Images();
             $image->postdate = $now;
             $image->galleryname = Request()->galleryname;
-            $image->url = $path;
+            $image->url = $filePath;
             $image->height = $height;
             $image->width = $width;
-                    
             $image->save();
             
             return redirect('/photos/images');
@@ -65,27 +77,26 @@ class ImagesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function deletePhoto(Request $request)
-    {
-        $imageToDelete = request()->image;
-        $image = new Images();
+    {  
+        $image = Images::find(request()->image['id']);
 
         try {
-            $image::where('id', $imageToDelete['id'])
-                ->where('galleryname', $imageToDelete['galleryname'])
-                ->delete();
+            if (Storage::disk('s3')->exists($image['url'])) {
+                Storage::disk('s3')->delete($image['url']);
+                $image->delete();
+            } else {
+                throw new \Exception("DELETE FAILED");
+            }
 
-            Storage::disk('public')->delete($imageToDelete['url']); 
             return response(json_encode(['status' => 'success']), 200);    
         } catch(\Exception $e) {
             return response(json_encode(['status' => 'fail']), 500);
-        }
-                  
+        }       
     }
 
     public function getGalleryNames() 
     {
         $images = new Images();
-        // dd($images->getDistinctGalleryNames());
         return response(json_encode($images->getDistinctGalleryNames()));
     }
 

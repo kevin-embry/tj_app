@@ -52,9 +52,9 @@ export default class EditUsers extends React.Component {
     handleUpdate(e) {
         Axios.post('/updateUser', {
             id: this.state.id,
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            email: this.state.email,
+            firstName: this.state.firstName.toLowerCase(),
+            lastName: this.state.lastName.toLowerCase(),
+            email: this.state.email.toLowerCase(),
             role: this.state.role,
             approved: this.state.approved 
         })
