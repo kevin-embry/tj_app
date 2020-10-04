@@ -45,31 +45,38 @@ class DeckLogResults extends React.Component {
 
     saveChanges() {
         Axios.post('/updateDecklog', {
-            patrolnumber: this.state.patrolnumber,
-            patrolnotes: this.state.patrolnotes
+            id: this.props.log.id,
+            patrolnumber: this.state.patrolnumber.trim(),
+            patrolnotes: this.state.patrolnotes.trim()
         })
         .then((response) => {
-            console.log(response);
+            this.toggleEdit();
+            this.props.refreshDecklogCallback();
+            // console.log(response);
         })
         .catch((error) => {
+            alert("Save failed");
             console.log(error);
         })
     }
 
     deleteDecklog() {
         Axios.post('/deleteDecklog', {
-            id: this.props.id
+            id: this.props.log.id
         })
         .then((response) => {
-            console.log(response);
+            this.toggleEdit();
+            this.props.refreshDecklogCallback();
+            // console.log(response);
         })
         .catch((error) => {
+            alert("Delete failed");
             console.log(error);
         })
     }
     
     render() {
-        // console.log(this.props);
+        // console.log("Props: ", this.props);
         return (
             <React.Fragment>
                 <tr>
@@ -83,7 +90,7 @@ class DeckLogResults extends React.Component {
                                 onChange={this.handlePatrolNumberChange} 
                                 value={this.state.patrolnumber} 
                             /> :
-                            <span>{this.props.log.patrolnumber}</span>
+                            <span>{this.state.patrolnumber || this.props.log.patrolnumber}</span>
                         }
                     </td>
                     <td>
@@ -94,7 +101,7 @@ class DeckLogResults extends React.Component {
                                 onChange={this.handlePatrolNotesChange} 
                                 value={this.state.patrolnotes} 
                             /> :
-                            <span>{this.props.log.patrolnotes}</span>
+                            <span>{this.state.patrolnotes || this.props.log.patrolnotes}</span>
                         }
                     </td>
                     
@@ -123,13 +130,13 @@ class DeckLogResults extends React.Component {
                     {(this.props.adminMode && this.state.editMode) && <td><button 
                                                 className="save"
                                                 title="Save Changes"
-                                                onClick={this.saveChanges}
+                                                onClick={(e) => { if (window.confirm('Are you sure you wish to update this decklog information?')) this.saveChanges(e)}} 
                                             ><span><img src="..\..\..\images\icons\save-icon.svg"/></span></button></td>}
 
                     {(this.props.adminMode && this.state.editMode) && <td><button 
                                                 className="trash"
                                                 title="Delete Decklog"
-                                                onClick={this.deleteDecklog}
+                                                onClick={(e) => { if (window.confirm('This action can not be reverted. Are you sure you wish to delete this decklog?')) this.deleteDecklog(e)}}
                                             ><span><img src="..\..\..\images\icons\trash_icon.png"/></span></button></td>}
                 </tr>
             </React.Fragment>
@@ -138,8 +145,8 @@ class DeckLogResults extends React.Component {
 
     componentDidMount() {
         this.setState({
-            patrolnumber: this.props.log.patrolnumber,
-            patrolnotes: this.props.log.patrolnotes
+            patrolnumber: this.props.log.patrolnumber || "",
+            patrolnotes: this.props.log.patrolnotes || ""
         })
     }
 

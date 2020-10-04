@@ -27,17 +27,28 @@ class DeckLogs extends React.Component {
             return months[monthValue-1];
         }
 
-        // this.decklogDirectory = "../../../storage/";
         this.handleLogSelect = this.handleLogSelect.bind(this);
         this.redirectToHome = this.redirectToHome.bind(this);
         this.retrieveFilterInfo = this.retrieveFilterInfo.bind(this);
+        this.resetFilters = this.resetFilters.bind(this);
         this.handleYearSelect = this.handleYearSelect.bind(this);
         this.handleMonthSelect = this.handleMonthSelect.bind(this);
         this.handleDaySelect = this.handleDaySelect.bind(this);
         this.handleDecklogSearch = this.handleDecklogSearch.bind(this);
         this.closeViewer = this.closeViewer.bind(this);
+    }
 
-       
+    resetFilters() {
+        this.setState({
+            filterYear: "",
+            filterMonth: "",
+            filterDay: "",
+            monthSelectDisabled: true,
+            daySelectDisabled: true,
+            searchButtonDisabled: true,
+            selectedLogs: ""
+        });
+        this.retrieveFilterInfo("getYears");
     }
 
     handleYearSelect(e) {
@@ -122,10 +133,10 @@ class DeckLogs extends React.Component {
         .then((response) => {
             this.setState({
                 selectedLogs: response.data.sort( (a,b) => (a.logdate > b.logdate) ? 1 : -1),
-                filterYear: "",
-                filterMonth: "",
-                filterDay: "",
-                monthSelectDisabled: true,
+                // filterYear: "",
+                // filterMonth: "",
+                // filterDay: "",
+                // monthSelectDisabled: true,
                 daySelectDisabled: true,
                 searchButtonDisabled: true
             });
@@ -150,10 +161,9 @@ class DeckLogs extends React.Component {
     }
 
     render() {
-        console.log("IN DECKLOGS: ", this.props);
         return (
             <div className="decklogs">
-                {(this.props.adminMode === true && this.state.deckLog === "") ? <AdminModule redirectToHome={this.redirectToHome} /> : null }
+                {(this.props.adminMode === true && this.state.deckLog === "") ? <AdminModule resetFiltersCallback={this.resetFilters} redirectToHome={this.redirectToHome} /> : null }
                 <div className={"borderModule logSelectContainer " + this.state.selectVisiblity}>
                     <span 
                         onClick={this.redirectToHome}
@@ -211,18 +221,16 @@ class DeckLogs extends React.Component {
                                     {this.state.selectedLogs.map((log) => <DeckLogResults 
                                                                                 key={"dl"+log.file} 
                                                                                 log={log} 
-                                                                                logSelectCallback={this.handleLogSelect} 
-                                                                                adminMode={this.props.adminMode} 
-                                                                            /> )}
-                                    
+                                                                                logSelectCallback={this.handleLogSelect}
+                                                                                refreshDecklogCallback={this.handleDecklogSearch} 
+                                                                                adminMode={this.props.adminMode}
+                                                                           /> )}
                                 </tbody>
                             </table>
-                            
                         </div> 
                     : null }
                 </div>
                  
-                 {/* {this.state.deckLog !== "" ? <DecklogViewer closeViewerCallback={this.closeViewer} log={this.state.deckLog} source={this.decklogDirectory + this.state.deckLog.file} /> : null} */}
                  {this.state.deckLog !== "" ? <DecklogViewer 
                                                     closeViewerCallback={this.closeViewer} 
                                                     log={this.state.deckLog} 

@@ -73,12 +73,42 @@ class DecklogsController extends Controller
 
     public function update(Request $request)
     {
-        return "UPDATE REACHED";
+        request()->validate([
+            'id' => 'required'
+        ]);
+
+        try {
+            $decklog = Decklogs::find(request()->id);
+            $decklog->patrolnumber = request()->patrolnumber;
+            $decklog->patrolnotes = request()->patrolnotes;
+           
+            $decklog->save();
+            return response(json_encode(['status' => 'success']), 200);
+        } catch(\Exception $e) {
+            return response(\json_encode($e), 500);
+        }
+
     }
 
     public function delete(Request $request)
     {
-        return "DELETE REACHED";
+        request()->validate([
+            'id' => 'required'
+        ]);
+
+        $decklog = Decklogs::find(request()->id);
+        try{
+            if (Storage::disk('s3')->exists($decklog->file)) {
+                Storage::disk('s3')->delete($decklog->file);
+                $decklog->delete();
+            } else {
+                throw new \Exception("DELETE FAILED");
+            }
+            return response(json_encode(['status' => 'success']), 200);
+        } catch(\Exception $e) {
+            return response(json_encode($e), 500);
+        }
+
     }
 
     public function getFilterData(Request $request)
