@@ -91,7 +91,6 @@ class AdminModule extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <div className="borderModule dlAdmin">
                 <h1>Admin Mode - Add Deck Log</h1>

@@ -52,7 +52,6 @@ class DeckLogResults extends React.Component {
         .then((response) => {
             this.toggleEdit();
             this.props.refreshDecklogCallback();
-            // console.log(response);
         })
         .catch((error) => {
             alert("Save failed");
@@ -67,7 +66,6 @@ class DeckLogResults extends React.Component {
         .then((response) => {
             this.toggleEdit();
             this.props.refreshDecklogCallback();
-            // console.log(response);
         })
         .catch((error) => {
             alert("Delete failed");
@@ -76,7 +74,6 @@ class DeckLogResults extends React.Component {
     }
     
     render() {
-        // console.log("Props: ", this.props);
         return (
             <React.Fragment>
                 <tr>

@@ -77,7 +77,6 @@ class EditCrewLine extends React.Component {
             dateTo: this.state.dateTo
         })
         .then((response) => {
-            console.log(response)
             window.confirm('Update Success');
             this.props.rerenderCallback();
             this.toggleEdit();

@@ -227,6 +227,7 @@ class DeckLogs extends React.Component {
                                                                            /> )}
                                 </tbody>
                             </table>
+                            {this.state.selectedLogs.length > 3 && <div>PAGINATION HERE!</div>}
                         </div> 
                     : null }
                 </div>
