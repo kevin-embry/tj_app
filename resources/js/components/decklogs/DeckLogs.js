@@ -14,12 +14,15 @@ class DeckLogs extends React.Component {
             filterYear: "",
             filterMonth: "",
             filterDay: "",
-            selectedLogs: "",
+            selectedLogs: [],
             monthSelectDisabled: true,
             daySelectDisabled: true,
             searchButtonDisabled: true,
             deckLog: "",
-            selectVisiblity : "componentVisible"
+            selectVisiblity : "componentVisible",
+            currentPage: 1,
+            lastPageIndex: 1,
+            logsPerPage: 15
         }
 
         this.getMonthTranslation  = (monthValue) => {
@@ -36,6 +39,30 @@ class DeckLogs extends React.Component {
         this.handleDaySelect = this.handleDaySelect.bind(this);
         this.handleDecklogSearch = this.handleDecklogSearch.bind(this);
         this.closeViewer = this.closeViewer.bind(this);
+        // PAGINATION
+        this.handlePageClick = this.handlePageClick.bind(this);
+        this.handleLeftArrowClick = this.handleLeftArrowClick.bind(this);
+        this.handleRightArrowClick = this.handleRightArrowClick.bind(this);
+    }
+
+    handleLeftArrowClick() {
+        let pageDecrement = this.state.currentPage > 1 ? this.state.currentPage - 1 : 1;
+      this.setState({
+          currentPage: pageDecrement
+      })
+    }
+
+    handleRightArrowClick() {
+      let pageIncrement = this.state.currentPage < this.state.lastPageIndex ? this.state.currentPage + 1 : this.state.lastPageIndex;
+      this.setState({
+          currentPage: pageIncrement
+      })
+    }
+
+    handlePageClick(e) {
+        this.setState({
+            currentPage: Number(e.target.id)
+        })          
     }
 
     resetFilters() {
@@ -161,6 +188,53 @@ class DeckLogs extends React.Component {
     }
 
     render() {
+        const allSelectedLogs = this.state.selectedLogs;
+        const logsPerPage = this.state.logsPerPage;
+        const currentPage = this.state.currentPage;
+
+         // ************Logic for displaying events
+         const indexOfLastLog = currentPage * logsPerPage;
+         const indexOfFirstLog = indexOfLastLog - logsPerPage;
+
+         const currentLogs = allSelectedLogs.slice(indexOfFirstLog, indexOfLastLog);
+         let renderedLogs;
+
+         
+        if (currentLogs.length > 0) {
+            renderedLogs = currentLogs.map((log) => {
+                return <DeckLogResults 
+                            key={"dl"+log.file} 
+                            log={log} 
+                            logSelectCallback={this.handleLogSelect}
+                            refreshDecklogCallback={this.handleDecklogSearch} 
+                            adminMode={this.props.adminMode}
+                    /> 
+            });
+        }
+
+        // ***************Logic for displaying page numbers
+        const pageNumbers = [];
+        for (let i = 1; i <= Math.ceil(allSelectedLogs.length / logsPerPage); i++) {
+          pageNumbers.push(i);         
+        } 
+
+        const renderPageNumbers = pageNumbers.map(number => {
+            if (number >= this.state.currentPage - 4 && number <=  this.state.currentPage + 4) {
+              return (
+                <li key={"decklogpage"+number}>
+                  <button 
+                    className="paginationButton" 
+                    id={number} 
+                    onClick={this.handlePageClick}
+                    style={{backgroundColor: number === this.state.currentPage ? "#ffffff" : "#cccccc"}}
+                    >{number}
+                  </button>
+                </li>
+              );
+            }
+          });
+
+
         return (
             <div className="decklogs">
                 {(this.props.adminMode === true && this.state.deckLog === "") ? <AdminModule resetFiltersCallback={this.resetFilters} redirectToHome={this.redirectToHome} /> : null }
@@ -206,7 +280,7 @@ class DeckLogs extends React.Component {
                         </div>
                     </div>
 
-                    {this.state.selectedLogs !== "" ? 
+                    {this.state.selectedLogs.length > 0 ? 
                         <div>
                             <hr />
                             <h3>Select a log to view:</h3>
@@ -218,16 +292,25 @@ class DeckLogs extends React.Component {
                                         <th>Patrol No.</th>
                                         <th>Patrol Notes</th>
                                     </tr>
-                                    {this.state.selectedLogs.map((log) => <DeckLogResults 
-                                                                                key={"dl"+log.file} 
-                                                                                log={log} 
-                                                                                logSelectCallback={this.handleLogSelect}
-                                                                                refreshDecklogCallback={this.handleDecklogSearch} 
-                                                                                adminMode={this.props.adminMode}
-                                                                           /> )}
+                                    {/* DECKLOG LIST IS CREATED ABOVE IN THE RENDER */}
+                                    {renderedLogs}                                       
                                 </tbody>
                             </table>
-                            {this.state.selectedLogs.length > 3 && <div>PAGINATION HERE!</div>}
+                            <div className="eventPagination">
+                                <ul className="pageNumbers">
+                                    {this.state.currentPage !== 1 && 
+                                    <li key="leftArrow" >
+                                        <button className="arrowButton" onClick={this.handleLeftArrowClick}><img src="../../images/icons/leftarrow_small.png" /></button>
+                                    </li>
+                                     } 
+                                    {renderPageNumbers}
+                                    {this.state.currentPage !== this.state.lastPageIndex &&
+                                        <li key="rightArrow">
+                                            <button className="arrowButton" onClick={this.handleRightArrowClick}><img src="../../images/icons/rightarrow_small.png" /></button>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
                         </div> 
                     : null }
                 </div>
@@ -237,13 +320,20 @@ class DeckLogs extends React.Component {
                                                     log={this.state.deckLog} 
                                                     source={this.state.deckLog.file}
                                               /> : null}
-      
             </div>
         );  
     }
 
     componentDidMount() {  
             this.retrieveFilterInfo("getYears");
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if(this.state.selectedLogs !== prevState.selectedLogs) {
+             this.setState({
+                 lastPageIndex: Math.ceil(this.state.selectedLogs.length / this.state.logsPerPage)
+             })
+        }
     }
     
 }

@@ -83,22 +83,20 @@ class DeckLogResults extends React.Component {
                         {(this.props.adminMode && this.state.editMode) ? 
                             <input 
                                 className="editPatrolNumber" 
-                                placehoplder="N/A"
                                 onChange={this.handlePatrolNumberChange} 
                                 value={this.state.patrolnumber} 
                             /> :
-                            <span>{this.state.patrolnumber || this.props.log.patrolnumber}</span>
+                            <span>{this.state.patrolnumber ? this.state.patrolnumber : "N/A"}</span>
                         }
                     </td>
                     <td>
                         {(this.props.adminMode && this.state.editMode) ? 
                             <input 
                                 className="editPatrolNotes" 
-                                placeholder="N/A"
                                 onChange={this.handlePatrolNotesChange} 
                                 value={this.state.patrolnotes} 
                             /> :
-                            <span>{this.state.patrolnotes || this.props.log.patrolnotes}</span>
+                            <span>{this.state.patrolnotes ? this.state.patrolnotes : "N/A"}</span>
                         }
                     </td>
                     
@@ -109,8 +107,7 @@ class DeckLogResults extends React.Component {
                                                     onClick={(e) => this.props.logSelectCallback(this.props.log)}
                                                 ><span><img src="..\..\..\images\icons\view-icon.svg"/></span></button>
                                             </td>
-                    }    
-                    
+                    }
 
                     {(this.props.adminMode && !this.state.editMode) && <td><button 
                                                 className="edit"

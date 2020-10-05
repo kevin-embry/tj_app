@@ -158,7 +158,7 @@ export default class EditUsers extends React.Component {
                     {this.state.users.map(user => <tr key={"editrow"+user.email}><EditUsersLine {...this.props} user={user} editUserCallback={this.editUser}/></tr> )}                    
                     </tbody>
                 </table>
-                <div>PAGINATION HERE</div>
+                {this.state.users.length > 12 && <div>PAGINATION HERE</div>}
               </div> 
 
               <div className={this.state.showEditUser}>
