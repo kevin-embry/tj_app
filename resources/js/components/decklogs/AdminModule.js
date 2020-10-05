@@ -3,7 +3,7 @@ import Axios from 'axios';
 
 class AdminModule extends React.Component {
     constructor(props) {
-        super(props)
+        super()
         this.state = {
             logDate: "",
             patrolNumber: "",
@@ -78,6 +78,7 @@ class AdminModule extends React.Component {
             setTimeout(() => {
                 this.setState({ successMessage: "hide" });
                 this.clearFields(); 
+                this.props.resetFiltersCallback();
             }, 3000);
         })
         .catch((error) => {

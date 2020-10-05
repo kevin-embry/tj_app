@@ -289,6 +289,14 @@ class CrewAdmin extends React.Component {
     componentDidMount() {
         this.getCrewMembers();
     }
+
+    componentDidUpdate(prevProps, prevState) {
+        if(this.state.crewMembers !== prevState.crewMembers) {
+             this.setState({
+                 lastPageIndex: Math.ceil(this.state.crewMembers.length / this.state.crewPerPage)
+             })
+        }
+    }
 }
 
 export default CrewAdmin;

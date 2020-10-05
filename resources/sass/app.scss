@@ -1085,7 +1085,7 @@ input[type=text], input[type=password] {
         }
         .filterContainer {
             width: 720px;
-            margin: 10px auto auto auto;
+            margin: 10px auto 10px auto;
             height: 50px;
             clear: both;
             .logYear {
@@ -1173,17 +1173,55 @@ input[type=text], input[type=password] {
         }
     }
     .logResults {
-        margin: auto;
+        margin: 10px auto 10px auto;
         font-size: 1em;
         border-collapse: collapse;
+        .editPatrolNumber {
+            width: 90px;
+            height: 17px;
+            font-size: 1em;
+        }
+        .editPatrolNotes {
+            width: 300px;
+            height: 17px;
+            font-size: 1em;
+        }
         tbody {
             tr {
-                td{
+                th {
                     font-size: 1.1em;
+                    text-align: center !important;
+                }
+                td{
+                    font-size: 1.0em;
                     font-family: arial, sans-serif;
-                    cursor: pointer;
-                    padding: 15px;
+                    padding: 3px 8px 3px 8px;
                     border: none;
+                    .view {
+                        width: 40px;
+                        height: 30px;
+                        background-color: #ffff99; 
+                    }
+                    .trash {
+                        width: 40px;
+                        height: 30px;
+                        background-color: red;
+                    }
+                    .save {
+                        width: 40px;
+                        height: 30px;
+                        background-color: #b3ffb3;
+                    }
+                    .edit {
+                        width: 40px;
+                        height: 30px;
+                        background-color: #4db8ff;
+                    }
+                    .cancel {
+                        width: 40px;
+                        height: 30px;
+                        background-color: #ffb3b3;
+                    }
                 }
             }
         }
