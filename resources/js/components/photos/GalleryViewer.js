@@ -3,6 +3,8 @@ import Axios from 'axios';
 import Gallery from 'react-photo-gallery';
 // import Lightbox from 'react-images';
 
+
+//TODO: NEED TO CLEAN UP THIS MODULE AND MAKE MORE SENSE OF IT!
 class GalleryViewer extends React.Component {
     constructor(props) {
         super(props)

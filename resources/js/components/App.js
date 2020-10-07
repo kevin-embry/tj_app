@@ -17,6 +17,7 @@ import DeckLogs from './decklogs/DeckLogs';
 import Crew from './crew/Crew';
 import Photos from './photos/Photos';
 import VideoModule from './videos/VideoModule';
+import Newspapers from './newspaper/Newspapers'
 import AboutUs from './AboutUs';
 import Footer from './Footer';
 import SignUp from './SignUp';
@@ -94,6 +95,7 @@ function App(props) {
                             <Route path="/about" component={AboutUs} />
                             <Route path="/forgotPassword" component={ForgotPassword} />
                             <Route exact path="/history"><Redirect to="/" /></Route>
+                            {/* <Route path="/photos"><Redirect to="/" /></Route> */}
 
                             {/* PRIVATE ROUTES */}
                             {/* <Route exact path="/editusers" render={(props) => <EditUsers {...props} adminMode={adminMode} newUserCallback={getNewApplicants}/>} /> */}
@@ -119,6 +121,8 @@ function App(props) {
                             <PrivateRoute path="/videos" referer="/videos" adminMode={adminMode} component={VideoModule} />
 
                             <PrivateRoute path="/photos/images" referer="/photos/images" adminMode={adminMode} component={Photos}  />
+
+                            <PrivateRoute path="/photos/newspapers" referer="/photos/newspapers" adminMode={adminMode} component={Newspapers} />
 
                             {/* CATCH-ALL ROUTE FOR ANYTHING NOT FINISHED IE: UNDER CONSTRUCTION  */}
                             <Route component={UnderConstruction}/>

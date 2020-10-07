@@ -19,10 +19,10 @@ Route::get('/signup', 'HomeController@index');
 Route::get('/login', 'HomeController@index');
 Route::get('/decklogs', 'HomeController@index');
 Route::get('/crew', 'HomeController@index');
-Route::get('/comments', 'HomeController@index');
-Route::get('/images', 'HomeController@index');
-Route::get('/newspapers', 'HomeController@index');
-Route::get('/references', 'HomeController@index');
+// Route::get('/comments', 'HomeController@index');
+// Route::get('/images', 'HomeController@index');
+// Route::get('/newspapers', 'HomeController@index');
+// Route::get('/references', 'HomeController@index');
 Route::get('/about', 'HomeController@index');
 Route::get('/editusers', 'HomeController@index');
 Route::get('/editannouncements', 'HomeController@index');
@@ -30,7 +30,9 @@ Route::get('/history', 'HomeController@index');
 Route::get('/history/timeline', 'HomeController@index');
 Route::get('/history/awards', 'HomeController@index');
 Route::get('/history/launches', 'HomeController@index');
+Route::get('/photos', 'HomeController@index');
 Route::get('/photos/images', 'HomeController@index');
+Route::get('/photos/newspapers', 'HomeController@index');
 Route::get('/forgotPassword', 'HomeController@index');
 Route::get('/videos', 'HomeController@index');
 
@@ -102,6 +104,13 @@ Route::get('/photos', 'ImagesController@getPhotos');
 Route::post('/photos', 'ImagesController@uploadPhotos');
 Route::post('/deletephoto', 'ImagesController@deletePhoto');
 Route::get('/galleryNames', 'ImagesController@getGalleryNames');
+
+//NEWSPAPER
+Route::post('/storenewspaper', 'NewspaperController@storeNewspaper');
+Route::get('/getnewspapers', 'NewspaperController@getNewspapers');
+Route::post('/deletenewspaper', 'NewspaperController@deleteNewspaper');
+// Route::get('/galleryNames', 'ImagesController@getGalleryNames');
+
 
 //CATCH ALL FOR ROUTES
 // Route::any('/{path?}', 'HomeController@index');

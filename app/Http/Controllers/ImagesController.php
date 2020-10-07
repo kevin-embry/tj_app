@@ -66,6 +66,8 @@ class ImagesController extends Controller
             $image->save();
             
             return redirect('/photos/images');
+        } else {
+            return new \Exception("Save Failed");
         }
        
     }
