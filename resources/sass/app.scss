@@ -1427,6 +1427,7 @@ input[type=text], input[type=password] {
     overflow-y: auto;
     height: 466px;
     min-height: 565px;
+   
 }
 
 .deleteImages {
@@ -1686,6 +1687,47 @@ input[type=text], input[type=password] {
 
     .new_module {
         margin-top: 20px;
+    }
+}
+
+.newspaperModule {
+    width: 80% !important;
+    overflow: hidden;
+    // margin: auto;
+    // padding: 10px;
+    // background-color: #f2f2f2;
+    // border-radius: 15px;
+    // border: 8px double #3A3F3B;
+    h3 {
+        margin: 5px;
+    }
+    .userImage {
+        a {
+            position: relative;
+
+            .closeNewspaper {
+                position: absolute;
+                // top: 2px;
+                right: 0;
+                font-size: 1.3em;
+                font-weight: bold;
+                cursor: pointer;
+                color: red;
+                border: 2px solid red;
+                border-radius: 25px;
+                padding: 4px;
+                background-color: white;
+                font-family: sans-serif;
+                width: 25px;
+                height: 25px;
+            }
+            .singleimage {
+                max-width: 70%;
+                z-index: -1;
+                cursor: pointer;
+            }
+        }
+       
     }
 }
 

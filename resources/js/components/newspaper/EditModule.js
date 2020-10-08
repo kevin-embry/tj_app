@@ -24,9 +24,10 @@ class EditModule extends React.Component {
                })
                .then((response) => {
                    console.log(response);
+                   this.retrieveNewspapers(); 
                    if(response.data.status == "success") {
                        this.setState({selected_count: 0})
-                        this.retrieveNewspapers(); 
+                        // this.retrieveNewspapers(); 
                    }
                })
                .catch((error) => {
@@ -97,6 +98,7 @@ class EditModule extends React.Component {
                 selected: selected
             }
         });
+
         return (
             <div className="update_module">
                 {(!this.state.addImages && this.state.images.length) ? 

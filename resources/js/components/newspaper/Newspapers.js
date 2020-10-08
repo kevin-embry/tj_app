@@ -5,8 +5,7 @@ import UserModule from './UserModule';
 class Newspapers extends React.Component {
     constructor(props) {
         super();
-        this.state = {}
-
+       
         this.redirectToHome = this.redirectToHome.bind(this);
     }
 
@@ -26,7 +25,7 @@ class Newspapers extends React.Component {
                     :
                     <UserModule
                         adminMode={this.props.adminMode}
-                        // goHome={this.redirectToHome}
+                        goHome={this.redirectToHome}
                     />
                 }    
             </div>
