@@ -15,7 +15,7 @@ class UserModule extends React.Component {
     retrieveNewspapers() {
         Axios.get('/getnewspapers')
             .then((response) => {
-               console.log("RESPONSE: ", response);
+            //    console.log("RESPONSE: ", response);
                this.setState({images: response.data})
             })
             .catch((error) => {

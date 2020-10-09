@@ -34,7 +34,7 @@ export default class Menu extends React.Component {
                     {/* <li><Link to="/references">References</Link></li> */}
                     <li><Link to="/about">About</Link></li>
                     <li className="dropdown">
-                        <a href="#" className="dropbtn">Links</a>
+                        <a className="dropbtn">Links</a>
                         <div className="dropdown-content">
                             <a href="http://va.gov" target ="_blank">VA Website</a>
                             <a href="http://www.geocities.ws/ssbn618/" target="_blank">TJ Geocities Site</a>

@@ -23,7 +23,7 @@ class GalleryViewer extends React.Component {
         this.goToNext = this.goToNext.bind(this);
         this.goToPrevious = this.goToPrevious.bind(this);
 
-        console.log(props);
+        // console.log(props);
         
     }
 
@@ -53,7 +53,7 @@ class GalleryViewer extends React.Component {
     }
 
     openLightbox(e, obj) {
-        console.log("OPENING IMAGE: ", obj);
+        // console.log("OPENING IMAGE: ", obj);
         // this.setState({
         //     showImage: true,
         //     individualImage: obj.photo.src

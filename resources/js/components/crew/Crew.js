@@ -65,7 +65,7 @@ class Crew extends React.Component {
         const currentCrew = allCrewMembers.slice(indexOfFirstCrew, indexOfLastCrew);
 
         const renderedCrew = currentCrew.map((crewMember, index) => {
-            return <tr>
+            return <tr key={"crewmember-" + crewMember.id}>
                         <td>{crewMember.lastname}</td>
                         <td>{crewMember.firstname}</td>
                         <td>{crewMember.division}</td>

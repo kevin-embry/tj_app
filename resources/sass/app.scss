@@ -237,7 +237,10 @@ h1 {
   
   }
 
-  .menu .dropdown:hover .dropdown-content {
+//   .menu .dropdown:hover .dropdown-content {
+//     display: block;
+//   } 
+.menu .dropdown:hover .dropdown-content {
     display: block;
   } 
 
