@@ -7,7 +7,6 @@ use App\Newspaper;
 use App\Rules\ImageFileSize;
 use Illuminate\Support\Facades\Storage;
 
-
 class NewspaperController extends Controller
 {
 
@@ -48,7 +47,6 @@ class NewspaperController extends Controller
         } catch(\Exception $e) {
             return response(json_encode(['status' => 'fail']), 500);
         }
-        
     }
 
     public function getNewspapers(Request $request)
@@ -59,17 +57,12 @@ class NewspaperController extends Controller
             array_push($returnedNewspapers, $image);
         }
         return $returnedNewspapers;
-
-
-
-        // return Newspaper::all();
     }
 
     public function deleteNewspaper(Request $request)
     {
         $image = Newspaper::find(request()->image['id']);
-        // dd($image);
-
+        
         try {
             if (Storage::disk('s3')->exists($image['url'])) {
                 Storage::disk('s3')->delete($image['url']);

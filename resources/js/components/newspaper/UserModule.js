@@ -39,13 +39,11 @@ class UserModule extends React.Component {
 
     render() {
         let photos = this.state.images.map(image => {
-            let selected = image.selected != null ? image.selected : false;
             return {
                 src: image.url,
                 width: image.width,
                 height: image.height,
                 id: image.id,
-                selected: selected
             }
         });
 
@@ -58,7 +56,7 @@ class UserModule extends React.Component {
                     >&times;
                 </span>
                 <h1>TJ in the News</h1>
-                <h3>Articles about the Thomas Jefferson and sailors</h3>
+                <h3>Articles about the Thomas Jefferson and its sailors</h3>
                 <hr />
                 {!this.state.openImage && <Gallery 
                     photos={photos}

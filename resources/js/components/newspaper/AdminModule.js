@@ -1,6 +1,4 @@
-import React, { Component, Fragment } from 'react';
-import Dropzone from 'react-dropzone';
-import Axios from 'axios';
+import React from 'react';
 import AddNewspaper from './AddNewspaper';
 import EditModule from './EditModule';
 
@@ -25,7 +23,6 @@ class AdminModule extends React.Component {
     }
 
     render() {
-        console.log(this.state);
         return (
             <div className="newspaperAdmin borderModule" >
                 <span 
@@ -35,7 +32,6 @@ class AdminModule extends React.Component {
                     >&times;
                 </span>
                 <h1>Admin Mode- TJ in the News</h1>
-                
                 <hr />
                 <div className="checkbox-container">
                     <label htmlFor="updateNewspaper">Edit Newspaper Images:
@@ -44,9 +40,7 @@ class AdminModule extends React.Component {
                     <input name="newNewspaper" type="checkbox" checked={this.state.newNewspaper} onChange={this.handleCheckboxCheck.bind(this)} /></label>
                 </div>
 
-                {this.state.updateNewspaper && <EditModule />
-                    // <div className="update_module">UPDATE MODULE</div>
-                }
+                {this.state.updateNewspaper && <EditModule />}
                 {this.state.newNewspaper && <AddNewspaper />}
             </div>
         )

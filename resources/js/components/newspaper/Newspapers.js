@@ -5,7 +5,6 @@ import UserModule from './UserModule';
 class Newspapers extends React.Component {
     constructor(props) {
         super();
-       
         this.redirectToHome = this.redirectToHome.bind(this);
     }
 

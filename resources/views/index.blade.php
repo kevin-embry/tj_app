@@ -2,6 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
+        <meta name="description" content="History Page for the USS Thomas Jefferson SSBN/SSN 618">
+        <meta name="keywords" content="SSN618, SSBN618, USS Thomas Jefferson">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>SSBN/SSN 618 History</title>
