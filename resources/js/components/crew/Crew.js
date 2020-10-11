@@ -1,6 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 import CrewAdmin from './CrewAdmin';
+import { capitalize } from 'lodash';
 
 class Crew extends React.Component {
     constructor(props) {
@@ -66,8 +67,8 @@ class Crew extends React.Component {
 
         const renderedCrew = currentCrew.map((crewMember, index) => {
             return <tr key={"crewmember-" + crewMember.id}>
-                        <td>{crewMember.lastname}</td>
-                        <td>{crewMember.firstname}</td>
+                        <td style={{textTransform: "capitalize"}}>{crewMember.lastname}</td>
+                        <td style={{textTransform: "capitalize"}}>{crewMember.firstname}</td>
                         <td>{crewMember.division}</td>
                         <td>{crewMember.job}</td>
                         <td>{crewMember.crew}</td>

@@ -19,7 +19,7 @@ export default class DataChecker {
     }
 
     static checkPassword(password) {
-        var regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+        var regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{1,20}$/;
         var check = regex.test(String(password));
         return check;
     }

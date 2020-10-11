@@ -21,6 +21,7 @@ function SignUp(props) {
     const [lnError, setLnError] = useState(false);
     const [emailError, setEmailError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
+    const [passwordLengthError, setPasswordLengthError] = useState(false);
     const [servedYearsError, setServedYearsError] = useState(false);
 
     const divisions = [];
@@ -45,6 +46,7 @@ function SignUp(props) {
     
     function checkIfPasswordsMatch() {
        var checkPasswords = (password1 !== "" && password2 !== "" && (password1 === password2));
+       console.log("CHECK PASSWORDS: ", checkPasswords);
        if (checkPasswords) {
         setPasswordsMatch(true);
         setPasswordError(false);
@@ -131,7 +133,15 @@ function SignUp(props) {
     function PasswordError(props) {
         return (
             <div>
-                <p className="text_center error">Passwords Do Not Match And/Or Are Invalid</p>
+                <p className="text_center error">Passwords Do Not Match Or Are Invalid</p>
+            </div>
+        )
+    }
+
+    function PasswordLengthError(props) {
+        return (
+            <div>
+                <p className="text_center error">Passwords Need To Be Between 6 And 20 Characters</p>
             </div>
         )
     }
@@ -167,11 +177,15 @@ function SignUp(props) {
         if(!DataChecker.checkPassword(password2)) {
             errors.push('password');
             setPasswordError(true);
+            if(password2.length < 6 || password2.length > 20) {
+                setPasswordLengthError(true);
+            }
         } else {
             setPasswordError(false);
+            setPasswordLengthError(false);
         };
         if(servedOnBoard === "yes" && !DataChecker.checkServedYears(dateFrom, dateTo)) {
-            console.log("SERVED YEARS ERROR!");
+            // console.log("SERVED YEARS ERROR!");
             errors.push('served years');
             setServedYearsError(true);
         } else {
@@ -203,7 +217,8 @@ function SignUp(props) {
                console.error(error);
            })
         } else {
-            console.log("THERE ARE DATA ERRORS!");
+            console.log("Passwords do not match:", doPasswordsMatch);
+            console.log("Errors: ", errors);
         }
     }
 
@@ -273,7 +288,8 @@ function SignUp(props) {
 
                
                 <div className="password_container">
-                    <p>Please Select a Password: </p>
+                    <p>Please Select a Password between 6 and 20 Characters</p>
+                    <p>and at least 1 letter and number: </p>
                     <input 
                         type="password" 
                         className = {passwordError == true ? "loginerror" : ""}
@@ -294,7 +310,8 @@ function SignUp(props) {
                         required 
                     /> 
                     {(fnError || lnError || emailError || servedYearsError) ? <InfoError /> : ""}
-                    {(passwordsMatch !== null && passwordsMatch === false) ? <PasswordError /> : ""}
+                    {((passwordsMatch !== null && passwordsMatch === false) || passwordError == true) ? <PasswordError /> : ""}
+                    {(passwordLengthError == true) ? <PasswordLengthError /> : ""}
                 </div>
                 <button 
                 type="button"

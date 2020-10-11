@@ -12,7 +12,6 @@ class ForgotPasswordController extends Controller
    
     public function recoverPassword(Request $request)
     {
-        // dd("HERE");
         request()->validate([
             'email' => ['required','email:rfc,dns', new ValidUser()]            
         ]);
@@ -25,7 +24,6 @@ class ForgotPasswordController extends Controller
         } catch(\Exception $e) {
             return response(json_encode($e), 500);
         }
-        // error.response.data.errors.email
     }
 
     public function checkResetToken(Request $request)
