@@ -288,8 +288,8 @@ function SignUp(props) {
 
                
                 <div className="password_container">
-                    <p>Please Select a Password between 6 and 20 Characters</p>
-                    <p>and at least 1 letter and number: </p>
+                    <p>Please Select a Password Between 6 And 20 Characters</p>
+                    <p>And At Least 1 Letter And Number: </p>
                     <input 
                         type="password" 
                         className = {passwordError == true ? "loginerror" : ""}

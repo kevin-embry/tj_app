@@ -13,7 +13,7 @@ class ForgotPasswordController extends Controller
     public function recoverPassword(Request $request)
     {
         request()->validate([
-            'email' => ['required','email:rfc,dns', new ValidUser()]            
+            'email' => ['required','email:rfc', new ValidUser()]            
         ]);
         $email = request()->email;
         $resetToken = \Str::random(10);
@@ -48,7 +48,7 @@ class ForgotPasswordController extends Controller
     public function updatePassword(Request $request) 
     {
         request()->validate([
-            'email' => 'required|email:rfc,dns',
+            'email' => 'required|email:rfc',
             'password' => 'required|min:6|same:password2',
             'password2' => 'required|min:6'
         ]);
