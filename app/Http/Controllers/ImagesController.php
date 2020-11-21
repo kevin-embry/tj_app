@@ -6,6 +6,7 @@ use App\Images;
 use Illuminate\Http\Request;
 use App\Rules\NoSpecialChars;
 use App\Rules\ImageFileSize;
+use App\Home;
 use Illuminate\Support\Facades\Storage;
 
 class ImagesController extends Controller
@@ -15,6 +16,7 @@ class ImagesController extends Controller
 
     public function __construct() {
         $this->s3path = "https://".env('AWS_BUCKET').".s3.".env('AWS_DEFAULT_REGION').".amazonaws.com/";
+        $this->lastUpdate = new Home();
     }
 
     /**
@@ -64,6 +66,8 @@ class ImagesController extends Controller
             $image->height = $height;
             $image->width = $width;
             $image->save();
+            
+            $this->lastUpdate->setLastUpdate();
             
             return redirect('/photos/images');
         } else {

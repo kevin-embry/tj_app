@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Newspaper;
 use App\Rules\ImageFileSize;
 use Illuminate\Support\Facades\Storage;
+use App\Home;
 
 class NewspaperController extends Controller
 {
@@ -14,6 +15,7 @@ class NewspaperController extends Controller
 
     public function __construct() {
         $this->s3path = "https://".env('AWS_BUCKET').".s3.".env('AWS_DEFAULT_REGION').".amazonaws.com/";
+        $this->lastUpdate = new Home();
     }
 
     public function storeNewspaper(Request $request)
@@ -40,6 +42,7 @@ class NewspaperController extends Controller
                 $obj->width = $width;
                 $obj->save();
                 
+                $this->lastUpdate->setLastUpdate();
                 return response(json_encode(['status' => 'success']), 200);    
             } else {
                 return new \Exception("Save Failed");

@@ -12,7 +12,9 @@ export default class Footer extends React.Component {
         return (
             <div className="footer">
                 <div className="contactus">
-                    <a href="mailto:tj618history@gmail.com">Contact Us</a>
+                    <img src="..\..\images\icons\mail-icon.svg" />
+                    <a href="mailto:tj618history@gmail.com"><span>Contact Us</span></a>
+                   
                 </div>
                <div className="footercenter">
                    <p>Thomas Jefferson</p>

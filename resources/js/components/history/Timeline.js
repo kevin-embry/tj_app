@@ -8,7 +8,7 @@ class Timeline extends React.Component {
         super()
         this.state = {
             historyEvents: [{id: 0, eventdate: "", activity: "", notes: ""}],
-            eventsPerPage: 8,
+            eventsPerPage: 15,
             lastPageIndex: 1
         }
         this.retrieveEvents();

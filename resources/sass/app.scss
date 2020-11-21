@@ -587,10 +587,15 @@ input[type=text], input[type=password] {
     left: 8px;
     top: 9px;  
     font-size: 1.2em;
-    width: 100px;
+    width: 130px;
+    height: 25px;
+    img {
+        vertical-align: bottom;
+    }
 }
 
 .contactus a {
+    margin-left: 5px;
     text-decoration: none;
     color: white;
 }
@@ -730,8 +735,10 @@ input[type=text], input[type=password] {
 
 #hatlogo {
     margin: 30px auto 0 auto;
-    width: 400px;
+    width: 500px;
     height: 150px;
+    border: hidden;
+    border-radius: 20px;
 }
 
 //****************************EDIT USERS********************

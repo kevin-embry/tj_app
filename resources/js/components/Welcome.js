@@ -114,7 +114,7 @@ export default class Welcome extends React.Component {
                     </div> 
                     <div className="editButtonContainer">
                         <p className={this.state.showUpdateMessage + " messageupdate"} >Message Updated</p>
-                        {this.state.editMode != true ? <p className="welcomeupdate">Last Updated: {this.state.lastUpdate}</p> : "" }
+                        {/* {this.state.editMode != true ? <p className="welcomeupdate">Last Updated: {this.state.lastUpdate}</p> : "" } */}
                         {this.state.editMode === true ? <button className="cancelChange" onClick={this.handleCancel}>Cancel</button> : "" }
                         {this.state.editMode === true ? <button className="submitChange" onClick={this.handleSubmit}>Submit</button>  : "" }  
                     </div>

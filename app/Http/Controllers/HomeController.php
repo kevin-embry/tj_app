@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Connection;
-use Illuminate\Support\Facades\Hash;
+use App\Home;
+// use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -16,6 +17,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
+        $this->lastUpdate = new Home();
         // $this->middleware('auth');
     }
 
@@ -60,11 +62,13 @@ class HomeController extends Controller
                 'editdate' => $date,
                 'message' => $message
             ]); 
-            $query2 = DB::table('lastupdate')
-            ->where('id', 1)
-            ->update([
-                'lastupdate' => $date
-            ]);
+            // $query2 = DB::table('lastupdate')
+            // ->where('id', 1)
+            // ->update([
+            //     'lastupdate' => $date
+            // ]);
+            // $this->setLastUpdate();
+            $this->lastUpdate->setLastUpdate();
             
             if ($query1 == 1) {
                 return response(json_encode([
@@ -88,4 +92,5 @@ class HomeController extends Controller
         }
         return $data;     
     }
+
 }

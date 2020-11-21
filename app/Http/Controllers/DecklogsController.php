@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Decklogs;
+use App\Home;
 
 class DecklogsController extends Controller
 {
 
     public function __construct() {
+        $this->lastUpdate = new Home();
     }
 
     //render the list of pdfs
@@ -54,6 +56,7 @@ class DecklogsController extends Controller
 
             //SAVE TO DATABASE
             if($result) {
+                
                 $decklog = new Decklogs();
                 $decklog->logdate = request('logdate');
                 $decklog->postdate = request('postdate');
@@ -61,6 +64,7 @@ class DecklogsController extends Controller
                 $decklog->patrolnotes = request('patrolnotes');
                 $decklog->file = $filePath;
                 $decklog->save();
+                $this->lastUpdate->setLastUpdate();
             } else {
                 throw new \Exception("Decklog save failed");
             }
@@ -83,6 +87,9 @@ class DecklogsController extends Controller
             $decklog->patrolnotes = request()->patrolnotes;
            
             $decklog->save();
+            
+            $this->lastUpdate->setLastUpdate();
+
             return response(json_encode(['status' => 'success']), 200);
         } catch(\Exception $e) {
             return response(\json_encode($e), 500);

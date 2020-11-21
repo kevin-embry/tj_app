@@ -67,7 +67,7 @@ class EventsModule extends React.Component {
       render() {
         //History Events are pulled in through props
         const historyEvents = this.props.events;
-        const eventsPerPage = 8;
+        const eventsPerPage = 15;
         const currentPage = this.state.currentPage;
        
         // ************Logic for displaying events

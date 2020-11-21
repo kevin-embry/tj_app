@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Home;
 
 class HistoryController extends Controller
 {
@@ -15,6 +16,7 @@ class HistoryController extends Controller
     public function __construct()
     {
         date_default_timezone_set("America/New_York");
+        $this->lastUpdate = new Home();
     }
 
     // *********TIMELINE EVENTS********
@@ -31,6 +33,7 @@ class HistoryController extends Controller
                     'added_on' => $now
                 ]
             );
+            $this->lastUpdate->setLastUpdate();
             return response(json_encode($query), 200);
         } catch(\Illuminate\Database\QueryException $exception) {
             return response(json_encode($exception->getMessage()), 500);
@@ -62,6 +65,7 @@ class HistoryController extends Controller
                 'notes' => $data['editedNote'],
                 'updated_on' => $now
             ]); 
+            $this->lastUpdate->setLastUpdate();
             return response(json_encode($query), 200);
         } catch (\Illuminate\Database\QueryException $exception) {            
             return response(json_encode($exception->getMessage()), 500);
@@ -75,6 +79,7 @@ class HistoryController extends Controller
             $query = DB::table('timeline')
                 ->where('id', $data['id'])
                 ->delete();
+                $this->lastUpdate->setLastUpdate();
             return response(json_encode($query), 200);    
         } catch (\Illuminate\Database\QueryException $exception) {
             return response(json_encode($exception->getMessage()), 500);
@@ -95,6 +100,7 @@ class HistoryController extends Controller
                     'added_on' => $now
                 ]
             );
+            $this->lastUpdate->setLastUpdate();
             return response(json_encode($query), 200);
         } catch(\Illuminate\Database\QueryException $exception) {
             return response(json_encode($exception->getMessage()), 500);
@@ -126,6 +132,7 @@ class HistoryController extends Controller
                 'notes' => $data['editedNote'],
                 'updated_on' => $now
             ]); 
+            $this->lastUpdate->setLastUpdate();
             return response(json_encode($query), 200);
         } catch (\Illuminate\Database\QueryException $exception) {            
             return response(json_encode($exception->getMessage()), 500);
@@ -139,6 +146,7 @@ class HistoryController extends Controller
             $query = DB::table('awards')
                 ->where('id', $data['id'])
                 ->delete();
+                $this->lastUpdate->setLastUpdate();
             return response(json_encode($query), 200);    
         } catch (\Illuminate\Database\QueryException $exception) {
             return response(json_encode($exception->getMessage()), 500);
@@ -159,6 +167,7 @@ class HistoryController extends Controller
                      'added_on' => $now
                  ]
              );
+             $this->lastUpdate->setLastUpdate();
              return response(json_encode($query), 200);
          } catch(\Illuminate\Database\QueryException $exception) {
              return response(json_encode($exception->getMessage()), 500);
@@ -189,7 +198,8 @@ class HistoryController extends Controller
                 'activity' => $data['editedEvent'],
                 'notes' => $data['editedNote'],
                 'updated_on' => $now
-            ]); 
+            ]);
+            $this->lastUpdate->setLastUpdate(); 
             return response(json_encode($query), 200);
         } catch (\Illuminate\Database\QueryException $exception) {            
             return response(json_encode($exception->getMessage()), 500);
@@ -203,6 +213,7 @@ class HistoryController extends Controller
             $query = DB::table('misslelaunches')
                 ->where('id', $data['id'])
                 ->delete();
+                $this->lastUpdate->setLastUpdate();
             return response(json_encode($query), 200);    
         } catch (\Illuminate\Database\QueryException $exception) {
             return response(json_encode($exception->getMessage()), 500);
